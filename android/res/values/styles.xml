@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Application theme -->
+    <style name="GdxTheme" parent="GdxThemeBase">
+
+    </style>
+
+    <!-- Theme with basic attributes for all API -->
+    <style name="GdxThemeBase" parent="android:Theme.DeviceDefault">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+
+        <!-- Dialog attributes -->
+        <item name="android:dialogTheme">@style/DialogLight</item>
+
+        <!-- AlertDialog attributes -->
+        <item name="android:alertDialogTheme">@style/DialogLight</item>
+    </style>
+
+    <!-- Pretty style for dialogs -->
+    <style name="DialogLight" parent="android:Theme.DeviceDefault.Light.Dialog">
+
+    </style>
+
+</resources>
