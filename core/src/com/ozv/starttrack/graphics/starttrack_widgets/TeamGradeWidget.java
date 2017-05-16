@@ -29,7 +29,7 @@ public class TeamGradeWidget extends Widget<com.ozv.starttrack.api.model.Report>
 	
 	public void init() {
 		
-		setBackgroundColor(App.ColorPallete.BACK);
+		setBackgroundColor(App.Colors.BACK);
 		setWidth(Gdx.graphics.getWidth());
 		
 		layout.paddingLeft = mp;
@@ -50,7 +50,7 @@ public class TeamGradeWidget extends Widget<com.ozv.starttrack.api.model.Report>
 			rg.layout();
 			layout.addActor(rg);
 
-			Actor a = new IdpColorPixmap(App.ColorPallete.ELEMENT_BORDER).buildActor();
+			Actor a = new IdpColorPixmap(App.Colors.WIDGET_BORDER).buildActor();
 			a.setSize(getWidth() - 2 * sp, App.dp2px(2));
 			Group g = new Group();
 			g.setWidth(getWidth() - layout.paddingLeft - layout.paddingRight);

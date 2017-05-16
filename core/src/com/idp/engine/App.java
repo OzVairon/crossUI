@@ -15,11 +15,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.XmlReader;
-import com.badlogic.gdx.utils.XmlWriter;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
-import com.ozv.starttrack.StartTrackApp;
 import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
 import com.idp.engine.resources.Resources;
 import com.idp.engine.ui.graphics.base.Navbar;
@@ -32,7 +30,6 @@ import com.idp.engine.ui.screens.IdpBaseScreen;
 import com.idp.engine.ui.screens.TransitionManager;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Stack;
@@ -97,9 +94,9 @@ public class App extends Game {
 		this.resources .loadFonts();
 		this.resources .loadIcons("icons.atlas");
 		this.resources .awaitLoad();
-		ColorPallete.loadColorScheme();
+		Colors.loadColorScheme();
 		transitionManager = new TransitionManager();
-		setGLColor(ColorPallete.MAIN);
+		setGLColor(Colors.MAIN);
 	}
 
 	protected void setGLColor(Color сolor) {
@@ -214,7 +211,7 @@ public class App extends Game {
 
 		Rect back = new Navbar.NavButton("back");
 		back.setBackgroundColor(Color.CLEAR);
-		back.setColor(App.ColorPallete.TEXT_NAVBAR);
+		back.setColor(Colors.TEXT_NAVBAR);
 		back.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -255,36 +252,27 @@ public class App extends Game {
 		}
 	}
 
-	public static class ColorPallete {
+	public static class Colors {
 		public static Color MAIN = Color.valueOf("000000");
 		public static Color BACK = Color.valueOf("F3F3F3");
 		public static Color TEXT_NAVBAR = Color.valueOf("FFFFFF");
-
-		public static Color ELEMENT_BACK = Color.valueOf("FFFFFF");
-		public static Color ELEMENT_BACK_SELECTED = Color.valueOf("D6FBB1");
-		public static Color ELEMENT_BORDER = Color.valueOf("e7e7e7");
-		public static Color ICON_TICK = Color.valueOf("396809");
-		//public static Color ICON_CANCEL = Color.valueOf("FF3333");
-
-		public static Color TEXT_NUMBER = Color.valueOf("666666");
 		public static Color TRANSPARENT = Color.valueOf("00000000");
-
+		public static Color WIDGET_WHITE = Color.valueOf("FFFFFF");
+		public static Color WIDGET_BORDER = Color.valueOf("e7e7e7");
 		private static HashMap<String, Color> colors = new HashMap<String, Color>();
 
 		public static Color getColorByName(String name) {
 			if (colors.containsKey(name)) return colors.get(name);
 			else return Color.BLACK;
 		}
-
 		public static void loadColorScheme() {
-
 			XmlReader xr = new XmlReader();
 			try {
 				XmlReader.Element elist = xr.parse(Idp.files.internal("appconfig"));
 
 				for(XmlReader.Element e : elist.getChildByName("colors").getChildrenByName("color")){
 					try {
-						Field f = ClassReflection.getField(ColorPallete.class, e.getAttribute("name"));
+						Field f = ClassReflection.getField(Colors.class, e.getAttribute("name"));
 						f.set(null, Color.valueOf(e.getAttribute("value")));
 					} catch (ReflectionException e1) {
 						colors.put(e.getAttribute("name"), Color.valueOf(e.getAttribute("value")));
@@ -293,41 +281,6 @@ public class App extends Game {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-
-
-		}
-
-		public static void saveColors() {
-			Field[] fields = ClassReflection.getFields(ColorPallete.class);
-
-			StringWriter sw = new StringWriter();
-			XmlWriter xw = new XmlWriter(sw);
-
-			try {
-				XmlWriter colors = xw.element("colors");
-				for (Field f : fields) {
-					try {
-						String name = f.getName();
-						String value = f.get(null).toString().substring(0,6);
-
-						colors.element("color")
-								.attribute("name", name)
-								.attribute("value", value).pop();
-
-					} catch (ReflectionException e) {
-						e.printStackTrace();
-					}
-				}
-				colors.pop();
-
-				System.out.println(sw);
-
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-
 		}
 	}
 

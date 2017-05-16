@@ -30,6 +30,6 @@ public class TeamWidget extends Widget<Team> {
 		title.setWrap(true);
 		layout.addActor(title);
 		setBorder(App.dp2px(1));
-		setBorderColor(App.ColorPallete.ELEMENT_BORDER);
+		setBorderColor(App.Colors.WIDGET_BORDER);
 	}
 }

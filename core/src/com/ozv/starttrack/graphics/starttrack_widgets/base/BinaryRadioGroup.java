@@ -43,17 +43,17 @@ public class BinaryRadioGroup extends HLayout {
 		final RadioButton rb = new RadioButton(a) {
 			@Override
 			public void onSelected() {
-				getIcon().setColor(value == 1 ? App.ColorPallete.ICON_TICK : App.ColorPallete.getColorByName("ICON_CANCEL"));
+				getIcon().setColor(value == 1 ? App.Colors.getColorByName("ICON_TICK") : App.Colors.getColorByName("ICON_CANCEL"));
 				grade.grade = value;
 			}
 
 			@Override
 			public void onUnselected() {
-				getIcon().setColor(App.ColorPallete.ELEMENT_BORDER);
+				getIcon().setColor(App.Colors.WIDGET_BORDER);
 				grade.grade = null;
 			}
 		};
-		rb.getIcon().setColor(App.ColorPallete.ELEMENT_BORDER);
+		rb.getIcon().setColor(App.Colors.WIDGET_BORDER);
 
 		rb.addListener(new ActorGestureListener() {
 			@Override

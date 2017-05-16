@@ -27,7 +27,7 @@ public class Widget<T> extends Rect {
 
 	
 	public Widget(T data) {
-		setBackgroundColor(App.ColorPallete.ELEMENT_BACK);
+		setBackgroundColor(App.Colors.WIDGET_WHITE);
 		this.layout = new com.ozv.starttrack.graphics.starttrack_widgets.base.VLayout();
 		addActor(layout);
 		this.data = data;

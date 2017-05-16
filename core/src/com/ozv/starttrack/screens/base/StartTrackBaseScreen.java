@@ -31,12 +31,12 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
     @Override
     protected void init() {
         super.init();
-        getNavbar().setColor(App.ColorPallete.MAIN);
+        getNavbar().setColor(App.Colors.MAIN);
         getNavbar().setBorder(0);
 
         Rect optIcon = new Navbar.NavButton("exit");
         optIcon.setBackgroundColor(Color.CLEAR);
-        optIcon.setColor(App.ColorPallete.TEXT_NAVBAR);
+        optIcon.setColor(App.Colors.TEXT_NAVBAR);
         optIcon.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

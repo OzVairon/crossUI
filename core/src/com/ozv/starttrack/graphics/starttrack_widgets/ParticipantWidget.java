@@ -39,13 +39,13 @@ public class ParticipantWidget extends Widget<com.ozv.starttrack.api.model.Parti
 		Text number = new Text(data.number + "",
 				com.ozv.starttrack.StartTrackApp.getResources().getLabelStyle("participant-number"));
 		number.setWidth(App.dp2px(32));
-		number.getStyle().fontColor = App.ColorPallete.TEXT_NUMBER;
+		number.getStyle().fontColor = App.Colors.getColorByName("TEXT_NUMBER");
 		number.setAlignment(Align.center);
 
 		
 		Rect textRect = new Rect();
 		textRect.addActor(number);
-        textRect.setBackgroundColor(App.ColorPallete.ELEMENT_BORDER);
+        textRect.setBackgroundColor(App.Colors.WIDGET_BORDER);
 
         VLayout nameLayout = new VLayout();
         nameLayout.gap = 0;
@@ -67,6 +67,6 @@ public class ParticipantWidget extends Widget<com.ozv.starttrack.api.model.Parti
 		
 		layout.addActor(hl);
 		setBorder(App.dp2px(1));
-		setBorderColor(App.ColorPallete.ELEMENT_BORDER);
+		setBorderColor(App.Colors.WIDGET_BORDER);
 	}
 }

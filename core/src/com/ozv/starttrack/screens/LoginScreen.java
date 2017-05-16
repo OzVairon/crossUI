@@ -40,7 +40,7 @@ public class LoginScreen extends IdpAppScreen {
 		getNavbar().setVisible(false);
 		getMainLayer().content.setY(0);
 		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
-		getMainLayer().setBackgroundColor(App.ColorPallete.ELEMENT_BACK);
+		getMainLayer().setBackgroundColor(App.Colors.WIDGET_WHITE);
 
 		layout = new com.ozv.starttrack.graphics.starttrack_widgets.base.VLayout();
 		layout.setAlign(com.ozv.starttrack.graphics.starttrack_widgets.base.VLayout.Align.Center);
@@ -62,7 +62,7 @@ public class LoginScreen extends IdpAppScreen {
 		TextFieldStyle textFieldStyle = com.ozv.starttrack.StartTrackApp.getResources().getTextFieldStyle("text_field");
 		LabelStyle titleStyle = com.ozv.starttrack.StartTrackApp.getResources().getLabelStyle("logo");
 		LabelStyle signInStyle = com.ozv.starttrack.StartTrackApp.getResources().getLabelStyle("navbar");
-		signInStyle.fontColor = App.ColorPallete.MAIN;
+		signInStyle.fontColor = App.Colors.MAIN;
 
 		ImageActor logo = new ImageActor(App.getResources().getIcon("logo-mobile"));
 		logo.setHeight(App.dp2px(72));
@@ -70,7 +70,7 @@ public class LoginScreen extends IdpAppScreen {
 				logo.getSprite().getRegionWidth() * logo.getHeight() / logo.getSprite().getRegionHeight()
 		);
 
-		logo.setColor(App.ColorPallete.MAIN);
+		logo.setColor(App.Colors.MAIN);
 		layout.addActor(logo);
 
 
@@ -91,7 +91,7 @@ public class LoginScreen extends IdpAppScreen {
 		emailWrapper.setSize(textFieldWidth, textFieldStyle.font.getCapHeight() * 2);
 		emailWrapper.setUnderlineLeft(underlineExtention);
 		emailWrapper.setUnderlineRight(underlineExtention);
-        emailWrapper.setUnderlineColor(App.ColorPallete.MAIN);
+        emailWrapper.setUnderlineColor(App.Colors.MAIN);
 		layout.addActor(emailWrapper);
 
 

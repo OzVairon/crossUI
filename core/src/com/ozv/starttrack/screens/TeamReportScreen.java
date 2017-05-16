@@ -70,8 +70,8 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
         final FloatingIconButton sendButton = new FloatingIconButton("forward", 60);
 
         sendButton.setPadding(StartTrackApp.dp2px(20));
-        sendButton.setBackColor(App.ColorPallete.MAIN);
-        sendButton.setIconColor(App.ColorPallete.TEXT_NAVBAR);
+        sendButton.setBackColor(App.Colors.MAIN);
+        sendButton.setIconColor(App.Colors.TEXT_NAVBAR);
         getMainLayer().content.addActor(sendButton);
         sendButton.setPosition(
                 getMainLayer().content.getWidth() - sendButton.getWidth() - StartTrackApp.dp2px(16),
@@ -186,14 +186,14 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
 	public void show() {
 		super.show();
 		for (ParticipantWidget w : widgets.values()) {
-			w.setBackgroundColor(App.ColorPallete.ELEMENT_BACK);
+			w.setBackgroundColor(App.Colors.WIDGET_WHITE);
 		}
 
         HashSet<Integer> estimated = findEstimatedParticipants();
         for (Integer i : estimated) {
             ParticipantWidget widget = widgets.get(i);
             if (widget != null) {
-                widget.setBackgroundColor(App.ColorPallete.ELEMENT_BACK_SELECTED);
+                widget.setBackgroundColor(App.Colors.getColorByName("ELEMENT_BACK_SELECTED"));
             }
         }
 

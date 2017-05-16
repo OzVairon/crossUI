@@ -59,9 +59,9 @@ public class TeamScreen extends StartTrackBaseScreen<Game> {
 			if (r.game_module == StartTrackApp.getState().gameModule.id && r.sent) {
 				TeamWidget w = teamWidgets.get(r.team);
 				if (w != null) {
-					w.setBackgroundColor(App.ColorPallete.ELEMENT_BACK_SELECTED);
+					w.setBackgroundColor(App.Colors.getColorByName("ELEMENT_BACK_SELECTED"));
 					IconButton a = new IconButton("accept", 40);
-					a.getIcon().setColor(App.ColorPallete.ICON_TICK);
+					a.getIcon().setColor(App.Colors.getColorByName("ICON_TICK"));
 					a.setPosition(w.getWidth() - a.getWidth(), w.getHeight() / 2 - a.getHeight() / 2);
 					w.addActor(a);
 				}

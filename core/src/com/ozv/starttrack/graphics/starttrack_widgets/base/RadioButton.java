@@ -31,14 +31,14 @@ public class RadioButton extends Rect {
 		
 		this.number = new Text(text,
 				StartTrackApp.getResources().getLabelStyle("participant-number")); //h1
-		number.getStyle().fontColor = App.ColorPallete.MAIN;
+		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
 		
 		addActor(number);
 		setSize(s, s);
-		setBackgroundColor(App.ColorPallete.TRANSPARENT);
-		setBorderColor(App.ColorPallete.MAIN);
+		setBackgroundColor(App.Colors.TRANSPARENT);
+		setBorderColor(App.Colors.MAIN);
 		setBorder(App.dp2px(1.5f));
 		number.setSize(s, s);
 		
@@ -49,15 +49,15 @@ public class RadioButton extends Rect {
 		
 		this.number = new Text("1",
 				StartTrackApp.getResources().getLabelStyle("h1"));
-		number.getStyle().fontColor = App.ColorPallete.MAIN;
+		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
 		
 		setSize(s, s);
-		setBackgroundColor(App.ColorPallete.TRANSPARENT);
+		setBackgroundColor(App.Colors.TRANSPARENT);
 		
         icon.setBounds(s / 4, s / 4, s / 2, s / 2);
-        icon.setColor(App.ColorPallete.MAIN);
+        icon.setColor(App.Colors.MAIN);
         addActor(icon);
 		
 		this.icon = icon;
@@ -71,9 +71,9 @@ public class RadioButton extends Rect {
 	public void select() {
 		if (selected)
 			return;
-		number.getStyle().fontColor = App.ColorPallete.TEXT_NAVBAR;
+		number.getStyle().fontColor = App.Colors.TEXT_NAVBAR;
 		if (icon == null)
-			setBackgroundColor(App.ColorPallete.MAIN);
+			setBackgroundColor(App.Colors.MAIN);
 		selected = true;
 		onSelected();
 	}
@@ -81,8 +81,8 @@ public class RadioButton extends Rect {
 	public void unselect() {
 		if (!selected)
 			return;
-		number.getStyle().fontColor = App.ColorPallete.MAIN;
-		setBackgroundColor(App.ColorPallete.TRANSPARENT);
+		number.getStyle().fontColor = App.Colors.MAIN;
+		setBackgroundColor(App.Colors.TRANSPARENT);
 		selected = false;
 		onUnselected();
 	}
