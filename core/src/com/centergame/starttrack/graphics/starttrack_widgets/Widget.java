@@ -14,7 +14,7 @@ import com.idp.engine.ui.graphics.base.Rect;
  * Base Widget.
  *
  * @param <T>
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class Widget<T> extends Rect {
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class GameModule {
 	

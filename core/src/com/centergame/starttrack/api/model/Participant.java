@@ -8,7 +8,7 @@ package com.centergame.starttrack.api.model;
 /**
  * Data class for user.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class Participant {
 

@@ -7,7 +7,7 @@ package com.centergame.starttrack.api.model;
 
 /**
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class Grade {
 	

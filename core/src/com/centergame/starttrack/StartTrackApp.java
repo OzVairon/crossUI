@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Mobile app for Startrack project in centergame.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class StartTrackApp extends App {
 
@@ -82,14 +82,6 @@ public class StartTrackApp extends App {
 	public void create() {
 		super.create();
 
-		Resources r = new Resources();
-		this.resources = r;
-		r.enqueueAll();
-		r.awaitLoad();
-
-		transitionManager = new TransitionManager();
-
-		setGLColor(Color.valueOf("006FC0"));
 		loadState();
 		logIn();
 
@@ -133,9 +125,6 @@ public class StartTrackApp extends App {
 		setScreen(new LoginScreen());
 	}
 
-
-
-
 	/**
 	 * @return current app instance
 	 */
@@ -144,58 +133,6 @@ public class StartTrackApp extends App {
 	}
 
 
-/**
-	private Text fps;
-
-	public Actor getFpsLabel() {
-		if (fps == null) {
-			this.fps = new Text("", StartTrackApp.getResources().getLabelStyle("debug_info")) {
-				long lastUpdate;
-				int lastFps;
-
-				public void draw(Batch batch, float parentAlpha) {
-					long millis = TimeUtils.millis();
-					if (millis > lastUpdate + 1000) {
-						lastUpdate = millis;
-						int newFps = Gdx.graphics.getFramesPerSecond();
-						if (newFps != lastFps) {
-							setText(newFps + " fps");
-							lastFps = newFps;
-						}
-					}
-					super.draw(batch, parentAlpha);
-				}
-			};
-			fps.setY(StartTrackApp.dp2px(28));
-			fps.setX(StartTrackApp.dp2px(12));
-			fps.setWidth(Gdx.graphics.getWidth() - fps.getX() * 2);
-			fps.setAlignment(Align.right);
-			fps.setTouchable(Touchable.disabled);
-		}
-		return fps;
-	}
-
-*/
-
-	public static class ColorPallete {
-
-		public static Color MAIN = Color.valueOf("006FC0");
-		public static Color BACK = Color.valueOf("F3F3F3");
-		public static Color ELEMENT_BACK = Color.valueOf("FFFFFF");
-		public static Color ELEMENT_BACK_SELECTED = Color.valueOf("D6FBB1");
-		public static Color ELEMENT_BORDER = Color.valueOf("e7e7e7");
-
-		public static Color ICON_TICK = Color.valueOf("396809");
-		public static Color ICON_CANCEL = Color.valueOf("FF3333");
-
-		public static Color TEXT_MAIN = Color.valueOf("000000");
-		public static Color TEXT_NAVBAR = Color.valueOf("FFFFFF");
-		public static Color TEXT_HINT = Color.valueOf("666666");
-		
-		public static Color TEXT_NUMBER = Color.valueOf("666666");
-		
-		public static Color TRANSPARENT = Color.valueOf("00000000");
-	}
 
 
 }

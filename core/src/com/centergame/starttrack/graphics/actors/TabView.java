@@ -32,7 +32,7 @@ import java.util.ArrayList;
  *   separatorColor - color of the separator
  *   underlineColor - color of the line that is placed under the selected tab's header
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class TabView extends Rect {
 

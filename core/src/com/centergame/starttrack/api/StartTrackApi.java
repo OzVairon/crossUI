@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * Main API class for StartTrackApp.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public final class StartTrackApi extends com.idp.engine.net.Api {
 

@@ -19,7 +19,7 @@ import com.idp.engine.ui.graphics.actors.Text;
 /**
  * Widget representing a module.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class TeamGradeWidget extends Widget<Report> {
 	

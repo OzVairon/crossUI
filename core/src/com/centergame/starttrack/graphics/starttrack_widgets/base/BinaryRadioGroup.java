@@ -14,7 +14,7 @@ import com.idp.engine.ui.graphics.actors.ImageActor;
 /**
  * Widget representing a module.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ * @author idp
  */
 public class BinaryRadioGroup extends HLayout {
 	
