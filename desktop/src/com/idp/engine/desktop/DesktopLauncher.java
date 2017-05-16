@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import com.centergame.starttrack.StartTrackApp;
+import com.ozv.starttrack.StartTrackApp;
 import com.idp.engine.base.IdpFiles;
 import java.io.File;
 import java.io.IOException;

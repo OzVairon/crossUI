@@ -10,7 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Align;
-import com.centergame.starttrack.StartTrackApp;
+import com.ozv.starttrack.StartTrackApp;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Loader;
 import com.idp.engine.ui.graphics.actors.Text;

@@ -1,7 +1,17 @@
 <app>
     <mainscreen name = "LoginScreen" />
 
-
+    <colors>
+        <color name="MAIN" value="006fc0"/>
+        <color name="BACK" value="f3f3f3"/>
+        <color name="TEXT_NAVBAR" value="ffffff"/>
+        <color name="ELEMENT_BACK" value="ffffff"/>
+        <color name="ELEMENT_BACK_SELECTED" value="d6fbb1"/>
+        <color name="ELEMENT_BORDER" value="e7e7e7"/>
+        <color name="ICON_TICK" value="396809"/>
+        <color name="ICON_CANCEL" value="ff3333"/>
+        <color name="TEXT_NUMBER" value="666666"/>
+    </colors>
 
     <fonts>
         <font name="navbar"             path="SF-UI-Display-Medium.ttf"     size="18" color="ffffff"/>

@@ -4,8 +4,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.centergame.starttrack.StartTrackApp;
-import com.centergame.starttrack.screens.base.StartTrackBaseScreen;
+import com.ozv.starttrack.StartTrackApp;
+import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
 import com.idp.engine.base.Idp;
 
 /**

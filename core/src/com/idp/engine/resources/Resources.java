@@ -7,14 +7,11 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader;
-import com.badlogic.gdx.utils.XmlWriter;
-import com.centergame.starttrack.StartTrackApp;
 import com.idp.engine.App;
 import com.idp.engine.base.Idp;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -130,53 +127,9 @@ public class Resources {
         return style;
     }
 
-    public void enqueueAll() {
+    public void loadFonts() {
 
         LinkedList<FontInfo> list = new LinkedList<FontInfo>();
-
-//        list.add(new FontInfo("navbar",              "SF-UI-Display-Medium.ttf",  18, StartTrackApp.ColorPallete.TEXT_NAVBAR));
-//        list.add(new FontInfo("label",               "SF-UI-Display-Regular.ttf", 14, Color.valueOf("666666")));
-//        list.add(new FontInfo("debug_info",          "SF-UI-Display-Regular.ttf", 14, Color.valueOf("ffffff")));
-//        list.add(new FontInfo("h1",                  "SF-UI-Display-Regular.ttf", 16, Color.BLACK));
-//        list.add(new FontInfo("h1-bold",             "SF-UI-Display-Bold.ttf",    16, Color.BLACK));
-//        list.add(new FontInfo("number",              "SF-UI-Display-Bold.ttf",    18, StartTrackApp.ColorPallete.TEXT_NUMBER));
-//        list.add(new FontInfo("text",                "SF-UI-Text-Regular.ttf",    14, Color.valueOf("666666")));
-//        list.add(new FontInfo("text_field",          "SF-UI-Display-Light.ttf",   16, Color.BLACK));
-//        list.add(new FontInfo("logo",                "SF-UI-Display-Bold.ttf",   25, Color.valueOf("006fc0")));
-//        list.add(new FontInfo("header",              "SF-UI-Text-Bold.ttf",       12, Color.valueOf("666666")));
-//        list.add(new FontInfo("participant-number",  "SF-UI-Text-Bold.ttf",       20, Color.valueOf("666666")));
-//        list.add(new FontInfo("popup-title",         "SF-UI-Text-Bold.ttf",       14, Color.valueOf("000000")));
-//        list.add(new FontInfo("popup-buttons",       "SF-UI-Text-Bold.ttf",       16, Color.valueOf("000000")));
-//        list.add(new FontInfo("popup-text",       "SF-UI-Text-Regular.ttf",    14, Color.valueOf("666666")));
-//
-//        for (FontInfo f : list) {
-//            f.load();
-//        }
-//
-//        loadIcons("icons.atlas");
-//
-//        StringWriter sw = new StringWriter();
-//        XmlWriter xw = new XmlWriter(sw);
-//
-//        try {
-//            XmlWriter fonts = xw.element("fonts");
-//
-//            for (FontInfo f : list) {
-//                fonts.element("font")
-//                        .attribute("name", f.name)
-//                        .attribute("path", f.path)
-//                        .attribute("size", f.size)
-//                        .attribute("color", f.color).pop();
-//            }
-//
-//            fonts.pop();
-//
-//            System.out.println(sw);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         XmlReader xr = new XmlReader();
         try {
             XmlReader.Element elist = xr.parse(Idp.files.internal("appconfig"));
@@ -197,7 +150,6 @@ public class Resources {
             f.load();
         }
 
-        loadIcons("icons.atlas");
 
     }
 

@@ -2,14 +2,14 @@ package com.idp.engine.ui.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-import com.centergame.starttrack.StartTrackApp;
-import com.centergame.starttrack.graphics.starttrack_widgets.TeamWidget;
-import com.centergame.starttrack.graphics.starttrack_widgets.base.IconButton;
-import com.centergame.starttrack.screens.base.StartTrackBaseScreen;
-import com.centergame.starttrack.api.model.Game;
-import com.centergame.starttrack.api.model.Report;
-import com.centergame.starttrack.api.model.Team;
-import com.centergame.starttrack.screens.TeamReportScreen;
+import com.ozv.starttrack.StartTrackApp;
+import com.ozv.starttrack.graphics.starttrack_widgets.TeamWidget;
+import com.ozv.starttrack.graphics.starttrack_widgets.base.IconButton;
+import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
+import com.ozv.starttrack.api.model.Game;
+import com.ozv.starttrack.api.model.Report;
+import com.ozv.starttrack.api.model.Team;
+import com.ozv.starttrack.screens.TeamReportScreen;
 
 import java.util.HashMap;
 

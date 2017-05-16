@@ -1,7 +1,7 @@
 package com.idp.engine.ui.graphics.actors;
 
 import com.badlogic.gdx.utils.Align;
-import com.centergame.starttrack.StartTrackApp;
+import com.ozv.starttrack.StartTrackApp;
 import com.idp.engine.ui.graphics.base.Rect;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
