@@ -31,14 +31,14 @@ public class RadioButton extends Rect {
 		
 		this.number = new Text(text,
 				StartTrackApp.getResources().getLabelStyle("participant-number")); //h1
-		number.getStyle().fontColor = StartTrackApp.ColorPallete.MAIN;
+		number.getStyle().fontColor = App.ColorPallete.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
 		
 		addActor(number);
 		setSize(s, s);
-		setBackgroundColor(StartTrackApp.ColorPallete.TRANSPARENT);
-		setBorderColor(StartTrackApp.ColorPallete.MAIN);
+		setBackgroundColor(App.ColorPallete.TRANSPARENT);
+		setBorderColor(App.ColorPallete.MAIN);
 		setBorder(App.dp2px(1.5f));
 		number.setSize(s, s);
 		
@@ -49,15 +49,15 @@ public class RadioButton extends Rect {
 		
 		this.number = new Text("1",
 				StartTrackApp.getResources().getLabelStyle("h1"));
-		number.getStyle().fontColor = StartTrackApp.ColorPallete.MAIN;
+		number.getStyle().fontColor = App.ColorPallete.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
 		
 		setSize(s, s);
-		setBackgroundColor(StartTrackApp.ColorPallete.TRANSPARENT);
+		setBackgroundColor(App.ColorPallete.TRANSPARENT);
 		
         icon.setBounds(s / 4, s / 4, s / 2, s / 2);
-        icon.setColor(StartTrackApp.ColorPallete.MAIN);
+        icon.setColor(App.ColorPallete.MAIN);
         addActor(icon);
 		
 		this.icon = icon;
@@ -71,9 +71,9 @@ public class RadioButton extends Rect {
 	public void select() {
 		if (selected)
 			return;
-		number.getStyle().fontColor = StartTrackApp.ColorPallete.TEXT_NAVBAR;
+		number.getStyle().fontColor = App.ColorPallete.TEXT_NAVBAR;
 		if (icon == null)
-			setBackgroundColor(StartTrackApp.ColorPallete.MAIN);
+			setBackgroundColor(App.ColorPallete.MAIN);
 		selected = true;
 		onSelected();
 	}
@@ -81,8 +81,8 @@ public class RadioButton extends Rect {
 	public void unselect() {
 		if (!selected)
 			return;
-		number.getStyle().fontColor = StartTrackApp.ColorPallete.MAIN;
-		setBackgroundColor(StartTrackApp.ColorPallete.TRANSPARENT);
+		number.getStyle().fontColor = App.ColorPallete.MAIN;
+		setBackgroundColor(App.ColorPallete.TRANSPARENT);
 		selected = false;
 		onUnselected();
 	}

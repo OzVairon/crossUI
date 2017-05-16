@@ -7,6 +7,7 @@ package com.ozv.starttrack.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+import com.idp.engine.App;
 import com.ozv.starttrack.StartTrackApp;
 import com.ozv.starttrack.api.model.Grade;
 import com.idp.engine.ui.graphics.actors.ImageActor;
@@ -42,17 +43,17 @@ public class BinaryRadioGroup extends HLayout {
 		final RadioButton rb = new RadioButton(a) {
 			@Override
 			public void onSelected() {
-				getIcon().setColor(value == 1 ? StartTrackApp.ColorPallete.ICON_TICK : StartTrackApp.ColorPallete.getColorByName("ICON_CANCEL"));
+				getIcon().setColor(value == 1 ? App.ColorPallete.ICON_TICK : App.ColorPallete.getColorByName("ICON_CANCEL"));
 				grade.grade = value;
 			}
 
 			@Override
 			public void onUnselected() {
-				getIcon().setColor(StartTrackApp.ColorPallete.ELEMENT_BORDER);
+				getIcon().setColor(App.ColorPallete.ELEMENT_BORDER);
 				grade.grade = null;
 			}
 		};
-		rb.getIcon().setColor(StartTrackApp.ColorPallete.ELEMENT_BORDER);
+		rb.getIcon().setColor(App.ColorPallete.ELEMENT_BORDER);
 
 		rb.addListener(new ActorGestureListener() {
 			@Override

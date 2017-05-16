@@ -6,6 +6,7 @@
 package com.ozv.starttrack.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.Gdx;
+import com.idp.engine.App;
 import com.ozv.starttrack.StartTrackApp;
 import com.idp.engine.ui.graphics.base.Rect;
 
@@ -26,7 +27,7 @@ public class Widget<T> extends Rect {
 
 	
 	public Widget(T data) {
-		setBackgroundColor(StartTrackApp.ColorPallete.ELEMENT_BACK);
+		setBackgroundColor(App.ColorPallete.ELEMENT_BACK);
 		this.layout = new com.ozv.starttrack.graphics.starttrack_widgets.base.VLayout();
 		addActor(layout);
 		this.data = data;

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.idp.engine.App;
 import com.ozv.starttrack.StartTrackApp;
 import com.ozv.starttrack.api.StartTrackApi;
 import com.ozv.starttrack.api.model.Report;
@@ -69,8 +70,8 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
         final FloatingIconButton sendButton = new FloatingIconButton("forward", 60);
 
         sendButton.setPadding(StartTrackApp.dp2px(20));
-        sendButton.setBackColor(StartTrackApp.ColorPallete.MAIN);
-        sendButton.setIconColor(StartTrackApp.ColorPallete.TEXT_NAVBAR);
+        sendButton.setBackColor(App.ColorPallete.MAIN);
+        sendButton.setIconColor(App.ColorPallete.TEXT_NAVBAR);
         getMainLayer().content.addActor(sendButton);
         sendButton.setPosition(
                 getMainLayer().content.getWidth() - sendButton.getWidth() - StartTrackApp.dp2px(16),
@@ -185,25 +186,17 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
 	public void show() {
 		super.show();
 		for (ParticipantWidget w : widgets.values()) {
-			w.setBackgroundColor(StartTrackApp.ColorPallete.ELEMENT_BACK);
+			w.setBackgroundColor(App.ColorPallete.ELEMENT_BACK);
 		}
 
         HashSet<Integer> estimated = findEstimatedParticipants();
         for (Integer i : estimated) {
             ParticipantWidget widget = widgets.get(i);
             if (widget != null) {
-                widget.setBackgroundColor(StartTrackApp.ColorPallete.ELEMENT_BACK_SELECTED);
+                widget.setBackgroundColor(App.ColorPallete.ELEMENT_BACK_SELECTED);
             }
         }
 
-//		for (Grade g : StartTrackApp.getInstance().getReport().grades) {
-//            if (g.grade != null) {
-//				ParticipantWidget widget = widgets.get(g.participant);
-//				if (widget != null) {
-//					widget.setBackgroundColor(StartTrackApp.ColorPallete.ELEMENT_BACK_SELECTED);
-//				}
-//			}
-//		}
 	}
 
 	@Override

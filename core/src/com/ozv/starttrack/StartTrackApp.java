@@ -74,10 +74,8 @@ public class StartTrackApp extends App {
 	@Override
 	public void create() {
 		super.create();
-
 		loadState();
 		logIn();
-
 	}
 
 	private void logIn() {

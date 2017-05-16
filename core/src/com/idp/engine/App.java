@@ -99,7 +99,7 @@ public class App extends Game {
 		this.resources .awaitLoad();
 		ColorPallete.loadColorScheme();
 		transitionManager = new TransitionManager();
-		setGLColor(Color.valueOf("006FC0"));
+		setGLColor(ColorPallete.MAIN);
 	}
 
 	protected void setGLColor(Color сolor) {
@@ -214,7 +214,7 @@ public class App extends Game {
 
 		Rect back = new Navbar.NavButton("back");
 		back.setBackgroundColor(Color.CLEAR);
-		back.setColor(StartTrackApp.ColorPallete.TEXT_NAVBAR);
+		back.setColor(App.ColorPallete.TEXT_NAVBAR);
 		back.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

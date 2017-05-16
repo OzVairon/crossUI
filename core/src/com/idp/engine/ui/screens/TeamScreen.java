@@ -2,6 +2,7 @@ package com.idp.engine.ui.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+import com.idp.engine.App;
 import com.ozv.starttrack.StartTrackApp;
 import com.ozv.starttrack.graphics.starttrack_widgets.TeamWidget;
 import com.ozv.starttrack.graphics.starttrack_widgets.base.IconButton;
@@ -58,9 +59,9 @@ public class TeamScreen extends StartTrackBaseScreen<Game> {
 			if (r.game_module == StartTrackApp.getState().gameModule.id && r.sent) {
 				TeamWidget w = teamWidgets.get(r.team);
 				if (w != null) {
-					w.setBackgroundColor(StartTrackApp.ColorPallete.ELEMENT_BACK_SELECTED);
+					w.setBackgroundColor(App.ColorPallete.ELEMENT_BACK_SELECTED);
 					IconButton a = new IconButton("accept", 40);
-					a.getIcon().setColor(StartTrackApp.ColorPallete.ICON_TICK);
+					a.getIcon().setColor(App.ColorPallete.ICON_TICK);
 					a.setPosition(w.getWidth() - a.getWidth(), w.getHeight() / 2 - a.getHeight() / 2);
 					w.addActor(a);
 				}

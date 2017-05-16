@@ -32,7 +32,7 @@ public class IndicatorsScreen extends StartTrackBaseScreen<Participant> {
 
 	@Override
 	public void show() {
-		getNavbar().setColor(StartTrackApp.ColorPallete.MAIN);
+		getNavbar().setColor(App.ColorPallete.MAIN);
 		super.show();
 	}
 	

@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.idp.engine.App;
 import com.ozv.starttrack.StartTrackApp;
 import com.idp.engine.ui.graphics.base.Navbar;
 import com.idp.engine.ui.graphics.base.Rect;
@@ -30,12 +31,12 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
     @Override
     protected void init() {
         super.init();
-        getNavbar().setColor(StartTrackApp.ColorPallete.MAIN);
+        getNavbar().setColor(App.ColorPallete.MAIN);
         getNavbar().setBorder(0);
 
         Rect optIcon = new Navbar.NavButton("exit");
         optIcon.setBackgroundColor(Color.CLEAR);
-        optIcon.setColor(StartTrackApp.ColorPallete.TEXT_NAVBAR);
+        optIcon.setColor(App.ColorPallete.TEXT_NAVBAR);
         optIcon.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
