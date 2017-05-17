@@ -89,12 +89,39 @@ public class App extends Game {
 
 		dialogs = GDXDialogsSystem.install();
 
-
 		this.resources = new Resources();
-		this.resources .loadFonts();
-		this.resources .loadIcons("icons.atlas");
-		this.resources .awaitLoad();
-		Colors.loadColorScheme();
+
+		XmlReader xr = new XmlReader();
+		try {
+			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig"));
+			String screenname = config.getChildByName("mainscreen").getAttribute("name");
+			String packageName = "com.ozv.starttrack.screens";
+			try {
+				Colors.loadColorScheme(config.getChildByName("colors"));
+				this.resources .loadFonts(config.getChildByName("fonts"));
+				this.resources .loadIcons("icons.atlas");
+				this.resources .awaitLoad();
+
+				Object screenObject = ClassReflection.forName(packageName + "." + screenname).newInstance();
+				setScreen((IdpAppScreen) screenObject);
+
+			} catch (ReflectionException e) {
+				e.printStackTrace();
+				Idp.app.dispose();
+				Gdx.app.exit();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+
 		transitionManager = new TransitionManager();
 		setGLColor(Colors.MAIN);
 	}
@@ -265,22 +292,15 @@ public class App extends Game {
 			if (colors.containsKey(name)) return colors.get(name);
 			else return Color.BLACK;
 		}
-		public static void loadColorScheme() {
-			XmlReader xr = new XmlReader();
-			try {
-				XmlReader.Element elist = xr.parse(Idp.files.internal("appconfig"));
-
-				for(XmlReader.Element e : elist.getChildByName("colors").getChildrenByName("color")){
-					try {
-						Field f = ClassReflection.getField(Colors.class, e.getAttribute("name"));
-						f.set(null, Color.valueOf(e.getAttribute("value")));
-					} catch (ReflectionException e1) {
-						colors.put(e.getAttribute("name"), Color.valueOf(e.getAttribute("value")));
-					}
-				}
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+		public static void loadColorScheme(XmlReader.Element colorsXml) {
+			for(XmlReader.Element e : colorsXml.getChildrenByName("color")){
+                try {
+                    Field f = ClassReflection.getField(Colors.class, e.getAttribute("name"));
+                    f.set(null, Color.valueOf(e.getAttribute("value")));
+                } catch (ReflectionException e1) {
+                    colors.put(e.getAttribute("name"), Color.valueOf(e.getAttribute("value")));
+                }
+            }
 		}
 	}
 

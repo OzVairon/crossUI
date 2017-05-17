@@ -127,26 +127,21 @@ public class Resources {
         return style;
     }
 
-    public void loadFonts() {
+    public void loadFonts(XmlReader.Element fontsXml) {
 
         LinkedList<FontInfo> list = new LinkedList<FontInfo>();
-        XmlReader xr = new XmlReader();
-        try {
-            XmlReader.Element elist = xr.parse(Idp.files.internal("appconfig"));
 
-            for(XmlReader.Element e : elist.getChildByName("fonts").getChildrenByName("font")){
-                list.add(new FontInfo(
-                        e.getAttribute("name"),
-                        e.getAttribute("path"),
-                        e.getAttribute("size"),
-                        e.getAttribute("color")
-                ));
-            }
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        for(XmlReader.Element e : fontsXml.getChildrenByName("font")){
+            list.add(new FontInfo(
+                    e.getAttribute("name"),
+                    e.getAttribute("path"),
+                    e.getAttribute("size"),
+                    e.getAttribute("color")
+            ));
         }
 
         for (FontInfo f : list) {
+            System.out.println(f.toString());
             f.load();
         }
 
@@ -170,6 +165,13 @@ public class Resources {
             loadFont(this.name, this.path, Integer.parseInt(size), Color.valueOf(color));
         }
 
+        @Override
+        public String toString() {
+            String result="";
+
+            result += "name: " + this.name + "\t";
+            return result;
+        }
     }
 
     private void fixFonts() {

@@ -16,8 +16,8 @@ public class Api {
 
     private static Gson GSON; // !! never use directly!
 
-    private static String API_URL  = "http://st.center-game.com";
-    //private static String API_URL  = "http://dhabensky.pythonanywhere.com";
+    //private static String API_URL  = "http://st.center-game.com";
+    private static String API_URL  = "http://dhabensky.pythonanywhere.com";
 
     protected static String privateToken;
 

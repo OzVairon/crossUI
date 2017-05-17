@@ -6,6 +6,7 @@ import com.idp.engine.App;
 import com.idp.engine.base.Idp;
 import com.ozv.starttrack.api.model.GameModule;
 import com.ozv.starttrack.api.model.Report;
+import com.ozv.starttrack.screens.ModulesScreen;
 
 import java.util.ArrayList;
 
@@ -75,10 +76,11 @@ public class StartTrackApp extends App {
 	public void create() {
 		super.create();
 		loadState();
-		logIn();
+		//setScreen(new LoginScreen());
+		//logIn();
 	}
 
-	private void logIn() {
+	public void logIn() {
 		String token = null;
 		try {
 			token = Idp.files.readLocalString("token");
@@ -96,14 +98,14 @@ public class StartTrackApp extends App {
 	 */
 	public void logIn(String token) {
 		if (token == null) {
-			setScreen(new LoginScreen());
+//			setScreen(new LoginScreen());
 			return;
 		}
 
 		Idp.files.writeLocalString("token", token);
 		StartTrackApi.setPrivateToken(token);
 
-		setScreen(new com.ozv.starttrack.screens.ModulesScreen());
+		setScreen(new ModulesScreen());
 		Idp.input.setCatchBackKey(true);
 	}
 

@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.reflect.ClassReflection;
+import com.ozv.starttrack.StartTrackApp;
 import com.ozv.starttrack.api.StartTrackApi;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.IdpTextField;
@@ -31,12 +33,16 @@ public class LoginScreen extends IdpAppScreen {
 
 	public LoginScreen() {
 		super();
+		System.out.println(LoginScreen.class.getCanonicalName());
 	}
 
 
 	@Override
 	protected void init() {
 		super.init();
+
+		StartTrackApp.getInstance().logIn();
+
 		getNavbar().setVisible(false);
 		getMainLayer().content.setY(0);
 		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
