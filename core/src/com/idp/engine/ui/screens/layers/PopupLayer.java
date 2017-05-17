@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.ozv.starttrack.StartTrackApp;
+import com.idp.engine.App;
 
 import de.tomgrill.gdxdialogs.core.dialogs.GDXButtonDialog;
 import de.tomgrill.gdxdialogs.core.dialogs.GDXProgressDialog;
@@ -103,7 +103,7 @@ class Dialogs {
 
     public static void showConfirmDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
 
-        final GDXButtonDialog bDialog = StartTrackApp.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
+        final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(titleString);
         bDialog.setMessage(message);
 
@@ -148,7 +148,7 @@ class Dialogs {
 
     public static GDXProgressDialog showProgressDialog(String titleString, String message) {
 
-        GDXProgressDialog progressDialog = StartTrackApp.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
+        GDXProgressDialog progressDialog = App.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
 
         progressDialog.setTitle(titleString);
         progressDialog.setMessage(message);
@@ -160,7 +160,7 @@ class Dialogs {
 
     public static GDXButtonDialog showAlertDialog(String titleString, String message) {
 
-        final GDXButtonDialog bDialog = StartTrackApp.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
+        final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(titleString);
         bDialog.setMessage(message);
 

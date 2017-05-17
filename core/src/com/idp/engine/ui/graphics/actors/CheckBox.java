@@ -1,10 +1,10 @@
 package com.idp.engine.ui.graphics.actors;
 
-import com.ozv.starttrack.StartTrackApp;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+import com.idp.engine.App;
+import com.idp.engine.ui.graphics.base.Rect;
 
 /**
  * Checkbox element.
@@ -29,17 +29,17 @@ public class CheckBox extends Rect {
 
 
 	public CheckBox(String text, final boolean checked) {
-		this.text = new Text(text, StartTrackApp.getResources().getLabelStyle("h2"));
-		checker = new com.idp.engine.ui.graphics.actors.ImageActor(StartTrackApp.getResources().getIcon("checker"));
-		checker.setSize(StartTrackApp.dp2px(14), StartTrackApp.dp2px(14));
+		this.text = new Text(text, App.getResources().getLabelStyle("h2"));
+		checker = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon("checker"));
+		checker.setSize(App.dp2px(14), App.dp2px(14));
 		checker.setColor(Color.valueOf("666666"));
 
 		box = new Rect();
-		box.setSize(StartTrackApp.dp2px(18), StartTrackApp.dp2px(18));
-		box.setBorder(StartTrackApp.dp2px(1));
+		box.setSize(App.dp2px(18), App.dp2px(18));
+		box.setBorder(App.dp2px(1));
 
 		box.addActor(checker);
-		checker.setPosition(StartTrackApp.dp2px(2), StartTrackApp.dp2px(2));
+		checker.setPosition(App.dp2px(2), App.dp2px(2));
 
 		addListener(new ActorGestureListener() {
 			@Override
@@ -52,7 +52,7 @@ public class CheckBox extends Rect {
 		addActor(this.text);
 		addActor(box);
 		setChecked(checked);
-		setHeight(StartTrackApp.dp2px(48));
+		setHeight(App.dp2px(48));
 	}
 
 	public void setChecked(boolean c) {

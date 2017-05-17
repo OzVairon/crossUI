@@ -1,7 +1,7 @@
 package com.idp.engine.ui.graphics.actors;
 
 import com.badlogic.gdx.utils.Align;
-import com.ozv.starttrack.StartTrackApp;
+import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Rect;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
@@ -21,7 +21,7 @@ public class Button extends Rect {
 
 
 	public Button(String t) {
-		this.text = new Text(t, StartTrackApp.getResources().getLabelStyle("h1"));
+		this.text = new Text(t, App.getResources().getLabelStyle("h1"));
         this.text.setAlignment(Align.center);
         this.addActor(text);
 	}

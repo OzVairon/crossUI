@@ -2,7 +2,6 @@ package com.idp.engine.net;
 
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.net.HttpRequestBuilder;
-import com.ozv.starttrack.api.StartTrackApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -75,6 +74,6 @@ public class Api {
      * Sets private token that will be used in all requests that require authentication.
      */
     public static void setPrivateToken(String privateToken) {
-        StartTrackApi.privateToken = privateToken;
+        Api.privateToken = privateToken;
     }
 }

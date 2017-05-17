@@ -35,10 +35,9 @@ public class Navbar extends Rect {
 
 	public Navbar() {
 
-		// todo: read style from config
 
 		setName("navbar");
-		this.contentColor = Color.BLACK;
+		this.contentColor = App.Colors.TEXT_NAVBAR;
 		this.iconSize = App.dp2px(40);
 		float h = App.dp2px(56);
 

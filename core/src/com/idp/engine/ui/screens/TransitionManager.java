@@ -1,13 +1,10 @@
 package com.idp.engine.ui.screens;
 
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.idp.engine.App;
-import com.ozv.starttrack.StartTrackApp;
-import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
 import com.idp.engine.base.Idp;
 
 /**
@@ -76,7 +73,7 @@ public class TransitionManager extends IdpAppScreen {
 		this.outScreen = next;
 
 		System.out.println("Transition from " + inScreen.getName() + " to " + outScreen.getName() );
-		StartTrackApp.getInstance().setScreen(this);
+		App.getInstance().setScreen(this);
 
 		switch (type) {
 			case SLIDE_LEFT_RIGHT:
@@ -131,7 +128,7 @@ public class TransitionManager extends IdpAppScreen {
 							),
 							Actions.run(new Runnable() {
 								public void run() {
-									StartTrackApp.getInstance().setScreen(outScreen);
+									App.getInstance().setScreen(outScreen);
 								}
 							})
 						)
@@ -149,7 +146,7 @@ public class TransitionManager extends IdpAppScreen {
 								),
 								Actions.run(new Runnable() {
 									public void run() {
-										StartTrackApp.getInstance().setScreen(next);
+										App.getInstance().setScreen(next);
 									}
 								})
 						)
@@ -167,7 +164,7 @@ public class TransitionManager extends IdpAppScreen {
 								),
 								Actions.run(new Runnable() {
 									public void run() {
-										StartTrackApp.getInstance().setScreen(next);
+										App.getInstance().setScreen(next);
 									}
 								})
 						)
@@ -181,7 +178,7 @@ public class TransitionManager extends IdpAppScreen {
 								Actions.fadeOut(duration),
 								Actions.run(new Runnable() {
 									public void run() {
-										StartTrackApp.getInstance().setScreen(outScreen);
+										App.getInstance().setScreen(outScreen);
 									}
 								}),
 								Actions.color(Color.WHITE)
@@ -190,7 +187,7 @@ public class TransitionManager extends IdpAppScreen {
 				break;
 
 			case BLINK:
-				StartTrackApp.getInstance().setScreen(outScreen);
+				App.getInstance().setScreen(outScreen);
 				break;
 		}
 

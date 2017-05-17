@@ -1,15 +1,9 @@
 package com.idp.engine.ui.screens;
 
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Navbar;
-import com.idp.engine.ui.graphics.base.Rect;
-import com.idp.engine.ui.screens.IdpAppScreen;
-import com.idp.engine.ui.screens.TransitionManager;
-import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
 
 import java.util.Stack;
 

@@ -98,6 +98,8 @@ public class App extends Game {
 		try {
 			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig"));
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
+
+			//todo delete the hardcode packagename
 			String packageName = "com.ozv.starttrack.screens";
 			try {
 				Colors.loadColorScheme(config.getChildByName("colors"));
