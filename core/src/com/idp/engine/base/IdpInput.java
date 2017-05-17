@@ -10,7 +10,7 @@ import com.badlogic.gdx.*;
 /**
  * Helpers for input processing that wrap {@link Input}.
  * Internally holds an {@link InputMultiplexer} with two {@link InputProcessor}'s.
- * One for usual input processing in scene and other for processing back key.
+ * One for usual input processing in scene and other for processing backScreen key.
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
@@ -51,9 +51,9 @@ public final class IdpInput {
 	}
 
 	/**
-	 * Sets back key processor, removes previous if one was.
+	 * Sets backScreen key processor, removes previous if one was.
 	 * It always becomes a second though always receives events after scene input processor.
-	 * @param processor new back key processor
+	 * @param processor new backScreen key processor
 	 */
 	public void setBackKeyProcessor(InputProcessor processor) {
 
@@ -69,7 +69,7 @@ public final class IdpInput {
 	}
 
 	/**
-	 * @return back key processor
+	 * @return backScreen key processor
 	 */
 	public InputProcessor getBackKeyProcessor() {
 		return backKeyProcessor;

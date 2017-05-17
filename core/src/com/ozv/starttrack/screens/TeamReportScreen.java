@@ -125,7 +125,7 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
                                     r.sent = true;
                                     StartTrackApp.saveState();
                                     d.dismiss();
-                                    StartTrackApp.getInstance().popScreen();
+                                    StartTrackApp.getInstance().backScreen();
                                 }
 
                                 @Override

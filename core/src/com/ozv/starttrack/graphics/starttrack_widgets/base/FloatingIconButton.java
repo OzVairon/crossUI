@@ -17,7 +17,7 @@ public class FloatingIconButton extends IconButton {
     private ImageActor back;
 	
 	public FloatingIconButton() {
-		this("back");
+		this("backScreen");
 	}
 
 	

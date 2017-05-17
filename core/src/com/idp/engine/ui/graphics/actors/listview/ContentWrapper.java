@@ -26,7 +26,7 @@ import java.util.ArrayList;
  *   top/bottomLoaderEnabled - enables/disables loaders on top/bottom.
  *     Disabled loaders are still visible but prevent firing load events
  *   top/bottomOverscroll - how much user can overscroll the list on top/bottom
- *   top/bottomOverscrollFixed - if true, list will NOT scroll back to its normal (not overscrolled)
+ *   top/bottomOverscrollFixed - if true, list will NOT scroll backScreen to its normal (not overscrolled)
  *     position on touch up. Otherwise it will
  *
  * @author dhabensky <dhabensky@idp-crew.com>

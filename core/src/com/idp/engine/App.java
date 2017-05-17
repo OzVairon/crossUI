@@ -9,30 +9,23 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
-import com.ozv.starttrack.screens.base.StartTrackBaseScreen;
+import com.ozv.starttrack.screens.ScreenManager;
 import com.idp.engine.resources.Resources;
-import com.idp.engine.ui.graphics.base.Navbar;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.base.Idp;
 import com.idp.engine.base.IdpInput;
 import com.idp.engine.ui.screens.IdpAppScreen;
 import com.idp.engine.ui.screens.IdpBaseScreen;
-import com.idp.engine.ui.screens.TransitionManager;
 
 import java.io.IOException;
 import java.util.EmptyStackException;
 import java.util.HashMap;
-import java.util.Stack;
 
 import de.tomgrill.gdxdialogs.core.GDXDialogs;
 import de.tomgrill.gdxdialogs.core.GDXDialogsSystem;
@@ -49,9 +42,7 @@ public class App extends Game {
 	protected static float dp2pxCoeff;
 	protected GDXDialogs dialogs;
 
-	protected TransitionManager transitionManager;
-	protected IdpAppScreen currentScreen;
-	protected final Stack<IdpAppScreen> stack = new Stack<IdpAppScreen>();
+	protected ScreenManager screenManager;
 
 	private Color glColor = Color.BLACK;
 
@@ -75,7 +66,7 @@ public class App extends Game {
 			public boolean keyDown(int keycode) {
 				if (keycode == Input.Keys.BACK) {
 					try {
-						popScreen();
+						App.backScreen();
 					} catch (EmptyStackException ex) {
 						Gdx.app.exit();
 					}
@@ -90,7 +81,19 @@ public class App extends Game {
 		dialogs = GDXDialogsSystem.install();
 
 		this.resources = new Resources();
+		screenManager = new ScreenManager();
+		loadXmlConfig();
 
+		setGLColor(Colors.MAIN);
+
+		screenManager.start();
+	}
+
+	protected void setGLColor(Color сolor) {
+		glColor = сolor;
+	}
+
+	private void loadXmlConfig() {
 		XmlReader xr = new XmlReader();
 		try {
 			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig"));
@@ -103,7 +106,7 @@ public class App extends Game {
 				this.resources .awaitLoad();
 
 				Object screenObject = ClassReflection.forName(packageName + "." + screenname).newInstance();
-				setScreen((IdpAppScreen) screenObject);
+				screenManager.setStartScreen((IdpAppScreen) screenObject);
 
 			} catch (ReflectionException e) {
 				e.printStackTrace();
@@ -114,20 +117,9 @@ public class App extends Game {
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			}
-
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
-
-		transitionManager = new TransitionManager();
-		setGLColor(Colors.MAIN);
-	}
-
-	protected void setGLColor(Color сolor) {
-		glColor = сolor;
 	}
     
 	@Override
@@ -230,54 +222,17 @@ public class App extends Game {
 	 * Adds new screen to the screen stack.
 	 * @param s new screen
 	 */
-	public void pushScreen(IdpAppScreen s) {
-		stack.push(currentScreen);
-
-		currentScreen = s;
-		Navbar navbar = currentScreen.getNavbar();
-
-		Rect back = new Navbar.NavButton("back");
-		back.setBackgroundColor(Color.CLEAR);
-		back.setColor(Colors.TEXT_NAVBAR);
-		back.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				popScreen();
-			}
-		});
-		navbar.getLeftIcons().addActor(back);
-
-		changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_RIGHT_LEFT);
+	public static void pushScreen(IdpAppScreen s) {
+		getInstance().screenManager.pushScreen(s);
 	}
 
 	/**
-	 * Removes one screen from the screen stack.
+	 * Set previous screen
 	 */
-	public void popScreen() {
-		this.currentScreen = stack.pop();
-		changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
+	public static void backScreen() {
+		getInstance().screenManager.popScreen();
 	}
 
-	@Override
-	public void setScreen(Screen screen) {
-		currentScreen = (IdpAppScreen) screen;
-		super.setScreen(screen);
-	}
-
-	/**
-	 * performs screen transition from current screen to another.
-	 *
-	 * @param screen screen that will be shown after transition
-	 * @param type transition type
-	 */
-	public void changeScreen(IdpAppScreen screen, TransitionManager.TransitionType type) {
-		if (getScreen() == null) {
-			setScreen(screen);
-		} else {
-			if (getScreen() == transitionManager) return;
-			transitionManager.fadeScreens(type, (StartTrackBaseScreen<?>) screen, 0.4f);
-		}
-	}
 
 	public static class Colors {
 		public static Color MAIN = Color.valueOf("000000");
