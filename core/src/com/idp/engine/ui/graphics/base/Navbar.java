@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
+import com.idp.engine.ui.graphics.actors.ImageActor;
 
 /**
  * Navigation bar element.
@@ -186,8 +187,9 @@ public class Navbar extends Rect {
 		private final float padding;
 
 		public NavButton(String name) {
-			this.icon = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon(name));
+			this.icon = new ImageActor(App.getResources().getIcon(name));
 			this.padding = App.dp2px(12);
+			this.icon.setColor(App.Colors.TEXT_NAVBAR);
 			addActor(icon);
 			setSize(App.dp2px(40), App.dp2px(40));
 

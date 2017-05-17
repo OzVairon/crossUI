@@ -56,7 +56,7 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
 					StartTrackApp app = StartTrackApp.getInstance();
 					StartTrackApp.getState().participant = p;
 					StartTrackApp.getState().report = r;
-					app.pushScreen(new IndicatorsScreen(p));
+					App.pushScreen(new IndicatorsScreen(p));
 				}
 			});
 			listView.getContent().addActor(widget);
@@ -125,7 +125,7 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
                                     r.sent = true;
                                     StartTrackApp.saveState();
                                     d.dismiss();
-                                    StartTrackApp.getInstance().backScreen();
+                                    App.getInstance().backScreen();
                                 }
 
                                 @Override
@@ -143,10 +143,9 @@ public class TeamReportScreen extends com.ozv.starttrack.screens.base.StartTrack
                                     Gdx.app.postRunnable(new Runnable() {
                                         @Override
                                         public void run() {
-                                            ((IdpAppScreen)(StartTrackApp.getInstance().getScreen())).getPopupLayer().getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
+                                            App.getCurrentScreen().getPopupLayer().getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
                                         }
                                     });
-
                                 }
                             });
                         }

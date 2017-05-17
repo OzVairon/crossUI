@@ -33,7 +33,7 @@ public class LoginScreen extends IdpAppScreen {
 
 	public LoginScreen() {
 		super();
-		System.out.println(LoginScreen.class.getCanonicalName());
+
 	}
 
 
@@ -41,7 +41,7 @@ public class LoginScreen extends IdpAppScreen {
 	protected void init() {
 		super.init();
 
-		StartTrackApp.getInstance().logIn();
+
 
 		getNavbar().setVisible(false);
 		getMainLayer().content.setY(0);
@@ -132,7 +132,7 @@ public class LoginScreen extends IdpAppScreen {
 				StartTrackApi.auth(email.getText().toUpperCase(), new StartTrackApi.AuthListener() {
                     public void loaded(String privateToken) {
 						try {
-							com.ozv.starttrack.StartTrackApp.getInstance().logIn(privateToken);
+							StartTrackApp.getInstance().logIn(privateToken);
 						} catch (Exception ex) {
 							failed(ex);
 						}
@@ -180,6 +180,7 @@ public class LoginScreen extends IdpAppScreen {
 	@Override
 	public void show() {
 		super.show();
+		StartTrackApp.getInstance().logIn();
 		Gdx.input.setCatchBackKey(false);
 	}
 

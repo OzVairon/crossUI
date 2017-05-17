@@ -86,6 +86,7 @@ public class StartTrackApp extends App {
 			token = Idp.files.readLocalString("token");
 		}
 		catch (Exception ex) {}
+//		System.out.println(token);
 		logIn(token);
 	}
 
@@ -105,7 +106,7 @@ public class StartTrackApp extends App {
 		Idp.files.writeLocalString("token", token);
 		StartTrackApi.setPrivateToken(token);
 
-		setScreen(new ModulesScreen());
+		showScreen(new ModulesScreen());
 		Idp.input.setCatchBackKey(true);
 	}
 
@@ -115,7 +116,7 @@ public class StartTrackApp extends App {
 	public void logOut() {
 		Idp.files.local("token").delete();
 		deleteState();
-		setScreen(new LoginScreen());
+		showScreen(new LoginScreen());
 	}
 
 	/**

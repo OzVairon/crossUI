@@ -141,7 +141,6 @@ public class Resources {
         }
 
         for (FontInfo f : list) {
-            System.out.println(f.toString());
             f.load();
         }
 

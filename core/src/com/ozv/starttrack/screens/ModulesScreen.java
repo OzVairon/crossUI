@@ -9,7 +9,6 @@ import com.ozv.starttrack.api.model.Game;
 import com.ozv.starttrack.api.model.GameModule;
 import com.ozv.starttrack.graphics.starttrack_widgets.ModuleWidget;
 import com.idp.engine.App;
-import com.idp.engine.ui.screens.TeamScreen;
 
 /**
  * Start screen of Startrack app.
@@ -33,7 +32,7 @@ public class ModulesScreen extends com.ozv.starttrack.screens.base.StartTrackBas
 				public void tap(InputEvent event, float x, float y, int count, int button) {
 					StartTrackApp app = StartTrackApp.getInstance();
 					StartTrackApp.getState().gameModule = gm;
-					app.pushScreen(new TeamScreen());
+					App.pushScreen(new TeamScreen());
 				}
 			});
 			listView.getContent().addActor(rect);

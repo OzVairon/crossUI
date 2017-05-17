@@ -1,4 +1,4 @@
-package com.idp.engine.ui.screens;
+package com.ozv.starttrack.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
@@ -39,7 +39,7 @@ public class TeamScreen extends StartTrackBaseScreen<Game> {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
 					StartTrackApp.getState().team = t;
-					StartTrackApp.getInstance().pushScreen(new TeamReportScreen(t));
+					App.pushScreen(new TeamReportScreen(t));
 				}
 			});
 			listView.getContent().addActor(rect);

@@ -1,4 +1,4 @@
-package com.ozv.starttrack.screens;
+package com.idp.engine.ui.screens;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -34,13 +34,14 @@ public class ScreenManager {
      * @param s new screen
      */
     public void pushScreen(IdpAppScreen s) {
+        System.out.print("\nPush; previous: " + currentScreen.getName() + "; ");
         screenStack.push(currentScreen);
 
-        currentScreen = s;
-        Navbar navbar = currentScreen.getNavbar();
+        Navbar.NavButton back = new Navbar.NavButton("back");
+        //back.setBackgroundColor(Color.CLEAR);
 
-        Rect back = new Navbar.NavButton("backScreen");
-        back.setBackgroundColor(Color.CLEAR);
+        Navbar navbar = s.getNavbar();
+
         back.setColor(App.Colors.TEXT_NAVBAR);
         back.addListener(new ClickListener() {
             @Override
@@ -50,6 +51,9 @@ public class ScreenManager {
         });
         navbar.getLeftIcons().addActor(back);
 
+        currentScreen = s;
+        System.out.println("next: " + currentScreen.getName() + "; ");
+
         changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_RIGHT_LEFT);
     }
 
@@ -57,12 +61,15 @@ public class ScreenManager {
      * Removes one screen from the screen stack.
      */
     public void popScreen() {
+        System.out.print("\nPop; previous: " + currentScreen.getName() + "; ");
         this.currentScreen = screenStack.pop();
+        System.out.println(": popped" + currentScreen.getName() + "");
         changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
     }
 
-    public void setScreen(Screen screen) {
-        currentScreen = (IdpAppScreen) screen;
+    public void setScreen(IdpAppScreen screen) {
+        System.out.println("SetScreen: " + screen.getName());
+        currentScreen = screen;
         App.getInstance().setScreen(screen);
     }
 
@@ -73,11 +80,12 @@ public class ScreenManager {
      * @param type transition type
      */
     private void changeScreen(IdpAppScreen screen, TransitionManager.TransitionType type) {
+        printScreenStackTrace();
         if (currentScreen == null) {
             setScreen(screen);
         } else {
             if (currentScreen == transitionManager) return;
-            transitionManager.fadeScreens(type, (StartTrackBaseScreen<?>) screen, 0.4f);
+            transitionManager.fadeScreens(type, screen, 0.4f);
         }
     }
 
@@ -86,9 +94,19 @@ public class ScreenManager {
     }
 
     public void start() {
-        screenStack.empty();
+        screenStack.clear();
+        currentScreen = startScreen;
         setScreen(startScreen);
     }
 
+    public IdpAppScreen getCurrentScreen() {
+        return currentScreen;
+    }
 
+    public void printScreenStackTrace() {
+        System.out.println("SCREEN STACK");
+        for (IdpAppScreen sc : screenStack) {
+            System.out.println(sc.getName());
+        }
+    }
 }

@@ -9,19 +9,19 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
-import com.ozv.starttrack.screens.ScreenManager;
+import com.idp.engine.ui.screens.ScreenManager;
 import com.idp.engine.resources.Resources;
 import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.base.Idp;
 import com.idp.engine.base.IdpInput;
 import com.idp.engine.ui.screens.IdpAppScreen;
-import com.idp.engine.ui.screens.IdpBaseScreen;
 
 import java.io.IOException;
 import java.util.EmptyStackException;
@@ -129,10 +129,7 @@ public class App extends Game {
 		super.render();
 	}
 
-	@Override
-	public IdpBaseScreen getScreen() {
-		return (IdpBaseScreen)super.getScreen();
-	}
+
 
 	@Override
 	public void dispose() {
@@ -212,11 +209,19 @@ public class App extends Game {
 		return dialogs;
 	}
 
-
-
-
+	@Override
+	public void setScreen(Screen screen) {
+		super.setScreen(screen);
+		System.out.println("Set root screen: " + ((IdpAppScreen) screen).getName());
+	}
 
 	//TRANSITIONS
+
+	public static IdpAppScreen getCurrentScreen() {
+		return App.getInstance().screenManager.getCurrentScreen();
+	}
+
+	public static void showScreen(IdpAppScreen screen) { getInstance().screenManager.setScreen(screen);}
 
 	/**
 	 * Adds new screen to the screen stack.
