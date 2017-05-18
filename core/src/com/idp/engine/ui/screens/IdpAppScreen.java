@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.base.Navbar;
 import com.idp.engine.ui.screens.layers.MainLayer;
@@ -28,7 +29,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * Calls {@link AppScreen#AppScreen(String, Color)} with empty name and white color.
 	 */
 	public IdpAppScreen() {
-		this("");
+		this("Screen");
 	}
 
 	/**
@@ -36,7 +37,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * @param name screen name
 	 */
 	public IdpAppScreen(String name) {
-		this(name, Color.WHITE);
+		this(name, App.Colors.MAIN);
 	}
 
 	/**
@@ -44,7 +45,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * @param navbarColor background color of the navbar
 	 */
 	public IdpAppScreen(Color navbarColor) {
-		this("", navbarColor);
+		this("Screen", navbarColor);
 	}
 
 	/**

@@ -97,17 +97,18 @@ public class App extends Game {
 		XmlReader xr = new XmlReader();
 		try {
 			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig"));
+			String packageName = config.getAttribute("package");
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
 
 			//todo delete the hardcode packagename
-			String packageName = "com.ozv.starttrack.screens";
+
 			try {
 				Colors.loadColorScheme(config.getChildByName("colors"));
 				this.resources .loadFonts(config.getChildByName("fonts"));
 				this.resources .loadIcons("icons.atlas");
 				this.resources .awaitLoad();
 
-				Object screenObject = ClassReflection.forName(packageName + "." + screenname).newInstance();
+				Object screenObject = ClassReflection.forName(packageName + ".screens." + screenname).newInstance();
 				screenManager.setStartScreen((IdpAppScreen) screenObject);
 
 			} catch (ReflectionException e) {

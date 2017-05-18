@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.iosmoe.IOSApplication;
 import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;
 import org.moe.natj.general.Pointer;
 
-import com.ozv.starttrack.StartTrackApp;
+import com.ozv.crossui.StartTrackApp;
 
 import apple.uikit.c.UIKit;
 
