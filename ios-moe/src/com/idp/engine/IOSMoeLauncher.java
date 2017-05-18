@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.iosmoe.IOSApplication;
 import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;
 import org.moe.natj.general.Pointer;
 
-import com.ozv.starttrack.StartTrackApp;
+import com.ozv.starttrack.CrossUIApp;
 
 import apple.uikit.c.UIKit;
 
@@ -18,7 +18,7 @@ public class IOSMoeLauncher extends IOSApplication.Delegate {
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
         config.useAccelerometer = false;
-        return new IOSApplication(new StartTrackApp(), config);
+        return new IOSApplication(new CrossUIApp(), config);
     }
 
     public static void main(String[] argv) {

@@ -12,7 +12,7 @@ public class AndroidLauncher extends AndroidApplication {
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 
 		RelativeLayout layout = new RelativeLayout(this);
-		layout.addView(initializeForView(new StartTrackApp(), cfg));
+		layout.addView(initializeForView(new CrossUIApp(), cfg));
 		setContentView(layout);
 	}
 }

@@ -10,7 +10,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        IOSApplication app = new IOSApplication(new StartTrackApp(), config);
+        IOSApplication app = new IOSApplication(new CrossUIApp(), config);
         return app;
     }
 

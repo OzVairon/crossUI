@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import com.ozv.starttrack.StartTrackApp;
+import com.ozv.starttrack.CrossUIApp;
 import com.idp.engine.base.IdpFiles;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 480;
 		config.height = 800;
-		new LwjglApplication(new StartTrackApp(), config);
+		new LwjglApplication(new CrossUIApp(), config);
 	}
 
 	private static void pack(String[] dirNames) {

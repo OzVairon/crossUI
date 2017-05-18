@@ -1,5 +1,5 @@
 <app>
-    <mainscreen name = "LoginScreen" />
+    <mainscreen name = "MainScreen" />
 
     <colors>
         <color name="MAIN"                  value="ff0000"/>
