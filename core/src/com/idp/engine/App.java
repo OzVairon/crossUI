@@ -215,7 +215,6 @@ public class App extends Game {
 	@Override
 	public void setScreen(Screen screen) {
 		super.setScreen(screen);
-		System.out.println("Set root screen: " + ((IdpAppScreen) screen).getName());
 	}
 
 	//TRANSITIONS

@@ -28,7 +28,6 @@ public class ScreenManager {
      * @param s new screen
      */
     public void pushScreen(IdpAppScreen s) {
-        System.out.print("\nPush; previous: " + currentScreen.getName() + "; ");
         screenStack.push(currentScreen);
 
         Navbar.NavButton back = new Navbar.NavButton("back");
@@ -46,7 +45,6 @@ public class ScreenManager {
         navbar.getLeftIcons().addActor(back);
 
         currentScreen = s;
-        System.out.println("next: " + currentScreen.getName() + "; ");
 
         changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_RIGHT_LEFT);
     }
@@ -55,14 +53,11 @@ public class ScreenManager {
      * Removes one screen from the screen stack.
      */
     public void popScreen() {
-        System.out.print("\nPop; previous: " + currentScreen.getName() + "; ");
         this.currentScreen = screenStack.pop();
-        System.out.println(": popped" + currentScreen.getName() + "");
         changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
     }
 
     public void setScreen(IdpAppScreen screen) {
-        System.out.println("SetScreen: " + screen.getName());
         currentScreen = screen;
         App.getInstance().setScreen(screen);
     }
@@ -74,7 +69,6 @@ public class ScreenManager {
      * @param type transition type
      */
     private void changeScreen(IdpAppScreen screen, TransitionManager.TransitionType type) {
-        printScreenStackTrace();
         if (currentScreen == null) {
             setScreen(screen);
         } else {
@@ -97,10 +91,4 @@ public class ScreenManager {
         return currentScreen;
     }
 
-    public void printScreenStackTrace() {
-        System.out.println("SCREEN STACK");
-        for (IdpAppScreen sc : screenStack) {
-            System.out.println(sc.getName());
-        }
-    }
 }

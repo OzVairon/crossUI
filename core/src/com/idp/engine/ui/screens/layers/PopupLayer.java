@@ -115,7 +115,6 @@ class Dialogs {
             public void click(int button) {
                 switch (button) {
                     case 0: {
-                        System.out.println("cancel");
                         if (cancel != null)
                             Gdx.app.postRunnable(new Runnable() {
                                 @Override
@@ -128,7 +127,6 @@ class Dialogs {
                         break;
                     }
                     case 1: {
-                        System.out.println("OK");
                         if (confirm != null)
                             Gdx.app.postRunnable(new Runnable() {
                                 @Override

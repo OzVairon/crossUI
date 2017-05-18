@@ -72,7 +72,6 @@ public class TransitionManager extends IdpAppScreen {
 		this.inScreen = current;
 		this.outScreen = next;
 
-		System.out.println("Transition from " + inScreen.getName() + " to " + outScreen.getName() );
 		App.getInstance().setScreen(this);
 
 		switch (type) {

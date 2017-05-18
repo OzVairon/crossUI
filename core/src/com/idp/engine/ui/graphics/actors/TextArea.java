@@ -367,18 +367,12 @@ public class TextArea extends TextField {
 		@Override
 		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 			boolean res = super.touchDown(event, x, y, pointer, button);
-			System.out.println(letterUnderCursor(x) + " / " + text.length());
 			return res;
 		}
 
 		@Override
 		public void touchDragged(InputEvent event, float x, float y, int pointer) {
 			super.touchDragged(event, x, y, pointer);
-//			System.out.println("cursorLine: " + cursorLine);
-//			System.out.println("firstLineShowing: " + firstLineShowing);
-//			System.out.println("linesShowing: " + linesShowing);
-//			System.out.println(letterUnderCursor(x));
-//			System.out.println("x: " + x + ", y: " + y);
 			if (y < 0 && firstLineShowing > 0) {
 				cursorLine--;
 				firstLineShowing--;
@@ -406,8 +400,6 @@ public class TextArea extends TextField {
 
 
 			y -= font.getAscent() / 2; // ????
-			System.out.println("y: " + y + ", lh: " + font.getLineHeight() + ", line: " + (int)Math.floor((y) / font.getLineHeight()) + firstLineShowing);
-
 			cursorLine = (int)Math.floor((y) / font.getLineHeight()) + firstLineShowing;
 			cursorLine = Math.max(0, Math.min(cursorLine, getLines() - 1));
 
