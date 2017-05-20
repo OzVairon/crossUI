@@ -99,9 +99,6 @@ public class App extends Game {
 			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig.xml"));
 			String packageName = config.getAttribute("package");
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
-
-			//todo delete the hardcode packagename
-
 			try {
 				Colors.loadColorScheme(config.getChildByName("colors"));
 				this.resources .loadFonts(config.getChildByName("fonts"));
