@@ -96,7 +96,7 @@ public class App extends Game {
 	private void loadXmlConfig() {
 		XmlReader xr = new XmlReader();
 		try {
-			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig"));
+			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig.xml"));
 			String packageName = config.getAttribute("package");
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
 
