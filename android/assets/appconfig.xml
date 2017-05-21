@@ -1,4 +1,4 @@
-<app package="com.ozv.crossui">
+<app package="org.ozv.crossUI">
     <mainscreen name = "LoginScreen" />
     <colors>
         <color name="MAIN"                  value="ff0000"/>

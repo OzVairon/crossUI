@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
+import com.idp.engine.ui.graphics.actors.layouts.VLayout;
 import com.idp.engine.ui.graphics.actors.IdpTextField;
 import com.idp.engine.ui.graphics.actors.ImageActor;
 import com.idp.engine.ui.graphics.actors.Text;
@@ -17,7 +18,6 @@ import com.idp.engine.ui.screens.AppScreen;
 
 import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.StartTrackApi;
-import org.ozv.crossUI.graphics.starttrack_widgets.base.VLayout;
 
 /**
  * Screen with sign in form.
@@ -56,7 +56,7 @@ public class LoginScreen extends AppScreen {
 		layout.paddingTop = App.dp2px(48);
 
 		layout.setGap(App.dp2px(18));
-		addWidget(layout);
+		addActor(layout);
 
 		float textFieldXpadding = StartTrackApp.dp2px(24);
 		float underlineExtention = StartTrackApp.dp2px(12);
@@ -113,7 +113,7 @@ public class LoginScreen extends AppScreen {
         loader.setHeight(signInHeight);
         loader.setPosition(signIn.getX(), signIn.getY());
         loader.setVisible(false);
-        addWidget(loader);
+        addActor(loader);
 
 		getMainLayer().addCaptureListener(new ClickListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {

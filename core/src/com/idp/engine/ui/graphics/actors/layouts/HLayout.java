@@ -1,4 +1,4 @@
-package org.ozv.crossUI.graphics.starttrack_widgets.base;
+package com.idp.engine.ui.graphics.actors.layouts;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -86,13 +86,6 @@ public class HLayout extends Group {
 	}
 
 	@Override
-	protected void setParent(Group parent) {
-		super.setParent(parent);
-//		if (parent != null)
-//			setWidth(parent.getWidth());
-	}
-
-	@Override
 	protected void sizeChanged() {
 		super.sizeChanged();
 		layout();
@@ -110,4 +103,6 @@ public class HLayout extends Group {
         paddingTop = p;
         layout();
     }
+
+
 }

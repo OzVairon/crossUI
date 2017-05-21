@@ -127,7 +127,7 @@ public abstract class NetScreen<T> extends AppScreen {
 			listView.setHeight(getMainLayer().content.getHeight() - listView.getY());
 			listView.getContentWrapper().setOverScroll(App.dp2px(48));
 			listView.getContentWrapper().setSpace(App.dp2px(16));
-			addWidget(listView);
+			addActor(listView);
 		}
 		else {
 			listView.getContent().clearChildren();
@@ -187,7 +187,7 @@ public abstract class NetScreen<T> extends AppScreen {
 		if (loader == null)
 			initLoader();
 		loader.start();
-		addWidget(loader);
+		addActor(loader);
 	}
 
 	/**

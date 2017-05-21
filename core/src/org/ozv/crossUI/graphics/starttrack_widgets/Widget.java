@@ -7,10 +7,10 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.Gdx;
 import com.idp.engine.App;
+import com.idp.engine.ui.graphics.actors.layouts.VLayout;
 import com.idp.engine.ui.graphics.base.Rect;
 
 import org.ozv.crossUI.StartTrackApp;
-import org.ozv.crossUI.graphics.starttrack_widgets.base.VLayout;
 
 /**
  * Base Widget.

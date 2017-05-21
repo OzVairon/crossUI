@@ -87,7 +87,7 @@ public class AppScreen extends IdpBaseScreen {
 	 * (Content is all-that-is-not-navbar).
 	 * @param a actor to add
 	 */
-	public void addWidget(Actor a) {
+	public void addActor(Actor a) {
 		mainLayer.content.addActor(a);
 	}
 

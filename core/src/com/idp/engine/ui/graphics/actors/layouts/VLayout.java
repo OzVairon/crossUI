@@ -1,4 +1,4 @@
-package org.ozv.crossUI.graphics.starttrack_widgets.base;
+package com.idp.engine.ui.graphics.actors.layouts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -71,8 +71,6 @@ public class VLayout extends Group {
 				a.setVisible(false);
 			else
 				a.setVisible(true);
-
-
 		}
 		super.drawChildren(batch, parentAlpha);
 	}

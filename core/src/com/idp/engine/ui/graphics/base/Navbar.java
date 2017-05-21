@@ -42,7 +42,7 @@ public class Navbar extends Rect {
 		float h = App.dp2px(56);
 
 		setSize(Gdx.graphics.getWidth(), h);
-		setBorder(0, 0, App.dp2px(1), 0);
+		setBorder(0, 0, 0, 0);
 		setBorderColor(Color.BLACK);
 		setBackgroundColor(Color.CLEAR);
 		float padleft = App.dp2px(8);
