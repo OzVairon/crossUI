@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.idp.engine.net.IdpImageListener;
-import com.idp.engine.net.IdpRequest;
 import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
@@ -31,7 +29,7 @@ public class NetworkImage extends Group {
 	private TextureRegion loadedTex;
 	private TextureRegion texToDraw;
 
-	private final IdpRequest manager;
+	private final Request manager;
 
 
 	public NetworkImage() {
@@ -43,7 +41,7 @@ public class NetworkImage extends Group {
 	 * No requests are made here.
 	 */
 	public NetworkImage(String url) {
-		this.manager = new IdpRequest(url);
+		this.manager = new Request(url);
 		this.loadingTex =
 				new TextureRegion(new IdpColorPixmap(Color.valueOf("999999")).getTexture());
 		this.texToDraw = loadingTex;
@@ -54,7 +52,7 @@ public class NetworkImage extends Group {
 	 * Returns manager that will perform http request to download an image.
 	 * Use to configure request before its started or to obtain request state.
 	 */
-	public IdpRequest getManager() {
+	public Request getManager() {
 		return manager;
 	}
 
@@ -63,7 +61,7 @@ public class NetworkImage extends Group {
 	}
 
 	public void setLoadingTex(TextureRegion loadingTex) {
-		if (manager.getState() == IdpRequest.State.LOADING)
+		if (manager.getState() == Request.State.LOADING)
 			texToDraw = loadingTex;
 		this.loadingTex = loadingTex;
 	}
@@ -73,7 +71,7 @@ public class NetworkImage extends Group {
 	}
 
 	public void setFailedTex(TextureRegion failedTex) {
-		if (manager.getState() == IdpRequest.State.FAILED)
+		if (manager.getState() == Request.State.FAILED)
 			texToDraw = failedTex;
 		this.failedTex = failedTex;
 	}
@@ -129,7 +127,7 @@ public class NetworkImage extends Group {
 			return;
 		}
 
-		manager.listener(new IdpImageListener(url) {
+		manager.listener(new ImageListener(url) {
 
 			@Override
 			public void loaded(Texture tex) {
@@ -153,7 +151,7 @@ public class NetworkImage extends Group {
 
 	@Override
 	public void drawChildren(Batch batch, float parentAlpha) {
-		if (manager.getState() == IdpRequest.State.CREATED)
+		if (manager.getState() == Request.State.CREATED)
 			load();
 		drawRegion(batch, parentAlpha, texToDraw);
 		super.drawChildren(batch, parentAlpha);

@@ -5,14 +5,14 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.idp.engine.App;
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
 
 /**
  * Screen that is responsible of managing screen transitions.
  *
  * Created by ozvairon on 29.07.16.
  */
-public class TransitionManager extends IdpAppScreen {
+public class TransitionManager extends AppScreen {
 
 	public static enum TransitionType {
 		FADE, SLIDE_LEFT_RIGHT, SLIDE_RIGHT_LEFT, SLIDE_UP_DOWN, BLINK, SLIDE_DOWN_UP
@@ -24,8 +24,8 @@ public class TransitionManager extends IdpAppScreen {
 		this.setName("Transition");
     }
 
-	private IdpAppScreen inScreen;
-	private IdpAppScreen outScreen;
+	private AppScreen inScreen;
+	private AppScreen outScreen;
 	private boolean nextontop;
 
 	@Override
@@ -52,9 +52,9 @@ public class TransitionManager extends IdpAppScreen {
 	 * @param nextScreen screen to show after the transition is ended
 	 * @param duration transition duration
 	 */
-	public void fadeScreens(TransitionType type, IdpAppScreen nextScreen, float duration) {
+	public void fadeScreens(TransitionType type, AppScreen nextScreen, float duration) {
 
-		inScreen = (IdpAppScreen) App.getInstance().getScreen();
+		inScreen = (AppScreen) App.getInstance().getScreen();
 
 
 		if (inScreen instanceof TransitionManager) {
@@ -66,7 +66,7 @@ public class TransitionManager extends IdpAppScreen {
 		}
 	}
 
-	private void fadeScreens(TransitionType type, final IdpAppScreen current, final IdpAppScreen next,
+	private void fadeScreens(TransitionType type, final AppScreen current, final AppScreen next,
 							 final float duration) {
 
 		this.inScreen = current;
@@ -190,6 +190,6 @@ public class TransitionManager extends IdpAppScreen {
 				break;
 		}
 
-		Idp.input.setInputProcessor(next.getStage());
+		AppUtils.input.setInputProcessor(next.getStage());
 	}
 }

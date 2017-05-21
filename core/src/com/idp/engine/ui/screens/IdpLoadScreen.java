@@ -5,14 +5,14 @@
  */
 package com.idp.engine.ui.screens;
 
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
 import com.idp.engine.resources.assets.IdpAssetManager;
 
 
 /**
  * Base class for screens that loads some resources.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public abstract class IdpLoadScreen extends IdpBaseScreen {
 
@@ -29,15 +29,15 @@ public abstract class IdpLoadScreen extends IdpBaseScreen {
 
 	@Override
 	public void show() {
-		Idp.input.setBackKeyProcessor(null);
-		Idp.input.setCatchBackKey(true);
+		AppUtils.input.setBackKeyProcessor(null);
+		AppUtils.input.setCatchBackKey(true);
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		if (IdpAssetManager.getInstance().update()) {
-			Idp.game.setScreen(nextScreen);
+			AppUtils.game.setScreen(nextScreen);
 		}
 	}
 }

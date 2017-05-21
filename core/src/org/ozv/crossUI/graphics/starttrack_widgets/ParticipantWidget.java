@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets;
+package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.ui.graphics.actors.Text;
-import com.ozv.crossui.StartTrackApp;
-import com.ozv.crossui.api.model.Participant;
-import com.ozv.crossui.graphics.starttrack_widgets.base.HLayout;
-import com.ozv.crossui.graphics.starttrack_widgets.base.VLayout;
+import com.idp.engine.ui.graphics.base.Rect;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Participant;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.HLayout;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.VLayout;
 
 /**
  * Widget representing a module.

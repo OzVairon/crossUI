@@ -15,7 +15,7 @@ import com.idp.engine.resources.assets.IdpAssetManager;
 /**
  * Base class for screens that need extra resources to load.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public abstract class IdpGameScreen extends IdpBaseScreen {
 

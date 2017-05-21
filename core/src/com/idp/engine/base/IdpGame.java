@@ -15,13 +15,13 @@ import com.idp.engine.ui.screens.IdpGameScreen;
 public class IdpGame extends Game {
 
 	protected IdpGame() {
-		if (Idp.game != null) {
-			Idp.game.dispose();
+		if (AppUtils.game != null) {
+			AppUtils.game.dispose();
 		}
-		Idp.game = this;
-		Idp.input = new IdpInput();
-		Idp.files = new IdpFiles();
-		Idp.logger = new IdpLogger();
+		AppUtils.game = this;
+		AppUtils.input = new IdpInput();
+		AppUtils.files = new IdpFiles();
+		AppUtils.logger = new IdpLogger();
 	}
 
 
@@ -39,8 +39,8 @@ public class IdpGame extends Game {
 		Gdx.gl20.glEnable(GL20.GL_BLEND);
 		Gdx.gl20.glEnable(GL20.GL_NICEST);
 		Gdx.gl20.glEnable(GL20.GL_LINEAR);
-		Idp.logger.setFont(IdpAssetManager.getInstance().loadFont("fonts/lucida.ttf", 20));
-		Idp.input.startProcessing();
+		AppUtils.logger.setFont(IdpAssetManager.getInstance().loadFont("fonts/lucida.ttf", 20));
+		AppUtils.input.startProcessing();
 	}
 
 	@Override
@@ -75,10 +75,10 @@ public class IdpGame extends Game {
 	public void dispose() {
 		super.dispose();
 		IdpAssetManager.getInstance().dispose();
-		Idp.game = null;
-		Idp.input = null;
-		Idp.files = null;
-		Idp.logger = null;
+		AppUtils.game = null;
+		AppUtils.input = null;
+		AppUtils.files = null;
+		AppUtils.logger = null;
 	}
 
 	public static boolean isAndroid() {

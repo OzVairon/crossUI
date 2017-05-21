@@ -4,19 +4,22 @@
  * and open the template in the editor.
  */
 
-package com.ozv.crossui.graphics.actors;
+package org.ozv.crossUI.graphics.actors;
 
-import com.idp.engine.ui.graphics.actors.Text;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.resources.assets.IdpColorPixmap;
-import com.ozv.crossui.StartTrackApp;
+import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.base.Rect;
+
+import org.ozv.crossUI.StartTrackApp;
 
 import java.util.ArrayList;
 

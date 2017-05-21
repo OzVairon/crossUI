@@ -20,7 +20,7 @@ import java.util.Map;
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public abstract class IdpJsonListener implements Net.HttpResponseListener {
+public abstract class JsonListener implements Net.HttpResponseListener {
 
 	private String response;
 
@@ -78,7 +78,7 @@ public abstract class IdpJsonListener implements Net.HttpResponseListener {
 	 */
 	@Override
 	public void failed(Throwable t) {
-		Gdx.app.error(IdpJsonListener.class.getName(), getClass().getName(), t);
+		Gdx.app.error(JsonListener.class.getName(), getClass().getName(), t);
 	}
 
 	@Override

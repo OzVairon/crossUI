@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.ImageActor;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.base.Rect;
+
+import org.ozv.crossUI.StartTrackApp;
 
 /**
  *
@@ -17,9 +19,9 @@ import com.idp.engine.ui.graphics.actors.Text;
  */
 public class RadioButton extends Rect {
 	
-	private final int sp = com.ozv.crossui.StartTrackApp.dp2px(8);   // small gap
-	private final int mp = com.ozv.crossui.StartTrackApp.dp2px(12);  // medium gap
-	private final int lp = com.ozv.crossui.StartTrackApp.dp2px(16);  // large gap
+	private final int sp = StartTrackApp.dp2px(8);   // small gap
+	private final int mp = StartTrackApp.dp2px(12);  // medium gap
+	private final int lp = StartTrackApp.dp2px(16);  // large gap
 	
 	private final Text number;
 	private boolean selected;
@@ -29,7 +31,7 @@ public class RadioButton extends Rect {
 	public RadioButton(String text) {
 		
 		this.number = new Text(text,
-				com.ozv.crossui.StartTrackApp.getResources().getLabelStyle("participant-number")); //h1
+				StartTrackApp.getResources().getLabelStyle("participant-number")); //h1
 		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
@@ -47,7 +49,7 @@ public class RadioButton extends Rect {
 	public RadioButton(ImageActor icon) {
 		
 		this.number = new Text("1",
-				com.ozv.crossui.StartTrackApp.getResources().getLabelStyle("h1"));
+				StartTrackApp.getResources().getLabelStyle("h1"));
 		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;

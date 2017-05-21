@@ -1,16 +1,21 @@
-package com.ozv.crossui.screens;
+package org.ozv.crossUI.screens;
 
-import com.ozv.crossui.api.model.Participant;
 import com.idp.engine.App;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Indicator;
+import org.ozv.crossUI.api.model.Participant;
+import org.ozv.crossUI.graphics.starttrack_widgets.IndicatorWidget;
+import org.ozv.crossUI.screens.base.StartTrackBaseScreen;
 
 /**
  * Start screen of Startrack app.
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class IndicatorsScreen extends com.ozv.crossui.screens.base.StartTrackBaseScreen<Participant> {
+public class IndicatorsScreen extends StartTrackBaseScreen<Participant> {
 
-	public IndicatorsScreen(com.ozv.crossui.api.model.Participant p) {
+	public IndicatorsScreen(Participant p) {
 		super(p.first_name + " " + p.last_name);
 		this.data = p;
 	}
@@ -18,8 +23,8 @@ public class IndicatorsScreen extends com.ozv.crossui.screens.base.StartTrackBas
 
 	@Override
 	protected void initWidgets() {
-		for (final com.ozv.crossui.api.model.Indicator i : com.ozv.crossui.StartTrackApp.getState().gameModule.indicators) {
-			com.ozv.crossui.graphics.starttrack_widgets.IndicatorWidget rect = new com.ozv.crossui.graphics.starttrack_widgets.IndicatorWidget(i);
+		for (final Indicator i : StartTrackApp.getState().gameModule.indicators) {
+			IndicatorWidget rect = new IndicatorWidget(i);
 			listView.getContent().addActor(rect);
 		}
 		listView.getContentWrapper().setSpace(App.dp2px(8));
@@ -39,12 +44,12 @@ public class IndicatorsScreen extends com.ozv.crossui.screens.base.StartTrackBas
 
 	@Override
 	public void pause() {
-		com.ozv.crossui.StartTrackApp.saveState();
+		StartTrackApp.saveState();
 	}
 
 	@Override
 	public void hide() {
-		com.ozv.crossui.StartTrackApp.saveState();
+		StartTrackApp.saveState();
 	}
 	
 }

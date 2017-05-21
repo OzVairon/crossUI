@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
 
 /**
  * Base class for screens in IdpGame and App.
  * Contains and manages its {@link Stage}.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class IdpBaseScreen extends ScreenAdapter {
 
@@ -40,7 +40,7 @@ public class IdpBaseScreen extends ScreenAdapter {
 
 	@Override
 	public void show() {
-		Idp.input.setInputProcessor(stage);
+		AppUtils.input.setInputProcessor(stage);
 	}
 
 	@Override

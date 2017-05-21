@@ -1,18 +1,22 @@
-package com.ozv.crossui.screens;
+package org.ozv.crossUI.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
-import com.ozv.crossui.api.model.Grade;
-import com.ozv.crossui.api.model.Participant;
-import com.ozv.crossui.screens.base.StartTrackBaseScreen;
-import com.ozv.crossui.StartTrackApp;
-import com.ozv.crossui.api.model.Team;
-import com.ozv.crossui.graphics.starttrack_widgets.TeamGradeWidget;
-import com.ozv.crossui.graphics.starttrack_widgets.base.FloatingIconButton;
-import com.idp.engine.net.IdpJsonListener;
+import com.idp.engine.net.JsonListener;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.StartTrackApi;
+import org.ozv.crossUI.api.model.Grade;
+import org.ozv.crossUI.api.model.Participant;
+import org.ozv.crossUI.api.model.Report;
+import org.ozv.crossUI.api.model.Team;
+import org.ozv.crossUI.graphics.starttrack_widgets.ParticipantWidget;
+import org.ozv.crossUI.graphics.starttrack_widgets.TeamGradeWidget;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.FloatingIconButton;
+import org.ozv.crossUI.screens.base.StartTrackBaseScreen;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,26 +33,26 @@ import de.tomgrill.gdxdialogs.core.dialogs.GDXProgressDialog;
  */
 public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 
-	private final HashMap<Integer, com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget> widgets;
+	private final HashMap<Integer, ParticipantWidget> widgets;
 	
 	
-	public TeamReportScreen(com.ozv.crossui.api.model.Team team) {
+	public TeamReportScreen(Team team) {
 		super("Команда " + team.number);
 		this.data = team;
-		this.widgets = new HashMap<Integer, com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget>();
+		this.widgets = new HashMap<Integer, ParticipantWidget>();
 	}
 
 
 	@Override
 	protected void initWidgets() {
 		widgets.clear();
-		final com.ozv.crossui.api.model.Report r = StartTrackApp.getInstance().getReport();
+		final Report r = StartTrackApp.getInstance().getReport();
 		//if (StartTrackApp.getState().game.team_grade_required) {
 			listView.getContent().addActor(new TeamGradeWidget(r));
 		//}
 
 		for (final Participant p : data.participants) {
-			com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget widget = new com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget(p);
+			ParticipantWidget widget = new ParticipantWidget(p);
 			widget.addListener(new ActorGestureListener() {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
@@ -81,7 +85,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
             @Override
             public void tap(InputEvent event, float x, float y, int count, int button) {
 
-                com.ozv.crossui.api.model.Report r = StartTrackApp.getInstance().getReport();
+                Report r = StartTrackApp.getInstance().getReport();
 
                 StartTrackApp.State state = StartTrackApp.getState();
 
@@ -106,7 +110,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                     getConfirmationDialog("Вы точно хотите отправить отчет?", message, new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            final com.ozv.crossui.api.model.Report r = StartTrackApp.getInstance().getReport();
+                            final Report r = StartTrackApp.getInstance().getReport();
                             System.out.println(r.team_grade);
                             Iterator<Grade> it = r.grades.iterator();
                             while (it.hasNext()) {
@@ -117,14 +121,14 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 
                             final GDXProgressDialog d = getPopupLayer().getProgressDialog("Подождите", "Идет отправка отчета на сервер");
 
-                            com.ozv.crossui.api.StartTrackApi.postReport(r, new IdpJsonListener() {
+                            StartTrackApi.postReport(r, new JsonListener() {
 
                                 @Override
                                 public void loaded(String json, Map<String, List<String>> headers) {
                                     r.sent = true;
                                     StartTrackApp.saveState();
                                     d.dismiss();
-                                    App.getInstance().backScreen();
+                                    App.backScreen();
                                 }
 
                                 @Override
@@ -166,9 +170,9 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
     private HashSet<Integer> findEstimatedParticipants() {
         HashSet<Integer> estimated = new HashSet<Integer>();
 
-        com.ozv.crossui.api.model.Report report = StartTrackApp.getInstance().getReport();
+        Report report = StartTrackApp.getInstance().getReport();
 
-        com.ozv.crossui.api.model.Team t = StartTrackApp.getState().game.getTeamByID(report.team);
+        Team t = StartTrackApp.getState().game.getTeamByID(report.team);
 
 
         for (Grade g : report.grades) {
@@ -183,13 +187,13 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 	@Override
 	public void show() {
 		super.show();
-		for (com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget w : widgets.values()) {
+		for (ParticipantWidget w : widgets.values()) {
 			w.setBackgroundColor(App.Colors.WIDGET_WHITE);
 		}
 
         HashSet<Integer> estimated = findEstimatedParticipants();
         for (Integer i : estimated) {
-            com.ozv.crossui.graphics.starttrack_widgets.ParticipantWidget widget = widgets.get(i);
+            ParticipantWidget widget = widgets.get(i);
             if (widget != null) {
                 widget.setBackgroundColor(App.Colors.getColorByName("ELEMENT_BACK_SELECTED"));
             }

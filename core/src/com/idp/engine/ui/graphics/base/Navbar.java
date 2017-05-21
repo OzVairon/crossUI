@@ -17,7 +17,7 @@ import com.idp.engine.ui.graphics.actors.ImageActor;
  * Navigation bar element.
  * Contains text, supports dropdown, also may contain icons to the left or to the right of the text.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class Navbar extends Rect {
 

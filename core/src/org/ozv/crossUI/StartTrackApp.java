@@ -1,12 +1,18 @@
-package com.ozv.crossui;
+package org.ozv.crossUI;
 
-import com.ozv.crossui.api.model.Game;
-import com.ozv.crossui.api.model.Grade;
-import com.ozv.crossui.api.model.Indicator;
-import com.ozv.crossui.api.model.Participant;
-import com.ozv.crossui.api.model.Team;
 import com.idp.engine.App;
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
+
+import org.ozv.crossUI.api.StartTrackApi;
+import org.ozv.crossUI.api.model.Game;
+import org.ozv.crossUI.api.model.GameModule;
+import org.ozv.crossUI.api.model.Grade;
+import org.ozv.crossUI.api.model.Indicator;
+import org.ozv.crossUI.api.model.Participant;
+import org.ozv.crossUI.api.model.Report;
+import org.ozv.crossUI.api.model.Team;
+import org.ozv.crossUI.screens.LoginScreen;
+import org.ozv.crossUI.screens.ModulesScreen;
 
 import java.util.ArrayList;
 
@@ -20,11 +26,11 @@ public class StartTrackApp extends App {
 
 	public static class State {
 		public Game game;
-		public com.ozv.crossui.api.model.GameModule gameModule;
+		public GameModule gameModule;
 		public Team team;
 		public Participant participant;
-		public com.ozv.crossui.api.model.Report report;
-		public ArrayList<com.ozv.crossui.api.model.Report> reports = new ArrayList<com.ozv.crossui.api.model.Report>();
+		public Report report;
+		public ArrayList<Report> reports = new ArrayList<Report>();
 	}
 
 	private State state;
@@ -34,12 +40,12 @@ public class StartTrackApp extends App {
 		return getInstance().state;
 	}
 
-	public com.ozv.crossui.api.model.Report getReport() {
-		for (com.ozv.crossui.api.model.Report r : state.reports) {
+	public Report getReport() {
+		for (Report r : state.reports) {
 			if (r.game_module == state.gameModule.id && r.team == state.team.id)
 				return r;
 		}
-		com.ozv.crossui.api.model.Report r = new com.ozv.crossui.api.model.Report(state.gameModule.id, state.team.id);
+		Report r = new Report(state.gameModule.id, state.team.id);
 		state.reports.add(r);
 		return r;
 	}
@@ -55,19 +61,19 @@ public class StartTrackApp extends App {
 	}
 
 	public static void saveState() {
-		Idp.files.writeLocalJson("state", getInstance().state);
+		AppUtils.files.writeLocalJson("state", getInstance().state);
 	}
 
 	public static void loadState() {
 		try {
-			getInstance().state = Idp.files.readLocalJson("state", State.class);
+			getInstance().state = AppUtils.files.readLocalJson("state", State.class);
 		} catch (Exception e) {
 			getInstance().state = new State();
 		}
 	}
 
 	public void deleteState() {
-		Idp.files.local("state").delete();
+		AppUtils.files.local("state").delete();
 		state = null;
 	}
 
@@ -83,7 +89,7 @@ public class StartTrackApp extends App {
 	public void logIn() {
 		String token = null;
 		try {
-			token = Idp.files.readLocalString("token");
+			token = AppUtils.files.readLocalString("token");
 		}
 		catch (Exception ex) {}
 //		System.out.println(token);
@@ -103,20 +109,20 @@ public class StartTrackApp extends App {
 			return;
 		}
 
-		Idp.files.writeLocalString("token", token);
-		com.ozv.crossui.api.StartTrackApi.setPrivateToken(token);
+		AppUtils.files.writeLocalString("token", token);
+		StartTrackApi.setPrivateToken(token);
 
-		showScreen(new com.ozv.crossui.screens.ModulesScreen());
-		Idp.input.setCatchBackKey(true);
+		showScreen(new ModulesScreen());
+		AppUtils.input.setCatchBackKey(true);
 	}
 
 	/**
 	 * Logs out from user account and deletes private token.
 	 */
 	public void logOut() {
-		Idp.files.local("token").delete();
+		AppUtils.files.local("token").delete();
 		deleteState();
-		showScreen(new com.ozv.crossui.screens.LoginScreen());
+		showScreen(new LoginScreen());
 	}
 
 	/**

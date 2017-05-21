@@ -10,7 +10,7 @@ import com.idp.engine.resources.assets.IdpColorPixmap;
  * Rectangle element with borders.
  * All borders have identical color, but it can differ from background color.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class Rect extends Group implements Disposable {
 

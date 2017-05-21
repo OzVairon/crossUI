@@ -1,9 +1,9 @@
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.graphics.Color;
 import com.idp.engine.ui.graphics.actors.ImageActor;
 import com.idp.engine.ui.graphics.base.Rect;
-import com.ozv.crossui.StartTrackApp;
+import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Button with icon.

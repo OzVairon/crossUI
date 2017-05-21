@@ -1,8 +1,9 @@
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.ozv.crossui.StartTrackApp;
+
+import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Container that layouts its children one under another

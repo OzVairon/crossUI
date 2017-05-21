@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets;
+package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -13,8 +13,10 @@ import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.actors.Text;
-import com.ozv.crossui.StartTrackApp;
-import com.ozv.crossui.api.model.Report;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Report;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.RadioGroup;
 
 /**
  * Widget representing a module.
@@ -42,7 +44,7 @@ public class TeamGradeWidget extends Widget<Report> {
 		
 		if (StartTrackApp.getState().game.team_grade_required) {
 
-			com.ozv.crossui.graphics.starttrack_widgets.base.RadioGroup rg = new com.ozv.crossui.graphics.starttrack_widgets.base.RadioGroup(0, 3, data);
+			RadioGroup rg = new RadioGroup(0, 3, data);
 			rg.paddingLeft = sp / 2;
 			rg.paddingRight = sp / 2;
 			rg.paddingBottom = mp;

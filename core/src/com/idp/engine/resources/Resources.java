@@ -8,10 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader;
 import com.idp.engine.App;
-import com.idp.engine.base.Idp;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 

@@ -14,20 +14,20 @@ import java.util.Stack;
 public class ScreenManager {
 
     private TransitionManager transitionManager;
-    private IdpAppScreen currentScreen;
-    private Stack<IdpAppScreen> screenStack;
-    private IdpAppScreen startScreen;
+    private AppScreen currentScreen;
+    private Stack<AppScreen> screenStack;
+    private AppScreen startScreen;
 
     public ScreenManager() {
         transitionManager = new TransitionManager();
-        screenStack = new Stack<IdpAppScreen>();
+        screenStack = new Stack<AppScreen>();
     }
 
     /**
      * Adds new screen to the screen stack.
      * @param s new screen
      */
-    public void pushScreen(IdpAppScreen s) {
+    public void pushScreen(AppScreen s) {
         screenStack.push(currentScreen);
 
         Navbar.NavButton back = new Navbar.NavButton("back");
@@ -57,7 +57,7 @@ public class ScreenManager {
         changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
     }
 
-    public void setScreen(IdpAppScreen screen) {
+    public void setScreen(AppScreen screen) {
         currentScreen = screen;
         App.getInstance().setScreen(screen);
     }
@@ -68,7 +68,7 @@ public class ScreenManager {
      * @param screen screen that will be shown after transition
      * @param type transition type
      */
-    private void changeScreen(IdpAppScreen screen, TransitionManager.TransitionType type) {
+    private void changeScreen(AppScreen screen, TransitionManager.TransitionType type) {
         if (currentScreen == null) {
             setScreen(screen);
         } else {
@@ -77,7 +77,7 @@ public class ScreenManager {
         }
     }
 
-    public void setStartScreen(IdpAppScreen screen) {
+    public void setStartScreen(AppScreen screen) {
         this.startScreen = screen;
     }
 
@@ -87,7 +87,7 @@ public class ScreenManager {
         setScreen(startScreen);
     }
 
-    public IdpAppScreen getCurrentScreen() {
+    public AppScreen getCurrentScreen() {
         return currentScreen;
     }
 

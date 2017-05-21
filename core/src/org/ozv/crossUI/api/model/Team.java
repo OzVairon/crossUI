@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.api.model;
+package org.ozv.crossUI.api.model;
 
 import java.util.ArrayList;
 

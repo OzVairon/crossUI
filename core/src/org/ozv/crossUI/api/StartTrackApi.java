@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.api;
+package org.ozv.crossUI.api;
 
 import com.badlogic.gdx.Net;
-import com.google.gson.*;
-import com.idp.engine.net.*;
-import com.ozv.crossui.api.model.Participant;
-import com.ozv.crossui.api.model.Report;
-import com.ozv.crossui.api.model.Game;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.idp.engine.net.JsonListener;
+import com.idp.engine.net.Request;
 
-import java.util.*;
+import org.ozv.crossUI.api.model.Game;
+import org.ozv.crossUI.api.model.Participant;
+import org.ozv.crossUI.api.model.Report;
+import org.ozv.crossUI.api.model.Team;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Main API class for StartTrackApp.
@@ -24,7 +30,7 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 	/**
 	 * Requests project statistics.
 	 */
-	public static IdpRequest getGame(Net.HttpResponseListener listener) {
+	public static Request getGame(Net.HttpResponseListener listener) {
 		return request("GET", "expert-home/", null, listener);
 	}
 
@@ -32,7 +38,7 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 	 * Listener for  and
 	 *   {@link StartTrackApi#getLocalProfile(Integer, int, HttpResponseListener)}.
 	 */
-	public abstract static class GameListener extends IdpJsonListener {
+	public abstract static class GameListener extends JsonListener {
 
 		@Override
 		public void loaded(String json, Map<String, List<String>> headers) {
@@ -40,8 +46,8 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 			System.out.println(json);
 			Game game = getGson().fromJson(json, Game.class);
 			
-			HashMap<Integer, com.ozv.crossui.api.model.Team> teams = new HashMap<Integer, com.ozv.crossui.api.model.Team>();
-			for (com.ozv.crossui.api.model.Team t : game.teams) {
+			HashMap<Integer, Team> teams = new HashMap<Integer, Team>();
+			for (Team t : game.teams) {
 				teams.put(t.id, t);
 			}
 			
@@ -61,7 +67,7 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 	 * @see Participant
 	 * @see ParticipantListListener
 	 */
-	public static IdpRequest postReport(
+	public static Request postReport(
 			Report report,
 			Net.HttpResponseListener listener) {
 
@@ -75,7 +81,7 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 	 * If you miss this, all requests that require authentication will fail.
 	 * @see AuthListener
 	 */
-	public static IdpRequest auth(String code, Net.HttpResponseListener listener) {
+	public static Request auth(String code, Net.HttpResponseListener listener) {
 
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("code", code);
@@ -85,7 +91,7 @@ public final class StartTrackApi extends com.idp.engine.net.Api {
 	/**
 	 * Listener for {@link StartTrackApi#auth(String, String, HttpResponseListener)}.
 	 */
-	public abstract static class AuthListener extends IdpJsonListener {
+	public abstract static class AuthListener extends JsonListener {
 
 		@Override
 		public void loaded(String json, Map<String, List<String>> headers) {

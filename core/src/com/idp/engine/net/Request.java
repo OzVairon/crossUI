@@ -16,7 +16,7 @@ import com.badlogic.gdx.net.HttpRequestBuilder;
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public final class IdpRequest {
+public final class Request {
 
 	public static enum State {
 		CREATED, BUILT, LOADING, LOADED, FAILED, CANCELED
@@ -32,7 +32,7 @@ public final class IdpRequest {
 	/**
 	 * Creates requests state manager with new {@link HttpRequestBuilder}.
 	 */
-	public IdpRequest() {
+	public Request() {
 		this.requestBuilder = new HttpRequestBuilder().newRequest().method("GET");
 		this.state = State.CREATED;
 	}
@@ -40,7 +40,7 @@ public final class IdpRequest {
 	/**
 	 * Creates requests state manager with new {@link HttpRequestBuilder} and sets url.
 	 */
-	public IdpRequest(String url) {
+	public Request(String url) {
 		this();
 		requestBuilder.url(url);
 	}
@@ -48,7 +48,7 @@ public final class IdpRequest {
 	/**
 	 * Creates requests state manager with existing {@link HttpRequestBuilder}.
 	 */
-	public IdpRequest(HttpRequestBuilder builder) {
+	public Request(HttpRequestBuilder builder) {
 		if (builder == null)
 			throw new NullPointerException();
 
@@ -165,7 +165,7 @@ public final class IdpRequest {
 	 * @return this
 	 * @throws IllegalStateException if called NOT in CREATED or BUILD state
 	 */
-	public IdpRequest listener(HttpResponseListener listener) {
+	public Request listener(HttpResponseListener listener) {
 		if (state != State.CREATED && state != State.BUILT) {
 			throw new IllegalStateException();
 		}

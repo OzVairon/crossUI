@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
  * Properties:
  *   sprite - a texture region that will be rendered
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class ImageActor extends Group {
 

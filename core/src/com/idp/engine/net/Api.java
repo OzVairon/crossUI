@@ -27,7 +27,7 @@ public class Api {
         }
         return GSON;
     }
-    protected static IdpRequest request(
+    protected static Request request(
             String method,
             String apiCall,
             Object params,
@@ -41,7 +41,7 @@ public class Api {
         String url = API_URL + "/" + apiCall + s;
         System.out.println(method + " " + url);
 
-        IdpRequest req = new IdpRequest(url);
+        Request req = new Request(url);
         HttpRequestBuilder builder = req.getRequestBuilder();
         builder.method(method).timeout(REQUEST_TIMEOUT_SEC * 1000);
         builder.header("Content-Type",   "application/json");

@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
-import com.ozv.crossui.StartTrackApp;
 import com.idp.engine.ui.graphics.actors.ImageActor;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Grade;
 
 /**
  * Widget representing a module.
@@ -18,10 +20,10 @@ import com.idp.engine.ui.graphics.actors.ImageActor;
  */
 public class BinaryRadioGroup extends HLayout {
 	
-	private com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton selected;
-	
+	private RadioButton selected;
 
-	public BinaryRadioGroup(final com.ozv.crossui.api.model.Grade grade) {
+
+	public BinaryRadioGroup(final Grade grade) {
 		
 		gap = lp;
 		paddingTop = 0;
@@ -36,10 +38,10 @@ public class BinaryRadioGroup extends HLayout {
 	}
 	
 	
-	private void addRadioButton(String icon, final int value, final com.ozv.crossui.api.model.Grade grade) {
+	private void addRadioButton(String icon, final int value, final Grade grade) {
 		
 		final ImageActor a = new ImageActor(StartTrackApp.getResources().getIcon(icon));
-		final com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton rb = new com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton(a) {
+		final RadioButton rb = new RadioButton(a) {
 			@Override
 			public void onSelected() {
 				getIcon().setColor(value == 1 ? App.Colors.getColorByName("ICON_TICK") : App.Colors.getColorByName("ICON_CANCEL"));

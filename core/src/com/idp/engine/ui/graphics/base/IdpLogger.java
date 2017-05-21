@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
 import com.idp.engine.base.IdpGame;
 import com.idp.engine.resources.assets.IdpAsset;
 import com.idp.engine.ui.screens.IdpBaseScreen;
@@ -21,7 +21,7 @@ import java.util.Iterator;
 /**
  * Your best friend in debugging.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public final class IdpLogger extends Actor {
 
@@ -75,7 +75,7 @@ public final class IdpLogger extends Actor {
 	 * Screen is obtained via {@link IdpGame#getScreen()}.
 	 */
 	public void show() {
-		IdpBaseScreen scr = Idp.game.getScreen();
+		IdpBaseScreen scr = AppUtils.game.getScreen();
 		if (scr == null)
 			throw new NullPointerException("Cannot show logger: screen is null");
 		Stage stage = scr.getStage();

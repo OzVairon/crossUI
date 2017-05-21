@@ -14,21 +14,21 @@ import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Loader;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.actors.listview.ListView;
-import com.idp.engine.net.IdpRequest;
+import com.idp.engine.net.Request;
 
 /**
  * Base screen for all screens that need to load some data to display.
  *
  * @param <T> type of data that the screen loads and displays
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
-public abstract class NetScreen<T> extends IdpAppScreen {
+public abstract class NetScreen<T> extends AppScreen {
     
     
     public abstract class NetworkListView extends ListView {
 
-        protected IdpRequest requestManager;
+        protected Request requestManager;
 
         public NetworkListView() {
 
@@ -40,7 +40,7 @@ public abstract class NetScreen<T> extends IdpAppScreen {
 
 
         public boolean isLoading() {
-            return requestManager != null && requestManager.getState() == IdpRequest.State.LOADING;
+            return requestManager != null && requestManager.getState() == Request.State.LOADING;
         }
     }
     
@@ -127,7 +127,7 @@ public abstract class NetScreen<T> extends IdpAppScreen {
 			listView.setHeight(getMainLayer().content.getHeight() - listView.getY());
 			listView.getContentWrapper().setOverScroll(App.dp2px(48));
 			listView.getContentWrapper().setSpace(App.dp2px(16));
-			addActor(listView);
+			addWidget(listView);
 		}
 		else {
 			listView.getContent().clearChildren();
@@ -187,7 +187,7 @@ public abstract class NetScreen<T> extends IdpAppScreen {
 		if (loader == null)
 			initLoader();
 		loader.start();
-		addActor(loader);
+		addWidget(loader);
 	}
 
 	/**

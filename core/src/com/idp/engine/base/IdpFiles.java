@@ -151,7 +151,7 @@ public final class IdpFiles {
 		}
 		catch (Exception ex) {
 			if (LOG_EXCEPTIONS)
-				Idp.logger.log(ex);
+				AppUtils.logger.log(ex);
 			throw new RuntimeException("cannot save to file: " + fileHandle.path(), ex);
 		}
 		finally {
@@ -163,7 +163,7 @@ public final class IdpFiles {
 			}
 			catch (IOException ex) {
 				if (LOG_EXCEPTIONS)
-					Idp.logger.log(ex);
+					AppUtils.logger.log(ex);
 			}
 		}
 	}
@@ -179,7 +179,7 @@ public final class IdpFiles {
 		}
 		catch (Exception ex) {
 			if (LOG_EXCEPTIONS)
-				Idp.logger.log(ex);
+				AppUtils.logger.log(ex);
 			throw new RuntimeException("cannot save to file: " + fileHandle.path(), ex);
 		}
 	}
@@ -211,7 +211,7 @@ public final class IdpFiles {
 		}
 		catch (Exception ex) {
 			if (LOG_EXCEPTIONS)
-				Idp.logger.log(ex);
+				AppUtils.logger.log(ex);
 			throw new RuntimeException("cannot load from file: " + fileHandle.path(), ex);
 		}
 		finally {
@@ -223,7 +223,7 @@ public final class IdpFiles {
 			}
 			catch (IOException ex) {
 				if (LOG_EXCEPTIONS)
-					Idp.logger.log(ex);
+					AppUtils.logger.log(ex);
 			}
 		}
 
@@ -241,7 +241,7 @@ public final class IdpFiles {
 		}
 		catch (Exception ex) {
 			if (LOG_EXCEPTIONS)
-				Idp.logger.log(ex);
+				AppUtils.logger.log(ex);
 			throw new RuntimeException("cannot load from file: " + fileHandle.path(), ex);
 		}
 	}

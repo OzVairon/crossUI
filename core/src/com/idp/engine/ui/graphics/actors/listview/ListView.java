@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 /**
  * ListView slider widget.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class ListView extends Group {
 

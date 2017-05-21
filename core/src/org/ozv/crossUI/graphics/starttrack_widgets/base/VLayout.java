@@ -1,11 +1,11 @@
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.ozv.crossui.StartTrackApp;
+import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Container that layouts its children one under another
@@ -24,7 +24,7 @@ public class VLayout extends Group {
 	private final int lp = StartTrackApp.dp2px(16);  // large
 
 	public enum Align {
-		Left, Center, Right;
+		Left, Center, Right
 	}
 
 	public Align align = Align.Left;

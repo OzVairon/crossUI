@@ -19,7 +19,7 @@ import com.idp.engine.ui.graphics.base.Rect;
  * Animation seems like another line that is thicker appears
  * and its length is changing from zero to the thin line's length.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class IdpTextField extends Rect {
 

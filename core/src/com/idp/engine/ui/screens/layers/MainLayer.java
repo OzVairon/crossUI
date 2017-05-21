@@ -12,7 +12,7 @@ import com.idp.engine.ui.graphics.base.Navbar;
 /**
  * Basic layer for all elements.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class MainLayer extends Layer {
 

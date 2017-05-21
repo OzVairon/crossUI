@@ -1,11 +1,16 @@
-package com.ozv.crossui.screens;
+package org.ozv.crossUI.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
-import com.ozv.crossui.StartTrackApp;
-import com.ozv.crossui.graphics.starttrack_widgets.base.IconButton;
-import com.ozv.crossui.api.model.Game;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Game;
+import org.ozv.crossUI.api.model.Report;
+import org.ozv.crossUI.api.model.Team;
+import org.ozv.crossUI.graphics.starttrack_widgets.TeamWidget;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.IconButton;
+import org.ozv.crossUI.screens.base.StartTrackBaseScreen;
 
 import java.util.HashMap;
 
@@ -14,22 +19,22 @@ import java.util.HashMap;
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class TeamScreen extends com.ozv.crossui.screens.base.StartTrackBaseScreen<Game> {
+public class TeamScreen extends StartTrackBaseScreen<Game> {
 
-	private final HashMap<Integer, com.ozv.crossui.graphics.starttrack_widgets.TeamWidget> teamWidgets;
-	
-	
+	private final HashMap<Integer, TeamWidget> teamWidgets;
+
+
 	public TeamScreen() {
 		super("Команды");
-		this.teamWidgets = new HashMap<Integer, com.ozv.crossui.graphics.starttrack_widgets.TeamWidget>();
+		this.teamWidgets = new HashMap<Integer, TeamWidget>();
 	}
 
 
 	@Override
 	protected void initWidgets() {
 		teamWidgets.clear();
-		for (final com.ozv.crossui.api.model.Team t : StartTrackApp.getState().game.teams) {
-			com.ozv.crossui.graphics.starttrack_widgets.TeamWidget rect = new com.ozv.crossui.graphics.starttrack_widgets.TeamWidget(t);
+		for (final Team t : StartTrackApp.getState().game.teams) {
+			TeamWidget rect = new TeamWidget(t);
 			rect.addListener(new ActorGestureListener() {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
@@ -50,9 +55,9 @@ public class TeamScreen extends com.ozv.crossui.screens.base.StartTrackBaseScree
 	@Override
 	public void show() {
 		super.show();
-		for (com.ozv.crossui.api.model.Report r : StartTrackApp.getState().reports) {
+		for (Report r : StartTrackApp.getState().reports) {
 			if (r.game_module == StartTrackApp.getState().gameModule.id && r.sent) {
-				com.ozv.crossui.graphics.starttrack_widgets.TeamWidget w = teamWidgets.get(r.team);
+				TeamWidget w = teamWidgets.get(r.team);
 				if (w != null) {
 					w.setBackgroundColor(App.Colors.getColorByName("ELEMENT_BACK_SELECTED"));
 					IconButton a = new IconButton("accept", 40);

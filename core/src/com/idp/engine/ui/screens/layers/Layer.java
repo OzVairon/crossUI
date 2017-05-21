@@ -7,7 +7,7 @@ import com.idp.engine.ui.graphics.base.Rect;
 /**
  * Root element that holds hierarchy of others.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class Layer extends Rect {
 

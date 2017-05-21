@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets;
+package org.ozv.crossUI.graphics.starttrack_widgets;
 
-import com.ozv.crossui.StartTrackApp;
 import com.idp.engine.ui.graphics.actors.Text;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.GameModule;
 
 /**
  * Widget representing a module.
  *
  * @author idp
  */
-public class ModuleWidget extends Widget<com.ozv.crossui.api.model.GameModule> {
+public class ModuleWidget extends Widget<GameModule> {
 
 
-	public ModuleWidget(com.ozv.crossui.api.model.GameModule data) {
+	public ModuleWidget(GameModule data) {
 		super(data);
 	}
 	

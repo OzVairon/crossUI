@@ -26,7 +26,7 @@ import com.idp.engine.resources.assets.IdpColorPixmap;
  *   fadeDelay - delay from the end of a scroll action or a touch up event to the start of a fadeout action
  *   normalAlpha - alpha that applied to the texture when the scrollbar is shown
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class ScrollBar extends Actor {
 

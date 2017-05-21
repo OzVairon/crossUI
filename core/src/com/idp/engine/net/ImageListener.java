@@ -18,14 +18,14 @@ import java.io.InputStream;
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public abstract class IdpImageListener implements Net.HttpResponseListener {
+public abstract class ImageListener implements Net.HttpResponseListener {
 
 	private String url;
 
 	/**
 	 * @param url where the image is located
 	 */
-	public IdpImageListener(String url) {
+	public ImageListener(String url) {
 		if (url == null)
 			throw new NullPointerException("url cannot be null");
 		this.url = url;
@@ -77,7 +77,7 @@ public abstract class IdpImageListener implements Net.HttpResponseListener {
 	 */
 	@Override
 	public void failed(Throwable t) {
-		Gdx.app.error(IdpImageListener.class.getName(), getClass().getName(), t);
+		Gdx.app.error(ImageListener.class.getName(), getClass().getName(), t);
 	}
 
 	@Override

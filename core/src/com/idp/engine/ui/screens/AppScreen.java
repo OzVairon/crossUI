@@ -14,9 +14,9 @@ import com.idp.engine.ui.screens.layers.PopupLayer;
 /**
  * Screen with navbar and layer structure.
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
-public class IdpAppScreen extends IdpBaseScreen {
+public class AppScreen extends IdpBaseScreen {
 
 	private MainLayer mainLayer;
 	private PopupLayer popupLayer;
@@ -28,7 +28,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	/**
 	 * Calls {@link AppScreen#AppScreen(String, Color)} with empty name and white color.
 	 */
-	public IdpAppScreen() {
+	public AppScreen() {
 		this("Screen");
 	}
 
@@ -36,7 +36,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * Calls {@link AppScreen#AppScreen(String, Color)} with given name and white color.
 	 * @param name screen name
 	 */
-	public IdpAppScreen(String name) {
+	public AppScreen(String name) {
 		this(name, App.Colors.MAIN);
 	}
 
@@ -44,7 +44,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * Calls {@link AppScreen#AppScreen(String, Color)} with empty name and given color.
 	 * @param navbarColor background color of the navbar
 	 */
-	public IdpAppScreen(Color navbarColor) {
+	public AppScreen(Color navbarColor) {
 		this("Screen", navbarColor);
 	}
 
@@ -53,7 +53,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * @param name name of the screen
 	 * @param navbarColor background color of navbar
 	 */
-	public IdpAppScreen(String name, Color navbarColor) {
+	public AppScreen(String name, Color navbarColor) {
 		super(true);
 		this.name = name;
 		this.navbarColor = navbarColor;
@@ -87,7 +87,7 @@ public class IdpAppScreen extends IdpBaseScreen {
 	 * (Content is all-that-is-not-navbar).
 	 * @param a actor to add
 	 */
-	public void addActor(Actor a) {
+	public void addWidget(Actor a) {
 		mainLayer.content.addActor(a);
 	}
 

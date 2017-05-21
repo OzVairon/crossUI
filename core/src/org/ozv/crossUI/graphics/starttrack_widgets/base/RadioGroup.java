@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ozv.crossui.graphics.starttrack_widgets.base;
+package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-import com.ozv.crossui.StartTrackApp;
 import com.idp.engine.ui.graphics.actors.ImageActor;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.model.Report;
 
 /**
  * Widget representing a module.
@@ -17,10 +19,10 @@ import com.idp.engine.ui.graphics.actors.ImageActor;
  */
 public class RadioGroup extends HLayout {
 	
-	private com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton selected;
+	private RadioButton selected;
 
 
-	public RadioGroup(int min, int max, final com.ozv.crossui.api.model.Report report) {
+	public RadioGroup(int min, int max, final Report report) {
 		
 		paddingTop = 0;
 		paddingBottom = 0;
@@ -29,7 +31,7 @@ public class RadioGroup extends HLayout {
 		
 		for (int i = min; i <= max; i++) {
 			final int ii = i;
-			final com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton rb = new com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton(i + "") {
+			final RadioButton rb = new RadioButton(i + "") {
 				@Override
 				public void onSelected() {
 					report.team_grade = ii;
@@ -60,7 +62,7 @@ public class RadioGroup extends HLayout {
 			addActor(rb);
 		}
 		
-		final com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton rb = new com.ozv.crossui.graphics.starttrack_widgets.base.RadioButton(new ImageActor(
+		final RadioButton rb = new RadioButton(new ImageActor(
 				StartTrackApp.getResources().getIcon("cancel")));
 		rb.addListener(new ActorGestureListener() {
 			@Override

@@ -13,7 +13,7 @@ import com.idp.engine.ui.graphics.base.IdpLogger;
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class Idp {
+public class AppUtils {
 	public static IdpGame game;
 	public static App app;
 	public static IdpInput  input;

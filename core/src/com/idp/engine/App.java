@@ -19,9 +19,9 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.idp.engine.ui.screens.ScreenManager;
 import com.idp.engine.resources.Resources;
 import com.idp.engine.resources.assets.IdpAssetManager;
-import com.idp.engine.base.Idp;
+import com.idp.engine.base.AppUtils;
 import com.idp.engine.base.IdpInput;
-import com.idp.engine.ui.screens.IdpAppScreen;
+import com.idp.engine.ui.screens.AppScreen;
 
 import java.io.IOException;
 import java.util.EmptyStackException;
@@ -41,28 +41,24 @@ public class App extends Game {
     protected Resources resources;
 	protected static float dp2pxCoeff;
 	protected GDXDialogs dialogs;
-
 	protected ScreenManager screenManager;
-
 	private Color glColor = Color.BLACK;
-
-
 
 	@Override
 	public void create() {
 
-		if (com.idp.engine.base.Idp.app != null) {
-			com.idp.engine.base.Idp.app.dispose();
+		if (AppUtils.app != null) {
+			AppUtils.app.dispose();
 		}
         instance = this;
-		com.idp.engine.base.Idp.app = this;
-		com.idp.engine.base.Idp.input = new IdpInput();
-		com.idp.engine.base.Idp.files = new com.idp.engine.base.IdpFiles();
-		com.idp.engine.base.Idp.logger = null;
+		AppUtils.app = this;
+		AppUtils.input = new IdpInput();
+		AppUtils.files = new com.idp.engine.base.IdpFiles();
+		AppUtils.logger = null;
         initDp();
-		com.idp.engine.base.Idp.input.startProcessing();
+		AppUtils.input.startProcessing();
 
-		Idp.input.setBackKeyProcessor(new InputAdapter() {
+		AppUtils.input.setBackKeyProcessor(new InputAdapter() {
 			public boolean keyDown(int keycode) {
 				if (keycode == Input.Keys.BACK) {
 					try {
@@ -75,7 +71,7 @@ public class App extends Game {
 				return false;
 			}
 		});
-		Idp.input.setCatchBackKey(true);
+		AppUtils.input.setCatchBackKey(true);
 		Gdx.graphics.setContinuousRendering(false);  // important to save battery
 
 		dialogs = GDXDialogsSystem.install();
@@ -96,27 +92,25 @@ public class App extends Game {
 	private void loadXmlConfig() {
 		XmlReader xr = new XmlReader();
 		try {
-			XmlReader.Element config = xr.parse(Idp.files.internal("appconfig.xml"));
+			XmlReader.Element config = xr.parse(AppUtils.files.internal("appconfig.xml"));
 			String packageName = config.getAttribute("package");
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
+			Colors.loadColorScheme(config.getChildByName("colors"));
+			this.resources .loadFonts(config.getChildByName("fonts"));
+			this.resources .loadIcons("icons.atlas");
+			this.resources .awaitLoad();
+
+
+			Object screenObject = null;
 			try {
-				Colors.loadColorScheme(config.getChildByName("colors"));
-				this.resources .loadFonts(config.getChildByName("fonts"));
-				this.resources .loadIcons("icons.atlas");
-				this.resources .awaitLoad();
+				screenObject = ClassReflection.forName(packageName + ".screens." + screenname).newInstance();
 
-				Object screenObject = ClassReflection.forName(packageName + ".screens." + screenname).newInstance();
-				screenManager.setStartScreen((IdpAppScreen) screenObject);
-
-			} catch (ReflectionException e) {
-				e.printStackTrace();
-				Idp.app.dispose();
-				Gdx.app.exit();
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
+			} catch (Exception ex) {
+				screenObject = new AppScreen("DUMMY SCREEN");
 			}
+
+			screenManager.setStartScreen((AppScreen) screenObject);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -135,10 +129,10 @@ public class App extends Game {
 	public void dispose() {
 		super.dispose();
 		IdpAssetManager.getInstance().dispose();
-		com.idp.engine.base.Idp.app = null;
-		com.idp.engine.base.Idp.input = null;
-		com.idp.engine.base.Idp.files = null;
-		Idp.logger = null;
+		AppUtils.app = null;
+		AppUtils.input = null;
+		AppUtils.files = null;
+		AppUtils.logger = null;
         instance = null;
 	}
     
@@ -216,17 +210,17 @@ public class App extends Game {
 
 	//TRANSITIONS
 
-	public static IdpAppScreen getCurrentScreen() {
+	public static AppScreen getCurrentScreen() {
 		return App.getInstance().screenManager.getCurrentScreen();
 	}
 
-	public static void showScreen(IdpAppScreen screen) { getInstance().screenManager.setScreen(screen);}
+	public static void showScreen(AppScreen screen) { getInstance().screenManager.setScreen(screen);}
 
 	/**
 	 * Adds new screen to the screen stack.
 	 * @param s new screen
 	 */
-	public static void pushScreen(IdpAppScreen s) {
+	public static void pushScreen(AppScreen s) {
 		getInstance().screenManager.pushScreen(s);
 	}
 

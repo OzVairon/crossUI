@@ -1,12 +1,13 @@
-package com.ozv.crossui.graphics.actors;
+package org.ozv.crossUI.graphics.actors;
 
-import com.ozv.crossui.StartTrackApp;
-import com.idp.engine.ui.graphics.actors.Text;
-import com.idp.engine.ui.graphics.base.Rect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Align;
+import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.base.Rect;
+
+import org.ozv.crossUI.StartTrackApp;
 
 import java.util.ArrayList;
 

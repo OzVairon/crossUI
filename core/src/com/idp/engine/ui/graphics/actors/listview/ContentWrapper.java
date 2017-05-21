@@ -29,7 +29,7 @@ import java.util.ArrayList;
  *   top/bottomOverscrollFixed - if true, list will NOT scroll backScreen to its normal (not overscrolled)
  *     position on touch up. Otherwise it will
  *
- * @author dhabensky <dhabensky@idp-crew.com>
+ *
  */
 public class ContentWrapper extends Group {
 

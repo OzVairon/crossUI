@@ -1,4 +1,4 @@
-package com.ozv.crossui.screens;
+package org.ozv.crossUI.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -8,22 +8,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.ozv.crossui.graphics.starttrack_widgets.base.VLayout;
-import com.ozv.crossui.StartTrackApp;
-import com.ozv.crossui.api.StartTrackApi;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.IdpTextField;
 import com.idp.engine.ui.graphics.actors.ImageActor;
-import com.idp.engine.ui.graphics.base.Loader;
 import com.idp.engine.ui.graphics.actors.Text;
-import com.idp.engine.ui.screens.IdpAppScreen;
+import com.idp.engine.ui.graphics.base.Loader;
+import com.idp.engine.ui.screens.AppScreen;
+
+import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.api.StartTrackApi;
+import org.ozv.crossUI.graphics.starttrack_widgets.base.VLayout;
 
 /**
  * Screen with sign in form.
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class LoginScreen extends IdpAppScreen {
+public class LoginScreen extends AppScreen {
 
 	private VLayout layout;
 	private TextField email;
@@ -55,7 +56,7 @@ public class LoginScreen extends IdpAppScreen {
 		layout.paddingTop = App.dp2px(48);
 
 		layout.setGap(App.dp2px(18));
-		addActor(layout);
+		addWidget(layout);
 
 		float textFieldXpadding = StartTrackApp.dp2px(24);
 		float underlineExtention = StartTrackApp.dp2px(12);
@@ -112,7 +113,7 @@ public class LoginScreen extends IdpAppScreen {
         loader.setHeight(signInHeight);
         loader.setPosition(signIn.getX(), signIn.getY());
         loader.setVisible(false);
-        addActor(loader);
+        addWidget(loader);
 
 		getMainLayer().addCaptureListener(new ClickListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
