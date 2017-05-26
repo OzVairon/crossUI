@@ -41,7 +41,7 @@ public class BinaryRadioGroup extends HLayout {
 	
 	private void addRadioButton(String icon, final int value, final Grade grade) {
 		
-		final ImageActor a = new ImageActor(StartTrackApp.getResources().getIcon(icon));
+		final ImageActor a = new ImageActor(StartTrackApp.getResources().getTexture(icon));
 		final RadioButton rb = new RadioButton(a) {
 			@Override
 			public void onSelected() {

@@ -2,8 +2,8 @@ package com.idp.engine.ui.graphics.actors.layouts;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.idp.engine.App;
 
-import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Container that layouts its children one under another
@@ -17,9 +17,9 @@ import org.ozv.crossUI.StartTrackApp;
  */
 public class HLayout extends Group {
 	
-	protected final int sp = StartTrackApp.dp2px(8);   // small gap
-	protected final int mp = StartTrackApp.dp2px(12);  // medium gap
-	protected final int lp = StartTrackApp.dp2px(16);  // large gap
+	protected final int sp = App.dp2px(8);   // small gap
+	protected final int mp = App.dp2px(12);  // medium gap
+	protected final int lp = App.dp2px(16);  // large gap
 
 	public int gap = sp;
 	public int paddingLeft   = mp;

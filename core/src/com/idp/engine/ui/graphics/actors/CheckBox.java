@@ -30,7 +30,7 @@ public class CheckBox extends Rect {
 
 	public CheckBox(String text, final boolean checked) {
 		this.text = new Text(text, App.getResources().getLabelStyle("h2"));
-		checker = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon("checker"));
+		checker = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getTexture("checker"));
 		checker.setSize(App.dp2px(14), App.dp2px(14));
 		checker.setColor(Color.valueOf("666666"));
 

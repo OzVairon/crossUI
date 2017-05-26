@@ -64,7 +64,7 @@ public class RadioGroup extends HLayout {
 		}
 		
 		final RadioButton rb = new RadioButton(new ImageActor(
-				StartTrackApp.getResources().getIcon("cancel")));
+				StartTrackApp.getResources().getTexture("cancel")));
 		rb.addListener(new ActorGestureListener() {
 			@Override
 			public void tap(InputEvent event, float x, float y, int count, int button) {

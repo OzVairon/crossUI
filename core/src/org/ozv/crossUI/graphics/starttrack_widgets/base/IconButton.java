@@ -20,7 +20,7 @@ public class IconButton extends Rect {
     }
 	
 	public IconButton(String iconname, float sizeDp) {
-		icon = new ImageActor(StartTrackApp.getResources().getIcon(iconname));
+		icon = new ImageActor(StartTrackApp.getResources().getTexture(iconname));
 		setSize(StartTrackApp.dp2px(sizeDp), StartTrackApp.dp2px(sizeDp));
 		icon.setColor(Color.BLACK);
 		this.padding = StartTrackApp.dp2px(12);

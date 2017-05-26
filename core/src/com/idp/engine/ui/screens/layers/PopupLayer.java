@@ -1,10 +1,6 @@
 package com.idp.engine.ui.screens.layers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 
@@ -19,87 +15,26 @@ import de.tomgrill.gdxdialogs.core.listener.ButtonClickListener;
  */
 public class PopupLayer extends Layer {
 
-	private Actor popup;
-	private Action outAction;
-
-
-	public PopupLayer() {
-        debug();
-		setBackgroundColor(Color.valueOf("00000000"));
-		setVisible(false);
-		setTouchable(Touchable.disabled);
-	}
-
-    public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {
-        getConfirmationDialog(titleString, message, confirm, null);
-    }
-
     public void getConfirmationDialog(String titleString, String message, ClickListener confirm, ClickListener cancel) {
         Dialogs.showConfirmDialog(titleString, message, confirm, cancel);
     }
 
-    public GDXProgressDialog getProgressDialog(String title, String message) {
-        return Dialogs.showProgressDialog(title, message);
+    public void getProgressDialog(String title, String message) {
+        Dialogs.showProgressDialog(title, message);
     }
 
-    public GDXButtonDialog getAlertDialog(String title, String message) {
-        return Dialogs.showAlertDialog(title, message);
+    public void getAlertDialog(String title, String message) {
+        Dialogs.showAlertDialog(title, message);
     }
 
-
-	public void pop(Actor a, PopAnimation type) {
-		if (a == null)
-			return;
-
-		setVisible(true);
-		setTouchable(Touchable.enabled);
-		popup = a;
-        a.setVisible(false);
-        addActor(popup);
-
-
-        a.addAction(Actions.sequence(
-                Actions.alpha(0),
-                Actions.visible(true),
-                Actions.delay(0.1f),
-                Actions.alpha(1, 0.2f, Interpolation.pow2In)
-        ));
-        popup.setX((getWidth() - popup.getWidth()) / 2);
-        popup.setY((getHeight() - popup.getHeight()) / 2);
-        outAction = Actions.sequence(
-                Actions.alpha(0, 0.2f, Interpolation.pow2In)
-        );
-
-	}
-
-	public void removePop() {
-		if (popup == null)
-			return;
-
-		popup.addAction(Actions.sequence(
-				outAction,
-				Actions.run(new Runnable() {
-					@Override
-					public void run() {
-						popup = null;
-						clearLayer();
-					}
-				})
-		));
-	}
-
-	private void clearLayer() {
-		clearChildren();
-		setVisible(false);
-		setTouchable(Touchable.disabled);
-	}
-
-	public enum PopAnimation {
-		Blink;
-	}
+    public void dismissProgressDialog() {
+        Dialogs.dismissProgressDialog();
+    }
 }
 
 class Dialogs {
+
+    static GDXProgressDialog progress;
 
     public static void showConfirmDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
 
@@ -144,7 +79,7 @@ class Dialogs {
         bDialog.build().show();
     }
 
-    public static GDXProgressDialog showProgressDialog(String titleString, String message) {
+    public static void showProgressDialog(String titleString, String message) {
 
         GDXProgressDialog progressDialog = App.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
 
@@ -152,11 +87,10 @@ class Dialogs {
         progressDialog.setMessage(message);
 
         progressDialog.build().show();
-
-        return progressDialog;
+        progress = progressDialog;
     }
 
-    public static GDXButtonDialog showAlertDialog(String titleString, String message) {
+    public static void showAlertDialog(String titleString, String message) {
 
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(titleString);
@@ -177,6 +111,11 @@ class Dialogs {
         });
 
         bDialog.build().show();
-        return bDialog;
+    }
+
+    public static void dismissProgressDialog() {
+        if (progress != null) {
+            progress.dismiss();
+        }
     }
 }

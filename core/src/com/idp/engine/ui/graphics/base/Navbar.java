@@ -164,7 +164,7 @@ public class Navbar extends Rect {
 	}
 
 	private void addChevron() {
-		com.idp.engine.ui.graphics.actors.ImageActor i = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon("chevron"));
+		com.idp.engine.ui.graphics.actors.ImageActor i = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getTexture("chevron"));
 		i.setColor(Color.BLACK);
 		i.setSize(App.dp2px(12), App.dp2px(12));
 		i.setName("chevron");
@@ -186,7 +186,7 @@ public class Navbar extends Rect {
 		private final float padding;
 
 		public NavButton(String name) {
-			this.icon = new ImageActor(App.getResources().getIcon(name));
+			this.icon = new ImageActor(App.getResources().getTexture(name));
 			this.padding = App.dp2px(12);
 			this.icon.setColor(App.Colors.TEXT_NAVBAR);
 			addActor(icon);

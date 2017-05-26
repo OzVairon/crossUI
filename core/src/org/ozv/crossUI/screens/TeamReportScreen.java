@@ -24,8 +24,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import de.tomgrill.gdxdialogs.core.dialogs.GDXProgressDialog;
-
 /**
  * Start screen of Startrack app.
  *
@@ -94,7 +92,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 
 
                 if (tgr && r.team_grade == null) {
-                    getPopupLayer().getAlertDialog("Отчет отклонен", "Вы не поставили командную оценку");
+                   getAlertDialog("Отчет отклонен", "Вы не поставили командную оценку");
                 } else {
                     int ungradedCounter = state.game.getTeamByID(r.team).participants.size() - findEstimatedParticipants().size();
                     String message = "";
@@ -119,7 +117,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                     it.remove();
                             }
 
-                            final GDXProgressDialog d = getPopupLayer().getProgressDialog("Подождите", "Идет отправка отчета на сервер");
+                            getProgressDialog("Подождите", "Идет отправка отчета на сервер");
 
                             StartTrackApi.postReport(r, new JsonListener() {
 
@@ -127,14 +125,14 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                 public void loaded(String json, Map<String, List<String>> headers) {
                                     r.sent = true;
                                     StartTrackApp.saveState();
-                                    d.dismiss();
+                                    getPopupLayer().dismissProgressDialog();
                                     App.backScreen();
                                 }
 
                                 @Override
                                 public void failed(Throwable t) {
                                     System.out.println("Sending report is failed");
-                                    d.dismiss();
+                                    getPopupLayer().dismissProgressDialog();
 
                                     String errorMessage = "Нет соединения с сервером";
 
@@ -146,7 +144,8 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                     Gdx.app.postRunnable(new Runnable() {
                                         @Override
                                         public void run() {
-                                            App.getCurrentScreen().getPopupLayer().getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
+                                            //App.getCurrentScreen().getPopupLayer().getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
+                                            getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
                                         }
                                     });
                                 }

@@ -14,7 +14,7 @@ import com.idp.engine.base.AppUtils;
  */
 public class TransitionManager extends AppScreen {
 
-	public static enum TransitionType {
+	public enum TransitionType {
 		FADE, SLIDE_LEFT_RIGHT, SLIDE_RIGHT_LEFT, SLIDE_UP_DOWN, BLINK, SLIDE_DOWN_UP
 	}
 
@@ -52,7 +52,7 @@ public class TransitionManager extends AppScreen {
 	 * @param nextScreen screen to show after the transition is ended
 	 * @param duration transition duration
 	 */
-	public void fadeScreens(TransitionType type, AppScreen nextScreen, float duration) {
+	public void fadeScreens(TransitionType type, AppScreen nextScreen) {
 
 		inScreen = (AppScreen) App.getInstance().getScreen();
 
@@ -62,16 +62,15 @@ public class TransitionManager extends AppScreen {
 			return;
 		}
 		else {
-            fadeScreens(type, inScreen, nextScreen, duration);
+            fadeScreens(type, inScreen, nextScreen);
 		}
 	}
 
-	private void fadeScreens(TransitionType type, final AppScreen current, final AppScreen next,
-							 final float duration) {
+	private void fadeScreens(TransitionType type, final AppScreen current, final AppScreen next) {
 
 		this.inScreen = current;
 		this.outScreen = next;
-
+		final float duration = 0.4f;
 		App.getInstance().setScreen(this);
 
 		switch (type) {
@@ -87,8 +86,6 @@ public class TransitionManager extends AppScreen {
                                         next.fadeIn(duration);
                                     }
                                 })
-
-
                         )
                 );
 

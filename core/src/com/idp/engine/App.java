@@ -16,12 +16,12 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
-import com.idp.engine.ui.screens.ScreenManager;
-import com.idp.engine.resources.Resources;
-import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.base.AppUtils;
 import com.idp.engine.base.IdpInput;
+import com.idp.engine.resources.Resources;
+import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.ui.screens.AppScreen;
+import com.idp.engine.ui.screens.ScreenManager;
 
 import java.io.IOException;
 import java.util.EmptyStackException;
@@ -122,8 +122,6 @@ public class App extends Game {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
 	}
-
-
 
 	@Override
 	public void dispose() {

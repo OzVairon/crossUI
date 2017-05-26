@@ -29,7 +29,7 @@ public class FloatingIconButton extends IconButton {
 
     public FloatingIconButton(String iconName, int sizeDp) {
         super(iconName, sizeDp);
-        this.back =  new ImageActor(StartTrackApp.getResources().getIcon("medal"));
+        this.back =  new ImageActor(StartTrackApp.getResources().getTexture("medal"));
         back.setSize(this.getWidth(), this.getHeight());
         addActor(back);
         back.toBack();

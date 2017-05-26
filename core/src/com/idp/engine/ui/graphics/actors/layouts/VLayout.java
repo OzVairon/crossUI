@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import org.ozv.crossUI.StartTrackApp;
+import com.idp.engine.App;
+
 
 /**
  * Container that layouts its children one under another
@@ -19,9 +20,9 @@ import org.ozv.crossUI.StartTrackApp;
  */
 public class VLayout extends Group {
 	
-	private final int sp = StartTrackApp.dp2px(8);   // small
-	private final int mp = StartTrackApp.dp2px(12);  // medium
-	private final int lp = StartTrackApp.dp2px(16);  // large
+	private final int sp = App.dp2px(8);   // small
+	private final int mp = App.dp2px(12);  // medium
+	private final int lp = App.dp2px(16);  // large
 
 	public enum Align {
 		Left, Center, Right

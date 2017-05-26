@@ -46,7 +46,7 @@ public class ScreenManager {
 
         currentScreen = s;
 
-        changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_RIGHT_LEFT);
+        initiateTransition(currentScreen, TransitionManager.TransitionType.SLIDE_RIGHT_LEFT);
     }
 
     /**
@@ -54,7 +54,7 @@ public class ScreenManager {
      */
     public void popScreen() {
         this.currentScreen = screenStack.pop();
-        changeScreen(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
+        initiateTransition(currentScreen, TransitionManager.TransitionType.SLIDE_LEFT_RIGHT);
     }
 
     public void setScreen(AppScreen screen) {
@@ -68,12 +68,12 @@ public class ScreenManager {
      * @param screen screen that will be shown after transition
      * @param type transition type
      */
-    private void changeScreen(AppScreen screen, TransitionManager.TransitionType type) {
+    private void initiateTransition(AppScreen screen, TransitionManager.TransitionType type) {
         if (currentScreen == null) {
             setScreen(screen);
         } else {
             if (currentScreen == transitionManager) return;
-            transitionManager.fadeScreens(type, screen, 0.4f);
+            transitionManager.fadeScreens(type, screen);
         }
     }
 

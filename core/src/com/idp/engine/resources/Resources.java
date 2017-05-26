@@ -3,11 +3,15 @@ package com.idp.engine.resources;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader;
 import com.idp.engine.App;
+import com.idp.engine.resources.assets.IdpAsset;
+import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
 import java.util.HashMap;
@@ -29,16 +33,16 @@ public class Resources {
         }
     }
     
-	protected final com.idp.engine.resources.assets.IdpAssetManager man;
+	protected final IdpAssetManager man;
     protected final HashMap<String, FontAndColor> fonts;
-    protected com.idp.engine.resources.assets.IdpAsset<TextureAtlas> icons;
+    protected IdpAsset<TextureAtlas> icons;
 
 
 	/**
 	 * Empty resources. Nothing is loaded in constructor.
 	 */
 	public Resources() {
-		this.man = com.idp.engine.resources.assets.IdpAssetManager.getInstance();
+		this.man = IdpAssetManager.getInstance();
         this.fonts = new HashMap<String, FontAndColor>();
 	}
     
@@ -49,7 +53,7 @@ public class Resources {
      * @param size font size in px
      * @param color font color
      */
-    public void loadFont(String key, String path, int size, Color color) {
+    private void loadFont(String key, String path, int size, Color color) {
 		fonts.put(key, new FontAndColor(man.loadFont("fonts/" + path, App.dp2px(size)), color));
     }
     
@@ -68,6 +72,7 @@ public class Resources {
 	 * Waits until all queued resources get loaded.
 	 */
 	public void awaitLoad() {
+
 		man.finishLoading();
         onLoaded();
 	}
@@ -75,7 +80,7 @@ public class Resources {
     /**
      * Called once all queued resources get loaded.
      */
-    public void onLoaded() {
+    private void onLoaded() {
         fixFonts();
     }
 
@@ -102,7 +107,7 @@ public class Resources {
 	 * @param name icon name
 	 * @return icon for the given name
 	 */
-    public TextureRegion getIcon(String name) {
+    public TextureRegion getTexture(String name) {
 		return icons.getAsset().findRegion(name);
     }
 

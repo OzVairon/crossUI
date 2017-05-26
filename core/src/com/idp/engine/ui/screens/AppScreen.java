@@ -137,10 +137,30 @@ public class AppScreen extends IdpBaseScreen {
 	}
 
     public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {
-		popupLayer.getConfirmationDialog(titleString, message, confirm);
+		popupLayer.getConfirmationDialog(titleString, message, confirm, null);
     }
+
+	public void getProgressDialog(String titleString, String message) {
+		popupLayer.getProgressDialog(titleString, message);
+	}
+
+	public void getAlertDialog(String titleString, String message) {
+		popupLayer.getAlertDialog(titleString, message);
+	}
 
     protected void clearScene() {
         stage.clear();
     }
+
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+		//System.out.println("RENDER");
+	}
+
+	@Override
+	public void show() {
+		super.show();
+		System.out.println(getName());
+	}
 }

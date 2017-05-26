@@ -71,7 +71,7 @@ public class LoginScreen extends AppScreen {
 		LabelStyle signInStyle = StartTrackApp.getResources().getLabelStyle("navbar");
 		signInStyle.fontColor = App.Colors.MAIN;
 
-		ImageActor logo = new ImageActor(App.getResources().getIcon("logo-mobile"));
+		ImageActor logo = new ImageActor(App.getResources().getTexture("logo-mobile"));
 		logo.setHeight(App.dp2px(72));
 		logo.setWidth(
 				logo.getSprite().getRegionWidth() * logo.getHeight() / logo.getSprite().getRegionHeight()
@@ -108,7 +108,7 @@ public class LoginScreen extends AppScreen {
 		signIn.setSize(signInWidth, signInHeight);
 		layout.addActor(signIn);
 
-        loader = new Loader(StartTrackApp.getResources().getIcon("loader"));
+        loader = new Loader(StartTrackApp.getResources().getTexture("loader"));
         loader.setWidth(signInWidth);
         loader.setHeight(signInHeight);
         loader.setPosition(signIn.getX(), signIn.getY());

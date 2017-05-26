@@ -107,7 +107,7 @@ public abstract class NetScreen<T> extends AppScreen {
 
 		if (listView == null) {
 
-//			Loader topLoader = new Loader(App.getResources().getIcon("loader"));
+//			Loader topLoader = new Loader(App.getResources().getTexture("loader"));
 //			topLoader.setSize(Gdx.graphics.getWidth(), app.dp2px(48));
 
 			this.listView = new NetworkListView(null, null) {
@@ -174,7 +174,7 @@ public abstract class NetScreen<T> extends AppScreen {
 	 * Initializes loader that is shown while data is downloading.
 	 */
 	protected void initLoader() {
-		this.loader = new Loader(App.getResources().getIcon("loader"));
+		this.loader = new Loader(App.getResources().getTexture("loader"));
 		loader.setPosition(Gdx.graphics.getWidth() / 2 - loader.getWidth() / 2,
 				App.dp2px(24) + loader.getHeight() / 2
 		);
