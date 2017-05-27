@@ -7,11 +7,14 @@ package com.idp.engine.ui.graphics.base;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Text;
 
 /**
  * Navigation bar element.
@@ -53,7 +56,7 @@ public class Navbar extends Rect {
 		textGroup.setSize(Gdx.graphics.getWidth() - App.dp2px(168), App.dp2px(24));
 
 
-		this.text = new com.idp.engine.ui.graphics.actors.Text("", App.getResources().getLabelStyle("navbar"));
+		this.text = new Text("", App.getResources().getLabelStyle("navbar"));
 		text.setWidth(Gdx.graphics.getWidth() - App.dp2px(168));
 		text.setHeight(App.dp2px(24));
 		text.setAlignment(Align.center);
@@ -164,7 +167,7 @@ public class Navbar extends Rect {
 	}
 
 	private void addChevron() {
-		com.idp.engine.ui.graphics.actors.ImageActor i = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon("chevron"));
+		ImageActor i = new ImageActor(App.getResources().getIcon("chevron"));
 		i.setColor(Color.BLACK);
 		i.setSize(App.dp2px(12), App.dp2px(12));
 		i.setName("chevron");

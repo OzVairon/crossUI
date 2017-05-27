@@ -1,27 +1,63 @@
 package com.idp.engine.ui.graphics.actors;
 
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.idp.engine.ui.graphics.base.Widget;
+
 /**
  * UI element to display text.
  *
  * Created by ozvairon on 01.08.16.
  */
-public class Text extends com.badlogic.gdx.scenes.scene2d.ui.Label {
+public class Text extends Widget<Label> {
 
-	public Text(String text, LabelStyle s) {
-		super(text, s);
+	public Text(Label l) {
+		super(l);
 	}
 
+	public Text(String text, Label.LabelStyle s) {
+		super(new Label(text, s));
+	}
 
-	@Override
 	public void setText(CharSequence newText) {
-		super.setText(newText);
-		layout();
+		data.setText(newText);
+		data.layout();
 	}
 
 	@Override
+	protected void sizeChanged() {
+		data.setSize(getWidth(), getHeight());
+		data.layout();
+	}
+
+	public Label.LabelStyle getStyle() {
+		return data.getStyle();
+	}
+
+	public void setStyle(Label.LabelStyle s) {
+		data.setStyle(s);
+	}
+
+	public void layout() {
+		data.layout();
+	}
+
+	public GlyphLayout getGlyphLayout() {
+		return data.getGlyphLayout();
+	}
+
+	public void setAlignment(int aligment) {
+		data.setAlignment(aligment);
+	}
+
 	public void setWrap(boolean wrap) {
-		super.setWrap(wrap);
-		layout();
-		setHeight(getGlyphLayout().height);
+		data.setWrap(wrap);
+		data.layout();
+		setHeight(data.getGlyphLayout().height);
+	}
+
+	@Override
+	protected void init() {
+		addActor(data);
 	}
 }

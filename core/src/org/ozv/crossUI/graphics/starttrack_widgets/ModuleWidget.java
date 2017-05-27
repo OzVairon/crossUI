@@ -11,11 +11,11 @@ import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.GameModule;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */
-public class ModuleWidget extends Widget<GameModule> {
+public class ModuleWidget extends StartTrackWidget<GameModule> {
 
 
 	public ModuleWidget(GameModule data) {

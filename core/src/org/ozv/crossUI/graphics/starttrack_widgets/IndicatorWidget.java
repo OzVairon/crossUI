@@ -13,11 +13,11 @@ import org.ozv.crossUI.api.model.Indicator;
 import org.ozv.crossUI.graphics.starttrack_widgets.base.BinaryRadioGroup;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */
-public class IndicatorWidget extends Widget<Indicator> {
+public class IndicatorWidget extends StartTrackWidget<Indicator> {
 
 	public IndicatorWidget(Indicator data) {
 		super(data);

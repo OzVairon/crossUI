@@ -12,11 +12,11 @@ import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.Team;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */
-public class TeamWidget extends Widget<Team> {
+public class TeamWidget extends StartTrackWidget<Team> {
 
 
 	public TeamWidget(Team data) {

@@ -64,14 +64,14 @@ public class AppScreen extends IdpBaseScreen {
 	/**
 	 * @return navbar
 	 */
-	public Navbar getNavbar() {
+	protected Navbar getNavbar() {
 		return mainLayer.navbar;
 	}
 
 	/**
 	 * @return main layer
 	 */
-    public MainLayer getMainLayer() {
+	protected MainLayer getMainLayer() {
         return mainLayer;
     }
 

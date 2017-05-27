@@ -16,11 +16,11 @@ import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.Participant;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */
-public class ParticipantWidget extends Widget<Participant> {
+public class ParticipantWidget extends StartTrackWidget<Participant> {
 
 
 	public ParticipantWidget(Participant data) {

@@ -15,7 +15,7 @@ import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.Grade;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */

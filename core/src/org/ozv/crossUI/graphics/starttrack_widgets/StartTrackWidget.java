@@ -10,25 +10,23 @@ import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.layouts.VLayout;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
-
 /**
- * Base Widget.
+ * Base StartTrackWidget.
  *
  * @param <T>
  * @author idp
  */
-public class Widget<T> extends Rect {
+public abstract class StartTrackWidget<T> extends Rect {
 
-	protected final int sp = StartTrackApp.dp2px(8);  // small gap
-	protected final int mp = StartTrackApp.dp2px(12); // medium gap
-	protected final int lp = StartTrackApp.dp2px(16); // large gap
+	protected final int sp = App.dp2px(8);  // small gap
+	protected final int mp = App.dp2px(12); // medium gap
+	protected final int lp = App.dp2px(16); // large gap
 
 	protected final VLayout layout;
 	protected T data;
 
 	
-	public Widget(T data) {
+	public StartTrackWidget(T data) {
 		setBackgroundColor(App.Colors.WIDGET_WHITE);
 		this.layout = new VLayout();
 		addActor(layout);
@@ -42,11 +40,9 @@ public class Widget<T> extends Rect {
 		return data;
 	}
 	
-	protected void init() {
-		
-	}
+	protected abstract void init();
 
-    public void setPadding(int p) {
+	public void setPadding(int p) {
         layout.setPadding(p);
         setSize(Gdx.graphics.getWidth(), layout.getHeight());
     }

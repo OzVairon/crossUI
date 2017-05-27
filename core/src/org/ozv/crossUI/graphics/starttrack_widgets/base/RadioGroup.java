@@ -14,7 +14,7 @@ import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.Report;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author dhabensky <dhabensky@idp-crew.com>
  */

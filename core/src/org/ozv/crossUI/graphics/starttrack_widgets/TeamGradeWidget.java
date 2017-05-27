@@ -19,11 +19,11 @@ import org.ozv.crossUI.api.model.Report;
 import org.ozv.crossUI.graphics.starttrack_widgets.base.RadioGroup;
 
 /**
- * Widget representing a module.
+ * StartTrackWidget representing a module.
  *
  * @author idp
  */
-public class TeamGradeWidget extends Widget<Report> {
+public class TeamGradeWidget extends StartTrackWidget<Report> {
 	
 	public TeamGradeWidget(Report report) {
 		super(report);
