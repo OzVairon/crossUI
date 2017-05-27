@@ -1,5 +1,6 @@
 package com.idp.engine.ui.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -57,6 +58,7 @@ public class AppScreen extends IdpBaseScreen {
 		super(true);
 		this.name = name;
 		this.navbarColor = navbarColor;
+		initStructure();
 		init();
 	}
 
@@ -121,19 +123,24 @@ public class AppScreen extends IdpBaseScreen {
 	 * Initialization of the class members. Called in constructor.
 	 */
 	protected void init() {
+
+
+	}
+
+	void initStructure() {
 		this.mainLayer = new MainLayer();
 		mainLayer.navbar.setBackgroundColor(navbarColor);
 		mainLayer.navbar.setText(name);
 		stage.addActor(mainLayer);
-
 		this.fader = new IdpColorPixmap(Color.WHITE).buildActor();
-		fader.setSize(mainLayer.getWidth(), mainLayer.getHeight());
+		//fader.setSize(mainLayer.getWidth(), mainLayer.getHeight());
+		fader.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		fader.setColor(Color.CLEAR);
 		fader.setTouchable(Touchable.disabled);
 		stage.addActor(fader);
 
-        this.popupLayer = new PopupLayer();
-        stage.addActor(popupLayer);
+		this.popupLayer = new PopupLayer();
+		stage.addActor(popupLayer);
 	}
 
     public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {

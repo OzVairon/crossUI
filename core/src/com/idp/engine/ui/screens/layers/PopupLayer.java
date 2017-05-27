@@ -24,7 +24,6 @@ public class PopupLayer extends Layer {
 
 
 	public PopupLayer() {
-        debug();
 		setBackgroundColor(Color.valueOf("00000000"));
 		setVisible(false);
 		setTouchable(Touchable.disabled);

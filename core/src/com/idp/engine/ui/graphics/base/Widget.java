@@ -5,8 +5,6 @@
  */
 package com.idp.engine.ui.graphics.base;
 
-import com.badlogic.gdx.graphics.Color;
-
 /**
  * Base Widget.
  *
@@ -18,7 +16,7 @@ public abstract class Widget<T> extends Rect {
 	protected T data;
 
 	public Widget(T data) {
-		setBackgroundColor(Color.CLEAR);
+		//setBackgroundColor(Color.CLEAR);
 		this.data = data;
 		init();
 	}

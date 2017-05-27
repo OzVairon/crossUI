@@ -15,6 +15,9 @@ public abstract class Layout extends Widget<Group>{
     protected final int mp = App.dp2px(12);  // medium gap
     protected final int lp = App.dp2px(16);  // large gap
 
+    protected boolean fixWidth = false;
+    protected boolean fixHeight = false;
+
     public int paddingLeft   = mp;
     public int paddingRight  = mp;
     public int paddingTop    = mp;

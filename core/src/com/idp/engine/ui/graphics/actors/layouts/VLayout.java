@@ -43,7 +43,7 @@ public class VLayout extends Layout {
 				a.setX(getWidth()-a.getWidth() - paddingRight);
 			h += a.getHeight() + gap;
 		}
-		setHeight(h + paddingBottom);
+		if (!fixHeight) setHeight(h + paddingBottom);
     }
 
 	
@@ -81,5 +81,9 @@ public class VLayout extends Layout {
         this.gap = gap;
         layout();
     }
+
+	public void setFixHeight(boolean fix) {
+		this.fixHeight = fix;
+	}
 
 }

@@ -24,6 +24,11 @@ public class TransitionManager extends AppScreen {
 		this.setName("Transition");
     }
 
+	@Override
+	void initStructure() {
+
+	}
+
 	private AppScreen inScreen;
 	private AppScreen outScreen;
 	private boolean nextontop;

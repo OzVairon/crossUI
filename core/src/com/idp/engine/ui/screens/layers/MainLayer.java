@@ -26,7 +26,7 @@ public class MainLayer extends Layer {
 		content.setName("content");
 		content.setY(navbar.getHeight());
 		content.setSize(getWidth(), Gdx.graphics.getHeight() - navbar.getHeight());
-		addActor(content);
 		addActor(navbar);
+		addActor(content);
 	}
 }
