@@ -65,7 +65,7 @@ public class VLayout extends Layout {
 	@Override
 	protected void setParent(Group parent) {
 		super.setParent(parent);
-		if (parent != null)
+		if (parent != null && !fixWidth)
 			setWidth(parent.getWidth());
 	}
 
@@ -82,8 +82,6 @@ public class VLayout extends Layout {
         layout();
     }
 
-	public void setFixHeight(boolean fix) {
-		this.fixHeight = fix;
-	}
+
 
 }

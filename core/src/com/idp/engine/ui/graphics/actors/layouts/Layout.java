@@ -48,5 +48,11 @@ public abstract class Layout extends Widget<Group>{
 
     public abstract void layout();
 
+    public void setFixHeight(boolean fix) {
+        this.fixHeight = fix;
+    }
+    public void setFixWidth(boolean fix) {
+        this.fixWidth = fix;
+    }
 
 }

@@ -122,7 +122,6 @@ public abstract class NetScreen<T> extends AppScreen {
 					getContentWrapper().scrollToStart(getScrollBackDuration());
 				}
 			};
-
 			listView.setWidth(Gdx.graphics.getWidth());
 			listView.setHeight(getMainLayer().content.getHeight() - listView.getY());
 			listView.getContentWrapper().setOverScroll(App.dp2px(48));
@@ -174,6 +173,7 @@ public abstract class NetScreen<T> extends AppScreen {
 	 * Initializes loader that is shown while data is downloading.
 	 */
 	protected void initLoader() {
+
 		this.loader = new Loader(App.getResources().getIcon("loader"));
 		loader.setPosition(Gdx.graphics.getWidth() / 2 - loader.getWidth() / 2,
 				App.dp2px(24) + loader.getHeight() / 2
@@ -187,6 +187,7 @@ public abstract class NetScreen<T> extends AppScreen {
 		if (loader == null)
 			initLoader();
 		loader.start();
+
 		addActor(loader);
 	}
 

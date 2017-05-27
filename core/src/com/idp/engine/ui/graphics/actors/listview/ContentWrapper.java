@@ -87,23 +87,6 @@ public class ContentWrapper extends Group {
 				actors.clear();
 			}
 
-//			@Override
-//			protected void drawChildren(Batch batch, float parentAlpha) {
-//				int i = 0;
-//				for (Actor a : getChildren()) {
-//					Vector2 pos = new Vector2(a.getX(), a.getY());
-//					pos = localToStageCoordinates(pos);
-//					if (pos.y + a.getHeight() < 0)
-//						a.setVisible(false);
-//					else if (pos.y > Gdx.graphics.getHeight())
-//						a.setVisible(false);
-//					else
-//						a.setVisible(true);
-//					System.out.println(i + ": " + a.isVisible() + " " + a.getClass().getSimpleName());
-//					i++;
-//				}
-//				super.drawChildren(batch, parentAlpha);
-//			}
         };
 
 		setTopLoader(topLoader);
@@ -116,6 +99,9 @@ public class ContentWrapper extends Group {
 		this.horizontal = false;
 	}
 
+	public void setHorisontal(boolean h) {
+		setHorizontal(h);
+	}
 
 	public Actor getTopLoader() {
 		return topLoader;
@@ -465,8 +451,8 @@ public class ContentWrapper extends Group {
 	}
 
 	protected void setHorizontal(boolean horizontal) {
-		throw new UnsupportedOperationException(
-				"vertical mode is default, horizontal mode is not implemented yet");
-//		this.horizontal = horizontal;
+//		throw new UnsupportedOperationException(
+//				"vertical mode is default, horizontal mode is not implemented yet");
+		this.horizontal = horizontal;
 	}
 }
