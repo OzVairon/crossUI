@@ -20,19 +20,13 @@ public class ImageActor extends Widget<TextureRegion> {
 
 	private TextureRegion sprite;
 
-
-
-
 	public ImageActor(TextureRegion sprite) {
 		super(sprite);
 	}
 
 	@Override
 	protected void init() {
-
 	}
-
-
 
 	public void setSprite(TextureRegion sprite) {
 		this.data = sprite;
@@ -54,6 +48,12 @@ public class ImageActor extends Widget<TextureRegion> {
 			batch.draw(region, getX(), getY(), getOriginX(), getOriginY(),
 					getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 		}
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		data.getTexture().dispose();
 	}
 }
 
