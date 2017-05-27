@@ -7,7 +7,7 @@ package com.idp.engine.ui.graphics.actors;/*
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Group;
+import com.idp.engine.ui.graphics.base.Widget;
 
 /**
  * A basic ui element with a texture.
@@ -16,31 +16,35 @@ import com.badlogic.gdx.scenes.scene2d.Group;
  *
  *
  */
-public class ImageActor extends Group {
+public class ImageActor extends Widget<TextureRegion> {
 
 	private TextureRegion sprite;
 
 
-	public ImageActor() {
 
-	}
 
 	public ImageActor(TextureRegion sprite) {
-		this.sprite = sprite;
+		super(sprite);
 	}
+
+	@Override
+	protected void init() {
+
+	}
+
 
 
 	public void setSprite(TextureRegion sprite) {
-		this.sprite = sprite;
+		this.data = sprite;
 	}
 
 	public TextureRegion getSprite() {
-		return sprite;
+		return data;
 	}
 
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		drawRegion(sprite, batch, parentAlpha);
+		drawRegion(data, batch, parentAlpha);
 	}
 
 	protected void drawRegion(TextureRegion region, Batch batch, float parentAlpha) {

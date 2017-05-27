@@ -11,6 +11,8 @@ import com.idp.engine.ui.graphics.base.Widget;
  */
 public class Text extends Widget<Label> {
 
+	private boolean busy = false;
+
 	public Text(Label l) {
 		super(l);
 	}
@@ -39,7 +41,11 @@ public class Text extends Widget<Label> {
 	}
 
 	public void layout() {
-		data.layout();
+		if (!busy) {
+			busy = true;
+			data.layout();
+			busy = false;
+		}
 	}
 
 	public GlyphLayout getGlyphLayout() {
@@ -58,6 +64,7 @@ public class Text extends Widget<Label> {
 
 	@Override
 	protected void init() {
+		setSize(data.getWidth(), data.getHeight());
 		addActor(data);
 	}
 }

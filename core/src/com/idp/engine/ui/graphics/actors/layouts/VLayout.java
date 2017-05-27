@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Container that layouts its children one under another
@@ -17,11 +16,8 @@ import org.ozv.crossUI.StartTrackApp;
 
  Created by ozvairon on 14.08.16.
  */
-public class VLayout extends Group {
-	
-	private final int sp = StartTrackApp.dp2px(8);   // small
-	private final int mp = StartTrackApp.dp2px(12);  // medium
-	private final int lp = StartTrackApp.dp2px(16);  // large
+public class VLayout extends Layout {
+
 
 	public enum Align {
 		Left, Center, Right
@@ -29,10 +25,6 @@ public class VLayout extends Group {
 
 	public Align align = Align.Left;
 	public int gap = sp;
-	public int paddingLeft   = mp;
-	public int paddingRight  = mp;
-	public int paddingTop    = mp;
-	public int paddingBottom = mp;
 
 
 	public void setAlign(Align align) {
@@ -54,14 +46,9 @@ public class VLayout extends Group {
 		setHeight(h + paddingBottom);
     }
 
-	@Override
-	protected void childrenChanged() {
-		super.childrenChanged();
-		layout();
-	}
 	
 	@Override
-	protected void drawChildren(Batch batch, float parentAlpha) {
+	public void drawChildren(Batch batch, float parentAlpha) {
 		for (Actor a : getChildren()) {
 			Vector2 pos = new Vector2(a.getX(), a.getY());
 			pos = localToStageCoordinates(pos);

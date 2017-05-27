@@ -5,18 +5,18 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Rect;
+import com.idp.engine.ui.graphics.base.Widget;
 
 /**
  * Checkbox element.
  *
  * Created by ozvairon on 31.08.16.
  */
-public class CheckBox extends Rect {
+public class CheckBox extends Widget<Boolean> {
 
-	private boolean checked;
 	private Text text;
 	private Rect box;
-	private com.idp.engine.ui.graphics.actors.ImageActor checker;
+	private ImageActor checker;
 
 
 	public CheckBox() {
@@ -29,8 +29,46 @@ public class CheckBox extends Rect {
 
 
 	public CheckBox(String text, final boolean checked) {
+		super(checked);
 		this.text = new Text(text, App.getResources().getLabelStyle("h2"));
-		checker = new com.idp.engine.ui.graphics.actors.ImageActor(App.getResources().getIcon("checker"));
+		checker = new ImageActor(App.getResources().getIcon("checker"));
+
+	}
+
+	public void setChecked(boolean c) {
+		this.data = c;
+		checker.setVisible(c);
+		if (c) {
+			box.setBorderColor(Color.valueOf("666666"));
+		}
+		else {
+			box.setBorderColor(Color.valueOf("999999"));
+		}
+		afterChange();
+	}
+
+	public boolean isChecked() {
+		return data;
+	}
+
+	private void layout() {
+		text.setY((getHeight() - text.getHeight()) / 2);
+		box.setY((getHeight() - box.getHeight()) / 2);
+		box.setX(getWidth() - box.getWidth());
+	}
+
+	@Override
+	protected void sizeChanged() {
+		super.sizeChanged();
+		layout();
+	}
+
+	public void afterChange() {
+
+	}
+
+	@Override
+	protected void init() {
 		checker.setSize(App.dp2px(14), App.dp2px(14));
 		checker.setColor(Color.valueOf("666666"));
 
@@ -51,39 +89,7 @@ public class CheckBox extends Rect {
 		box.setBackgroundColor(Color.WHITE);
 		addActor(this.text);
 		addActor(box);
-		setChecked(checked);
+		setChecked(data);
 		setHeight(App.dp2px(48));
-	}
-
-	public void setChecked(boolean c) {
-		this.checked = c;
-		checker.setVisible(c);
-		if (c) {
-			box.setBorderColor(Color.valueOf("666666"));
-		}
-		else {
-			box.setBorderColor(Color.valueOf("999999"));
-		}
-		afterChange();
-	}
-
-	public boolean isChecked() {
-		return checked;
-	}
-
-	private void layout() {
-		text.setY((getHeight() - text.getHeight()) / 2);
-		box.setY((getHeight() - box.getHeight()) / 2);
-		box.setX(getWidth() - box.getWidth());
-	}
-
-	@Override
-	protected void sizeChanged() {
-		super.sizeChanged();
-		layout();
-	}
-
-	public void afterChange() {
-
 	}
 }

@@ -1,9 +1,6 @@
 package com.idp.engine.ui.graphics.actors.layouts;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
-
-import org.ozv.crossUI.StartTrackApp;
 
 /**
  * Container that layouts its children one under another
@@ -15,22 +12,16 @@ import org.ozv.crossUI.StartTrackApp;
 
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class HLayout extends Group {
-	
-	protected final int sp = StartTrackApp.dp2px(8);   // small gap
-	protected final int mp = StartTrackApp.dp2px(12);  // medium gap
-	protected final int lp = StartTrackApp.dp2px(16);  // large gap
+public class HLayout extends Layout{
+
 
 	public int gap = sp;
-	public int paddingLeft   = mp;
-	public int paddingRight  = mp;
-	public int paddingTop    = mp;
-	public int paddingBottom = mp;
+
 	
 	private boolean justified;
 
 
-    public void layout() {
+	public void layout() {
 		float w = paddingLeft - gap;
 		float h = maxH();
 		for (Actor a : this.getChildren()) {
@@ -71,11 +62,6 @@ public class HLayout extends Group {
 		layout();
 	}
 
-	@Override
-	protected void childrenChanged() {
-		super.childrenChanged();
-		layout();
-	}
 	
 	private float maxH() {
 		float h = 0;
@@ -105,4 +91,8 @@ public class HLayout extends Group {
     }
 
 
+	@Override
+	protected void init() {
+
+	}
 }
