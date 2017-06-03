@@ -2,9 +2,7 @@ package com.idp.engine.ui.screens.layers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 
@@ -19,89 +17,19 @@ import de.tomgrill.gdxdialogs.core.listener.ButtonClickListener;
  */
 public class PopupLayer extends Layer {
 
-	private Actor popup;
-	private Action outAction;
+    private static GDXProgressDialog progressDialog;
 
-
-	public PopupLayer() {
-		setBackgroundColor(Color.valueOf("00000000"));
-		setVisible(false);
-		setTouchable(Touchable.disabled);
-	}
+    public PopupLayer() {
+        setBackgroundColor(Color.valueOf("00000000"));
+        setVisible(false);
+        setTouchable(Touchable.disabled);
+    }
 
     public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {
         getConfirmationDialog(titleString, message, confirm, null);
     }
 
-    public void getConfirmationDialog(String titleString, String message, ClickListener confirm, ClickListener cancel) {
-        Dialogs.showConfirmDialog(titleString, message, confirm, cancel);
-    }
-
-    public GDXProgressDialog getProgressDialog(String title, String message) {
-        return Dialogs.showProgressDialog(title, message);
-    }
-
-    public GDXButtonDialog getAlertDialog(String title, String message) {
-        return Dialogs.showAlertDialog(title, message);
-    }
-
-
-	public void pop(Actor a, PopAnimation type) {
-		if (a == null)
-			return;
-
-		setVisible(true);
-		setTouchable(Touchable.enabled);
-		popup = a;
-        a.setVisible(false);
-        addActor(popup);
-
-
-        a.addAction(Actions.sequence(
-                Actions.alpha(0),
-                Actions.visible(true),
-                Actions.delay(0.1f),
-                Actions.alpha(1, 0.2f, Interpolation.pow2In)
-        ));
-        popup.setX((getWidth() - popup.getWidth()) / 2);
-        popup.setY((getHeight() - popup.getHeight()) / 2);
-        outAction = Actions.sequence(
-                Actions.alpha(0, 0.2f, Interpolation.pow2In)
-        );
-
-	}
-
-	public void removePop() {
-		if (popup == null)
-			return;
-
-		popup.addAction(Actions.sequence(
-				outAction,
-				Actions.run(new Runnable() {
-					@Override
-					public void run() {
-						popup = null;
-						clearLayer();
-					}
-				})
-		));
-	}
-
-	private void clearLayer() {
-		clearChildren();
-		setVisible(false);
-		setTouchable(Touchable.disabled);
-	}
-
-	public enum PopAnimation {
-		Blink;
-	}
-}
-
-class Dialogs {
-
-    public static void showConfirmDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
-
+    public void getConfirmationDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(titleString);
         bDialog.setMessage(message);
@@ -143,22 +71,20 @@ class Dialogs {
         bDialog.build().show();
     }
 
-    public static GDXProgressDialog showProgressDialog(String titleString, String message) {
+    public void getProgressDialog(String title, String message) {
+        GDXProgressDialog pDialog = App.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
+        pDialog.setTitle(title);
+        pDialog.setMessage(message);
+        pDialog.build().show();
+        progressDialog = pDialog;
 
-        GDXProgressDialog progressDialog = App.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
-
-        progressDialog.setTitle(titleString);
-        progressDialog.setMessage(message);
-
-        progressDialog.build().show();
-
-        return progressDialog;
     }
 
-    public static GDXButtonDialog showAlertDialog(String titleString, String message) {
+    public void getAlertDialog(String title, String message) {
+        //Dialogs.showAlertDialog(title, message);
 
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
-        bDialog.setTitle(titleString);
+        bDialog.setTitle(title);
         bDialog.setMessage(message);
 
         bDialog.addButton("ОК");
@@ -174,8 +100,13 @@ class Dialogs {
                 }
             }
         });
-
         bDialog.build().show();
-        return bDialog;
+    }
+
+    public void dismissProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 }

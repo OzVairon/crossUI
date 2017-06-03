@@ -24,8 +24,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import de.tomgrill.gdxdialogs.core.dialogs.GDXProgressDialog;
-
 /**
  * Start screen of Startrack app.
  *
@@ -107,7 +105,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                         message += "\nОтчет будет сохранен";
                     }
 
-                    getConfirmationDialog("Вы точно хотите отправить отчет?", message, new ClickListener() {
+                    getPopupLayer().getConfirmationDialog("Вы точно хотите отправить отчет?", message, new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
                             final Report r = StartTrackApp.getInstance().getReport();
@@ -119,7 +117,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                     it.remove();
                             }
 
-                            final GDXProgressDialog d = getPopupLayer().getProgressDialog("Подождите", "Идет отправка отчета на сервер");
+                            getPopupLayer().getProgressDialog("Подождите", "Идет отправка отчета на сервер");
 
                             StartTrackApi.postReport(r, new JsonListener() {
 
@@ -127,14 +125,14 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                 public void loaded(String json, Map<String, List<String>> headers) {
                                     r.sent = true;
                                     StartTrackApp.saveState();
-                                    d.dismiss();
+                                    getPopupLayer().dismissProgressDialog();
                                     App.backScreen();
                                 }
 
                                 @Override
                                 public void failed(Throwable t) {
                                     System.out.println("Sending report is failed");
-                                    d.dismiss();
+                                    getPopupLayer().dismissProgressDialog();
 
                                     String errorMessage = "Нет соединения с сервером";
 

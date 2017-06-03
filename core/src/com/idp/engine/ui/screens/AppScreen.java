@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.base.Navbar;
@@ -124,7 +123,6 @@ public class AppScreen extends IdpBaseScreen {
 	 */
 	protected void init() {
 
-
 	}
 
 	void initStructure() {
@@ -142,10 +140,6 @@ public class AppScreen extends IdpBaseScreen {
 		this.popupLayer = new PopupLayer();
 		stage.addActor(popupLayer);
 	}
-
-    public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {
-		popupLayer.getConfirmationDialog(titleString, message, confirm);
-    }
 
     protected void clearScene() {
         stage.clear();

@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.actors.layouts.VLayout;
 import com.idp.engine.ui.graphics.base.Navbar;
 import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.ui.screens.NetScreen;
 
 import org.ozv.crossUI.StartTrackApp;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
 
 /**
  * Start screen of Startrack app.
@@ -78,7 +78,7 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
 	
 	protected void logOut() {
 
-        getConfirmationDialog("Вы точно хотите выйти?", "", new ClickListener() {
+        getPopupLayer().getConfirmationDialog("Вы точно хотите выйти?", "", new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 StartTrackApp.getInstance().logOut();

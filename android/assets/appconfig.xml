@@ -2,7 +2,7 @@
 <app package="org.ozv.crossUI">
     <mainscreen name = "LoginScreen" />
     <colors>
-        <color name="MAIN"                  value="006fc0"/>
+        <color name="MAIN"                  value="006FC0"/>
         <color name="BACK"                  value="f3f3f3"/>
         <color name="TEXT_NAVBAR"           value="ffffff"/>
         <color name="ELEMENT_BACK"          value="ffffff"/>
