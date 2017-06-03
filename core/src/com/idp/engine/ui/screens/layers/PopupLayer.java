@@ -81,8 +81,6 @@ public class PopupLayer extends Layer {
     }
 
     public void getAlertDialog(String title, String message) {
-        //Dialogs.showAlertDialog(title, message);
-
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(title);
         bDialog.setMessage(message);
