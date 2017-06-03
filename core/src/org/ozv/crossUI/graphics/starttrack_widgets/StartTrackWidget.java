@@ -7,7 +7,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.Gdx;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.base.Rect;
 
 /**
@@ -22,13 +22,13 @@ public abstract class StartTrackWidget<T> extends Rect {
 	protected final int mp = App.dp2px(12); // medium gap
 	protected final int lp = App.dp2px(16); // large gap
 
-	protected final VLayout layout;
+	protected final VerticalLayout layout;
 	protected T data;
 
 	
 	public StartTrackWidget(T data) {
 		setBackgroundColor(App.Colors.WIDGET_WHITE);
-		this.layout = new VLayout();
+		this.layout = new VerticalLayout();
 		addActor(layout);
 		this.data = data;
 		init();

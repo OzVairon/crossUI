@@ -8,7 +8,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets.base;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.layouts.HLayout;
+import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
 import com.idp.engine.ui.graphics.actors.ImageActor;
 
 import org.ozv.crossUI.StartTrackApp;
@@ -19,7 +19,7 @@ import org.ozv.crossUI.api.model.Grade;
  *
  * @author idp
  */
-public class BinaryRadioGroup extends HLayout {
+public class BinaryRadioGroup extends HorizontalLayout {
 	
 	private RadioButton selected;
 

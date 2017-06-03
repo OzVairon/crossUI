@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.Text;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.base.Navbar;
 import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.ui.screens.NetScreen;
@@ -23,7 +23,7 @@ import org.ozv.crossUI.StartTrackApp;
  */
 public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
 
-	protected VLayout exitButton;
+	protected VerticalLayout exitButton;
 	
 	
 	public StartTrackBaseScreen(String title) {

@@ -144,4 +144,10 @@ public class AppScreen extends IdpBaseScreen {
     protected void clearScene() {
         stage.clear();
     }
+
+	protected void hideNavBar() {
+		getNavbar().setVisible(false);
+		getMainLayer().content.setY(0);
+		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
+	}
 }

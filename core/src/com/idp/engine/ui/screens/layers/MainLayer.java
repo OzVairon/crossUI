@@ -7,8 +7,10 @@ package com.idp.engine.ui.screens.layers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.idp.engine.ui.graphics.actors.layouts.AbsoluteLayout;
+import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
 import com.idp.engine.ui.graphics.actors.layouts.Layout;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.base.Navbar;
 
 /**
@@ -25,11 +27,28 @@ public class MainLayer extends Layer {
 	public MainLayer() {
 		this.navbar = new Navbar();
 		addActor(navbar);
-		setContentLayout(new VLayout());
+		setContentLayout(LayoutType.Vertical);
 		addActor(content);
 	}
 
-	void setContentLayout(Layout layout) {
+	public void setContentLayout(LayoutType type) {
+		Layout layout;
+		switch (type) {
+			case Absolute: {
+				layout = new AbsoluteLayout();
+				break;
+			}
+			case Vertical: {
+				layout = new VerticalLayout();
+				break;
+			}
+			case Horizontal: {
+				layout = new HorizontalLayout();
+				break;
+			} default: {
+				return;
+			}
+		}
 
 		layout.clear();
 		if (this.content != null) {
@@ -44,5 +63,11 @@ public class MainLayer extends Layer {
 		content.setName("content");
 		content.setY(navbar.getHeight());
 		content.setSize(getWidth(), Gdx.graphics.getHeight() - navbar.getHeight());
+	}
+
+
+
+	public enum LayoutType {
+		Vertical, Horizontal, Absolute
 	}
 }

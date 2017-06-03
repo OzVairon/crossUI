@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 
  Created by ozvairon on 14.08.16.
  */
-public class VLayout extends Layout {
+public class VerticalLayout extends Layout {
 
 
 	public enum Align {

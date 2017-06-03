@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.actors.IdpTextField;
 import com.idp.engine.ui.graphics.actors.ImageActor;
 import com.idp.engine.ui.graphics.actors.Text;
@@ -26,7 +26,7 @@ import org.ozv.crossUI.api.StartTrackApi;
  */
 public class LoginScreen extends AppScreen {
 
-	private VLayout layout;
+	private VerticalLayout layout;
 	private TextField email;
     private Text signIn;
     private Loader loader;
@@ -49,8 +49,8 @@ public class LoginScreen extends AppScreen {
 		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
 		getMainLayer().setBackgroundColor(App.Colors.WIDGET_WHITE);
 
-		layout = new VLayout();
-		layout.setAlign(VLayout.Align.Center);
+		layout = new VerticalLayout();
+		layout.setAlign(VerticalLayout.Align.Center);
 		layout.setWidth(getMainLayer().getWidth());
 		layout.setPadding(0);
 		layout.paddingTop = App.dp2px(48);

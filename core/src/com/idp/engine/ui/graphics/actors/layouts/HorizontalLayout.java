@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
  * @author dhabensky <dhabensky@idp-crew.com>
  */
-public class HLayout extends Layout{
+public class HorizontalLayout extends Layout{
 
 
 	public int gap = sp;

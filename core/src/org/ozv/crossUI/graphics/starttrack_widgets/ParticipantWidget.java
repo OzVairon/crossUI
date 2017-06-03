@@ -7,8 +7,8 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.layouts.HLayout;
-import com.idp.engine.ui.graphics.actors.layouts.VLayout;
+import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
@@ -33,7 +33,7 @@ public class ParticipantWidget extends StartTrackWidget<Participant> {
 		layout.paddingBottom = 0;
 		layout.paddingLeft = 0;
 		
-		HLayout hl = new HLayout();
+		HorizontalLayout hl = new HorizontalLayout();
 		hl.paddingTop = 0;
 		hl.paddingBottom = 0;
 		hl.paddingLeft = 0;
@@ -50,7 +50,7 @@ public class ParticipantWidget extends StartTrackWidget<Participant> {
 		textRect.addActor(number);
         textRect.setBackgroundColor(App.Colors.WIDGET_BORDER);
 
-        VLayout nameLayout = new VLayout();
+        VerticalLayout nameLayout = new VerticalLayout();
         nameLayout.gap = 0;
         nameLayout.setPadding(StartTrackApp.dp2px(20));
 		
