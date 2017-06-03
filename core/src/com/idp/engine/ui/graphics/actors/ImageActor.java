@@ -16,12 +16,13 @@ import com.idp.engine.ui.graphics.base.Widget;
  *
  *
  */
-public class ImageActor extends Widget<TextureRegion> {
+public class ImageActor extends Widget {
 
-	private TextureRegion sprite;
+
+	private TextureRegion data;
 
 	public ImageActor(TextureRegion sprite) {
-		super(sprite);
+		setSprite(sprite);
 	}
 
 	@Override

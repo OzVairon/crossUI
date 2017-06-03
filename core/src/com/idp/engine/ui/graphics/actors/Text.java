@@ -10,10 +10,9 @@ import com.idp.engine.ui.graphics.base.Widget;
  *
  * Created by ozvairon on 01.08.16.
  */
-public class Text extends Widget<String> {
+public class Text extends Widget {
 
 	private boolean busy = false;
-
 	private Label label;
 
 	public Text(String text) {
@@ -21,16 +20,18 @@ public class Text extends Widget<String> {
 	}
 
 	public Text(String text, Label.LabelStyle s) {
-		super(text);
 		label = new Label(text, s);
 		setSize(label.getWidth(), label.getHeight());
 		addActor(label);
 	}
 
 	public void setText(CharSequence newText) {
-		data = (String) newText;
 		label.setText(newText);
 		label.layout();
+	}
+
+	public String getText() {
+		return String.valueOf(this.label.getText());
 	}
 
 	@Override

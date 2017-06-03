@@ -11,20 +11,13 @@ package com.idp.engine.ui.graphics.base;
  * @param <T>
  * @author idp
  */
-public abstract class Widget<T> extends Rect {
+public abstract class Widget extends Rect {
 
-	protected T data;
 
-	public Widget(T data) {
-		//setBackgroundColor(Color.CLEAR);
-		this.data = data;
+	public Widget() {
 		init();
 	}
-	
-	public T getData() {
-		return data;
-	}
-	
+
 	protected abstract void init();
 
 	

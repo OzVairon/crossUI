@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.idp.engine.resources.assets.IdpColorPixmap;
-import com.idp.engine.ui.graphics.base.Rect;
+import com.idp.engine.ui.graphics.base.Widget;
 
 /**
  * Group that contains {@link TextField} and a line under it.
@@ -21,7 +21,7 @@ import com.idp.engine.ui.graphics.base.Rect;
  *
  *
  */
-public class IdpTextField extends Rect {
+public class IdpTextField extends Widget {
 
 	private final TextField textField;
 	private final Actor thinUnderline;
@@ -189,5 +189,10 @@ public class IdpTextField extends Rect {
 
 	private void onBlur() {
 		underline.addAction(Actions.sizeTo(0, underline.getHeight(), 0.4f, Interpolation.pow2Out));
+	}
+
+	@Override
+	protected void init() {
+
 	}
 }

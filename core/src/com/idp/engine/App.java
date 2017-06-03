@@ -107,6 +107,7 @@ public class App extends Game {
 
 			} catch (Exception ex) {
 				screenObject = new AppScreen("DUMMY SCREEN");
+				ex.printStackTrace();
 			}
 
 			screenManager.setStartScreen((AppScreen) screenObject);

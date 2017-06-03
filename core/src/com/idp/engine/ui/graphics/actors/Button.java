@@ -10,10 +10,10 @@ import com.idp.engine.ui.graphics.base.Widget;
  *
  * Created by ozvairon on 31.08.16.
  */
-public class Button extends Widget<Text> {
+public class Button extends Widget {
 
 
-
+	private Text data;
 
 	public Button() {
 		this("button");
@@ -21,7 +21,7 @@ public class Button extends Widget<Text> {
 
 
 	public Button(String t) {
-		super(new Text(t, App.getResources().getLabelStyle("h1")));
+		this.data = new Text(t, App.getResources().getLabelStyle("h1"));
         this.data.setAlignment(Align.center);
         this.addActor(data);
 	}

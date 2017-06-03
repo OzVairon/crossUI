@@ -1,6 +1,5 @@
 package com.idp.engine.ui.graphics.actors.layouts;
 
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Widget;
 
@@ -9,7 +8,7 @@ import com.idp.engine.ui.graphics.base.Widget;
  * Created by ozvairon on 27.05.17.
  */
 
-public abstract class Layout extends Widget<Group>{
+public abstract class Layout extends Widget{
 
     protected final int sp = App.dp2px(8);   // small gap
     protected final int mp = App.dp2px(12);  // medium gap
@@ -23,9 +22,7 @@ public abstract class Layout extends Widget<Group>{
     public int paddingTop    = mp;
     public int paddingBottom = mp;
 
-    public Layout() {
-        super(new Group());
-    }
+
 
     @Override
     protected void init() {

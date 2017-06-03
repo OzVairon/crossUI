@@ -12,12 +12,12 @@ import com.idp.engine.ui.graphics.base.Widget;
  *
  * Created by ozvairon on 31.08.16.
  */
-public class CheckBox extends Widget<Boolean> {
+public class CheckBox extends Widget {
 
 	private Text text;
 	private Rect box;
 	private ImageActor checker;
-
+	private boolean data;
 
 	public CheckBox() {
 		this("");
@@ -29,10 +29,9 @@ public class CheckBox extends Widget<Boolean> {
 
 
 	public CheckBox(String text, final boolean checked) {
-		super(checked);
 		this.text = new Text(text, App.getResources().getLabelStyle("h2"));
 		checker = new ImageActor(App.getResources().getIcon("checker"));
-
+		data = checked;
 	}
 
 	public void setChecked(boolean c) {
