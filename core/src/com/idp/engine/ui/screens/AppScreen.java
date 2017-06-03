@@ -124,6 +124,7 @@ public class AppScreen extends IdpBaseScreen {
 		else created = true;
 	}
 
+
 	private void initStructure() {
 		this.mainLayer = new MainLayer();
 		mainLayer.navbar.setBackgroundColor(navbarColor);
