@@ -12,7 +12,7 @@ import com.idp.engine.base.AppUtils;
  *
  * Created by ozvairon on 29.07.16.
  */
-public class TransitionManager extends AppScreen {
+public class TransitionManager extends IdpBaseScreen {
 
 	public static enum TransitionType {
 		FADE, SLIDE_LEFT_RIGHT, SLIDE_RIGHT_LEFT, SLIDE_UP_DOWN, BLINK, SLIDE_DOWN_UP
@@ -20,21 +20,18 @@ public class TransitionManager extends AppScreen {
 
     public TransitionManager() {
         super();
-        this.clearScene();
+        //this.clearScene();
 		this.setName("Transition");
+		stage.getRoot().setTouchable(Touchable.disabled);
     }
 
-	@Override
-	void initStructure() {
-
-	}
 
 	private AppScreen inScreen;
 	private AppScreen outScreen;
 	private boolean nextontop;
 
-	@Override
-	protected void init() {
+
+	public void init() {
 		stage.getRoot().setTouchable(Touchable.disabled);
 	}
 
@@ -59,15 +56,11 @@ public class TransitionManager extends AppScreen {
 	 */
 	public void fadeScreens(TransitionType type, AppScreen nextScreen, float duration) {
 
-		inScreen = (AppScreen) App.getInstance().getScreen();
-
-
-		if (inScreen instanceof TransitionManager) {
-			//inScreen = this.outScreen;
+		if (App.getInstance().getScreen() instanceof TransitionManager) {
 			return;
 		}
 		else {
-            fadeScreens(type, inScreen, nextScreen, duration);
+            fadeScreens(type, (AppScreen) App.getInstance().getScreen(), nextScreen, duration);
 		}
 	}
 

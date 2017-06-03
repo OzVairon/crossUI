@@ -58,7 +58,7 @@ public class AppScreen extends IdpBaseScreen {
 		this.name = name;
 		this.navbarColor = navbarColor;
 		initStructure();
-		init();
+		//init();
 	}
 
 
@@ -121,11 +121,11 @@ public class AppScreen extends IdpBaseScreen {
 	/**
 	 * Initialization of the class members. Called in constructor.
 	 */
-	protected void init() {
+	public void init() {
 
 	}
 
-	void initStructure() {
+	private void initStructure() {
 		this.mainLayer = new MainLayer();
 		mainLayer.navbar.setBackgroundColor(navbarColor);
 		mainLayer.navbar.setText(name);

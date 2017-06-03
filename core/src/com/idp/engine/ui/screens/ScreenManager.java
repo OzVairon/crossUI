@@ -59,6 +59,7 @@ public class ScreenManager {
 
     public void setScreen(AppScreen screen) {
         currentScreen = screen;
+        screen.init();
         App.getInstance().setScreen(screen);
     }
 
@@ -72,7 +73,10 @@ public class ScreenManager {
         if (currentScreen == null) {
             setScreen(screen);
         } else {
-            if (currentScreen == transitionManager) return;
+//            if (currentScreen == transitionManager)
+//                return;
+            screen.init();
+            transitionManager.init();
             transitionManager.fadeScreens(type, screen, 0.4f);
         }
     }
@@ -83,7 +87,6 @@ public class ScreenManager {
 
     public void start() {
         screenStack.clear();
-        currentScreen = startScreen;
         setScreen(startScreen);
     }
 

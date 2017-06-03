@@ -31,10 +31,10 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
 	}
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
-        getNavbar().setColor(App.Colors.MAIN);
-        getNavbar().setBorder(0);
+        //getNavbar().setColor(App.Colors.MAIN);
+        //getNavbar().setBorder(0);
 
         Rect optIcon = new Navbar.NavButton("exit");
         optIcon.setBackgroundColor(Color.CLEAR);

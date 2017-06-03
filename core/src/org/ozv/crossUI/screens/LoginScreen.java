@@ -39,7 +39,7 @@ public class LoginScreen extends AppScreen {
 
 
 	@Override
-	protected void init() {
+	public void init() {
 		super.init();
 
 

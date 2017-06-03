@@ -53,16 +53,10 @@ public abstract class NetScreen<T> extends AppScreen {
 	protected String errorMessage;
 
 
-	/**
-	 * Calls {@link TabScreen#TabScreen()}.
-	 */
 	public NetScreen() {
 		this("");
 	}
 
-	/**
-	 * Calls {@link TabScreen#TabScreen(String)}.
-	 */
 	public NetScreen(String name) {
 		super(name);
 		this.errorMessage = "Ошибка, попробуйте позже";
