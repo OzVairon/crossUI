@@ -112,7 +112,7 @@ public class StartTrackApp extends App {
 		AppUtils.files.writeLocalString("token", token);
 		StartTrackApi.setPrivateToken(token);
 
-		showScreen(new ModulesScreen());
+		setCurrentScreen(new ModulesScreen());
 		AppUtils.input.setCatchBackKey(true);
 	}
 
@@ -122,7 +122,7 @@ public class StartTrackApp extends App {
 	public void logOut() {
 		AppUtils.files.local("token").delete();
 		deleteState();
-		showScreen(new LoginScreen());
+		setCurrentScreen(new LoginScreen());
 	}
 
 	/**
@@ -131,4 +131,6 @@ public class StartTrackApp extends App {
 	public static StartTrackApp getInstance() {
 		return (StartTrackApp) instance;
 	}
+
+
 }

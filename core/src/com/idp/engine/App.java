@@ -205,7 +205,7 @@ public class App extends Game {
 	}
 
 	@Override
-	public void setScreen(Screen screen) {
+	public final void setScreen(Screen screen) {
 		super.setScreen(screen);
 	}
 
@@ -215,7 +215,7 @@ public class App extends Game {
 		return App.getInstance().screenManager.getCurrentScreen();
 	}
 
-	public static void showScreen(AppScreen screen) { getInstance().screenManager.setScreen(screen);}
+	public static void setCurrentScreen(AppScreen screen) { getInstance().screenManager.setScreen(screen);}
 
 	/**
 	 * Adds new screen to the screen stack.
@@ -257,6 +257,4 @@ public class App extends Game {
             }
 		}
 	}
-
-
 }

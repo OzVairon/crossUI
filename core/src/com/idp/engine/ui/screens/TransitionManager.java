@@ -98,7 +98,7 @@ public class TransitionManager extends IdpBaseScreen {
 								),
 								Actions.run(new Runnable() {
 									public void run() {
-										App.showScreen(outScreen);
+										App.setCurrentScreen(outScreen);
 									}
 								})
 						)
