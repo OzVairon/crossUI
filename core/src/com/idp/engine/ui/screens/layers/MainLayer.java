@@ -6,7 +6,6 @@
 package com.idp.engine.ui.screens.layers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.idp.engine.ui.graphics.actors.layouts.AbsoluteLayout;
 import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
 import com.idp.engine.ui.graphics.actors.layouts.Layout;
@@ -23,11 +22,10 @@ public class MainLayer extends Layer {
 	public final Navbar navbar;
 	public Layout content;
 
-
 	public MainLayer() {
 		this.navbar = new Navbar();
 		addActor(navbar);
-		setContentLayout(LayoutType.Vertical);
+		setContentLayout(LayoutType.Absolute);
 		addActor(content);
 	}
 
@@ -51,11 +49,16 @@ public class MainLayer extends Layer {
 		}
 
 		layout.clear();
+
 		if (this.content != null) {
-			for (Actor a : content.getChildren()) {
-				layout.addActor(a);
-			}
+//			for (Actor a : content.getChildren()) {
+//				layout.addActor(a);
+//			}
+			this.removeActor(this.content);
 		}
+
+		this.addActor(layout);
+
 		content = layout;
 		content.setFixHeight(true);
 		content.setFixWidth(true);

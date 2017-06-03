@@ -24,6 +24,7 @@ public class AppScreen extends IdpBaseScreen {
 	private String name;
 	private Actor fader;
 
+	private boolean created = false;
 
 	/**
 	 * Calls {@link AppScreen#AppScreen(String, Color)} with empty name and white color.
@@ -118,11 +119,9 @@ public class AppScreen extends IdpBaseScreen {
 		fader.addAction(Actions.alpha(0f, duration));
 	}
 
-	/**
-	 * Initialization of the class members. Called in constructor.
-	 */
 	public void init() {
-
+		if (created) return;
+		else created = true;
 	}
 
 	private void initStructure() {
@@ -150,4 +149,5 @@ public class AppScreen extends IdpBaseScreen {
 		getMainLayer().content.setY(0);
 		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
 	}
+
 }

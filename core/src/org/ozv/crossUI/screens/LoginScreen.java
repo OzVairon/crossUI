@@ -41,12 +41,7 @@ public class LoginScreen extends AppScreen {
 	@Override
 	public void init() {
 		super.init();
-
-
-
-		getNavbar().setVisible(false);
-		getMainLayer().content.setY(0);
-		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
+		hideNavBar();
 		getMainLayer().setBackgroundColor(App.Colors.WIDGET_WHITE);
 
 		layout = new VerticalLayout();
