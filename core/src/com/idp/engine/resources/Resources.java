@@ -3,13 +3,16 @@ package com.idp.engine.resources;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader;
 import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -51,6 +54,10 @@ public class Resources {
      */
     public void loadFont(String key, String path, int size, Color color) {
 		fonts.put(key, new FontAndColor(man.loadFont("fonts/" + path, App.dp2px(size)), color));
+    }
+
+    public void loadSystemFont(String key, String path, int size, Color color) {
+        fonts.put(key, new FontAndColor(man.loadFont("system/fonts/" + path, App.dp2px(size)), color));
     }
     
     /**
@@ -141,7 +148,19 @@ public class Resources {
         for (FontInfo f : list) {
             f.load();
         }
+    }
 
+    public void loadSystemFonts() {
+        ArrayList<FontInfo> fonts = new ArrayList<FontInfo>();
+        fonts.add(new FontInfo("navbar", "SF-UI-Display-Medium.ttf", "18", "ffffff"));
+        fonts.add(new FontInfo("label", "SF-UI-Display-Regular.ttf", "14", "666666"));
+        fonts.add(new FontInfo("h1", "SF-UI-Display-Regular.ttf", "16", "000000"));
+        fonts.add(new FontInfo("text", "SF-UI-Text-Regular.ttf", "14", "666666"));
+        fonts.add(new FontInfo("text_field", "SF-UI-Display-Light.ttf", "16", "000000"));
+
+        for (FontInfo f : fonts) {
+            f.loadSystem();
+        }
 
     }
 
@@ -160,6 +179,10 @@ public class Resources {
 
         public void load() {
             loadFont(this.name, this.path, Integer.parseInt(size), Color.valueOf(color));
+        }
+
+        public void loadSystem() {
+            loadSystemFont(this.name, this.path, Integer.parseInt(size), Color.valueOf(color));
         }
 
         @Override

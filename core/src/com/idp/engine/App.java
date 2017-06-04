@@ -78,6 +78,7 @@ public class App extends Game {
 
 		this.resources = new Resources();
 		screenManager = new ScreenManager();
+		this.resources.loadSystemFonts();
 		loadXmlConfig();
 
 		setGLColor(Colors.MAIN);
@@ -251,6 +252,7 @@ public class App extends Game {
                 try {
                     Field f = ClassReflection.getField(Colors.class, e.getAttribute("name"));
                     f.set(null, Color.valueOf(e.getAttribute("value")));
+					colors.put(e.getAttribute("name"), Color.valueOf(e.getAttribute("value")));
                 } catch (ReflectionException e1) {
                     colors.put(e.getAttribute("name"), Color.valueOf(e.getAttribute("value")));
                 }

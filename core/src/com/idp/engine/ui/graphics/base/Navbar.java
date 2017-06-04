@@ -71,8 +71,6 @@ public class Navbar extends Rect {
 		rightIcons.setX(getWidth() - padright - iconSize);
 		rightIcons.setY((h - iconSize) / 2);
 
-		rightIcons.debug();
-
 		addActor(leftIcons);
 		addActor(textGroup);
 		addActor(rightIcons);

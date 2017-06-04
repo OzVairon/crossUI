@@ -3,31 +3,19 @@
     <mainscreen name = "LoginScreen" />
     <colors>
         <color name="MAIN"                  value="006FC0"/>
-        <color name="BACK"                  value="f3f3f3"/>
         <color name="TEXT_NAVBAR"           value="ffffff"/>
-        <color name="ELEMENT_BACK"          value="ffffff"/>
         <color name="ELEMENT_BACK_SELECTED" value="d6fbb1"/>
-        <color name="ELEMENT_BORDER"        value="e7e7e7"/>
         <color name="ICON_TICK"             value="396809"/>
         <color name="ICON_CANCEL"           value="ff3333"/>
         <color name="TEXT_NUMBER"           value="666666"/>
     </colors>
 
     <fonts>
-        <font name="navbar"             path="SF-UI-Display-Medium.ttf"     size="18" color="ffffff"/>
-        <font name="label"              path="SF-UI-Display-Regular.ttf"    size="14" color="666666"/>
-        <font name="debug_info"         path="SF-UI-Display-Regular.ttf"    size="14" color="ffffff"/>
-        <font name="h1"                 path="SF-UI-Display-Regular.ttf"    size="16" color="000000"/>
         <font name="h1-bold"            path="SF-UI-Display-Bold.ttf"       size="16" color="000000"/>
         <font name="number"             path="SF-UI-Display-Bold.ttf"       size="18" color="666666"/>
-        <font name="text"               path="SF-UI-Text-Regular.ttf"       size="14" color="666666"/>
-        <font name="text_field"         path="SF-UI-Display-Light.ttf"      size="16" color="000000"/>
         <font name="logo"               path="SF-UI-Display-Bold.ttf"       size="25" color="006fc0"/>
         <font name="header"             path="SF-UI-Text-Bold.ttf"          size="12" color="666666"/>
         <font name="participant-number" path="SF-UI-Text-Bold.ttf"          size="20" color="666666"/>
-        <font name="popup-title"        path="SF-UI-Text-Bold.ttf"          size="14" color="000000"/>
-        <font name="popup-buttons"      path="SF-UI-Text-Bold.ttf"          size="16" color="000000"/>
-        <font name="popup-text"         path="SF-UI-Text-Regular.ttf"       size="14" color="666666"/>
     </fonts>
 
 </app>
