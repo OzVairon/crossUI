@@ -9,8 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.ImageActor;
@@ -24,20 +22,17 @@ import com.idp.engine.ui.graphics.actors.Text;
  */
 public class Navbar extends Rect {
 
-	private final com.idp.engine.ui.graphics.actors.Text text;
+	private final Text text;
 	private final Group textGroup;
 	private final Group leftIcons;
 	private final Group rightIcons;
 
 	private Color contentColor;
 	private final float iconSize;
-	private boolean hasDropDown;
 
-	private Rect dropdownMenu;
 
 
 	public Navbar() {
-
 
 		setName("navbar");
 		this.contentColor = App.Colors.TEXT_NAVBAR;
@@ -45,8 +40,6 @@ public class Navbar extends Rect {
 		float h = App.dp2px(56);
 
 		setSize(Gdx.graphics.getWidth(), h);
-		setBorder(0, 0, 0, 0);
-		setBorderColor(Color.BLACK);
 		setBackgroundColor(Color.CLEAR);
 		float padleft = App.dp2px(8);
 		float padright = App.dp2px(8);
@@ -78,6 +71,7 @@ public class Navbar extends Rect {
 		rightIcons.setX(getWidth() - padright - iconSize);
 		rightIcons.setY((h - iconSize) / 2);
 
+		rightIcons.debug();
 
 		addActor(leftIcons);
 		addActor(textGroup);
@@ -89,54 +83,10 @@ public class Navbar extends Rect {
 
 	public void setText(String name) {
 		text.setText(name);
-		if (hasDropDown) {
-			float x = text.getX() + (text.getWidth() + text.getGlyphLayout().width) * 0.5f +
-							App.dp2px(8);
-			textGroup.findActor("chevron").setX(x);
-		}
 	}
 
 	public Group getTextGroup() {
 		return textGroup;
-	}
-
-	public void setDropdownMenu(Rect menu) {
-		dropdownMenu = menu;
-		if (menu != null) {
-			menu.setVisible(false);
-			if (!hasDropDown)
-				addChevron();
-			this.hasDropDown = true;
-		}
-		else {
-			if (hasDropDown)
-				removeChevron();
-			this.hasDropDown = false;
-		}
-	}
-
-	public void openMenu() {
-		getParent().addActorBefore(this, dropdownMenu);
-		dropdownMenu.clearActions();
-		dropdownMenu.setY(getHeight() - dropdownMenu.getHeight());
-		dropdownMenu.setVisible(true);
-		dropdownMenu.setTouchable(Touchable.enabled);
-		dropdownMenu.addAction(Actions.moveTo(0, getHeight(), 0.2f));
-	}
-
-	public void closeMenu() {
-		dropdownMenu.clearActions();
-		dropdownMenu.addAction(Actions.sequence(Actions.moveTo(0, getHeight() - dropdownMenu.getHeight(), 0.2f),
-				Actions.visible(false),
-				Actions.touchable(Touchable.disabled),
-				Actions.removeActor(dropdownMenu)
-		));
-	}
-
-	public void flipChevron() {
-		com.idp.engine.ui.graphics.actors.ImageActor i = textGroup.findActor("chevron");
-		if (i != null)
-			i.getSprite().flip(false, true);
 	}
 
 	public void setContentColor(Color contentColor) {
@@ -154,6 +104,10 @@ public class Navbar extends Rect {
 		return contentColor;
 	}
 
+	public float getIconSize() {
+		return iconSize;
+	}
+
 	public Group getLeftIcons() {
 		return leftIcons;
 	}
@@ -162,30 +116,9 @@ public class Navbar extends Rect {
 		return rightIcons;
 	}
 
-	public float getIconSize() {
-		return iconSize;
-	}
-
-	private void addChevron() {
-		ImageActor i = new ImageActor(App.getResources().getIcon("chevron"));
-		i.setColor(Color.BLACK);
-		i.setSize(App.dp2px(12), App.dp2px(12));
-		i.setName("chevron");
-		textGroup.addActor(i);
-		i.setX(text.getX() + (text.getWidth() + text.getGlyphLayout().width) * 0.5f + App.dp2px(
-				8));
-		i.setY((textGroup.getHeight() - i.getHeight()) / 2);
-	}
-
-	private void removeChevron() {
-		if (textGroup.findActor("chevron") != null) {
-			textGroup.removeActor(textGroup.findActor("chevron"));
-		}
-	}
-
 	public static class NavButton extends Rect {
 
-		private final com.idp.engine.ui.graphics.actors.ImageActor icon;
+		private final ImageActor icon;
 		private final float padding;
 
 		public NavButton(String name) {

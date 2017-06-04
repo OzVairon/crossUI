@@ -29,13 +29,6 @@ public class IndicatorsScreen extends StartTrackBaseScreen<Participant> {
 		}
 		listView.getContentWrapper().setSpace(App.dp2px(8));
 	}
-
-
-	@Override
-	public void show() {
-		getNavbar().setColor(App.Colors.MAIN);
-		super.show();
-	}
 	
 	@Override
 	protected void loadData() {
