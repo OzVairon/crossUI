@@ -97,9 +97,10 @@ public class App extends Game {
 			String packageName = config.getAttribute("package");
 			String screenname = config.getChildByName("mainscreen").getAttribute("name");
 			Colors.loadColorScheme(config.getChildByName("colors"));
-			this.resources .loadFonts(config.getChildByName("fonts"));
-			this.resources .loadIcons("icons.atlas");
-			this.resources .awaitLoad();
+			this.resources.loadFonts(config.getChildByName("fonts"));
+			this.resources.loadIcons("icons.atlas");
+			this.resources.loadSystemIcons("system/icons/sys_icons.atlas");
+			this.resources.awaitLoad();
 
 
 			Object screenObject = null;

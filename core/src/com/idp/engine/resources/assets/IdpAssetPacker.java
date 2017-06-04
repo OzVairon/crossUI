@@ -21,7 +21,7 @@ public class IdpAssetPacker {
         try {
 
             boolean forcePack = false;
-//			forcePack = true;
+			//forcePack = true;
 
             String srcPath = new File("../assets_raw").getCanonicalPath();
             String dstPath = new File("").getCanonicalPath();

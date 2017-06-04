@@ -4,129 +4,45 @@ size: 1024,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-accept
-  rotate: false
-  xy: 684, 148
-  size: 96, 96
-  orig: 96, 96
-  offset: 0, 0
-  index: -1
-answer
-  rotate: false
-  xy: 2, 2
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-back
-  rotate: false
-  xy: 978, 212
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 cancel
   rotate: false
-  xy: 782, 148
+  xy: 474, 98
   size: 96, 96
   orig: 96, 96
-  offset: 0, 0
-  index: -1
-comments
-  rotate: false
-  xy: 844, 98
-  size: 48, 48
-  orig: 48, 48
   offset: 0, 0
   index: -1
 cross
   rotate: false
-  xy: 880, 148
+  xy: 572, 98
   size: 96, 96
   orig: 96, 96
-  offset: 0, 0
-  index: -1
-date
-  rotate: false
-  xy: 52, 2
-  size: 48, 48
-  orig: 48, 48
   offset: 0, 0
   index: -1
 exit
   rotate: false
-  xy: 538, 2
+  xy: 670, 98
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: -1
-forward
+fill_round
   rotate: false
-  xy: 684, 50
-  size: 96, 96
-  orig: 96, 96
-  offset: 0, 0
-  index: -1
-loader
-  rotate: false
-  xy: 894, 98
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-logo-mobile
-  rotate: false
-  xy: 2, 52
-  size: 324, 192
-  orig: 324, 192
-  offset: 0, 0
-  index: -1
-medal
-  rotate: false
-  xy: 538, 100
+  xy: 328, 50
   size: 144, 144
   orig: 144, 144
   offset: 0, 0
   index: -1
-medal_empty
+forward
   rotate: false
-  xy: 328, 36
-  size: 208, 208
-  orig: 208, 208
+  xy: 768, 98
+  size: 96, 96
+  orig: 96, 96
   offset: 0, 0
   index: -1
-options
+logo-mobile
   rotate: false
-  xy: 782, 86
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
-profile
-  rotate: false
-  xy: 102, 2
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-projects
-  rotate: false
-  xy: 152, 2
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-send
-  rotate: false
-  xy: 202, 2
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-write
-  rotate: false
-  xy: 252, 2
-  size: 48, 48
-  orig: 48, 48
+  xy: 2, 2
+  size: 324, 192
+  orig: 324, 192
   offset: 0, 0
   index: -1

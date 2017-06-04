@@ -17,5 +17,4 @@
         <font name="header"             path="SF-UI-Text-Bold.ttf"          size="12" color="666666"/>
         <font name="participant-number" path="SF-UI-Text-Bold.ttf"          size="20" color="666666"/>
     </fonts>
-
 </app>

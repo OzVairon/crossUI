@@ -16,7 +16,7 @@ import com.idp.engine.ui.graphics.actors.Text;
 
 /**
  * Navigation bar element.
- * Contains text, supports dropdown, also may contain icons to the left or to the right of the text.
+ * Contains text, supports dropdown, also may contain userIcons to the left or to the right of the text.
  *
  *
  */

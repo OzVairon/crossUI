@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader;
 import com.idp.engine.App;
+import com.idp.engine.resources.assets.IdpAsset;
+import com.idp.engine.resources.assets.IdpAssetManager;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 
 import java.util.ArrayList;
@@ -24,24 +26,25 @@ import java.util.LinkedList;
 public class Resources {
     
     protected static class FontAndColor {
-        public com.idp.engine.resources.assets.IdpAsset<BitmapFont> font;
+        public IdpAsset<BitmapFont> font;
         public Color color;
-        public FontAndColor(com.idp.engine.resources.assets.IdpAsset<BitmapFont> font, Color color) {
+        public FontAndColor(IdpAsset<BitmapFont> font, Color color) {
             this.font = font;
             this.color = color;
         }
     }
     
-	protected final com.idp.engine.resources.assets.IdpAssetManager man;
+	protected final IdpAssetManager man;
     protected final HashMap<String, FontAndColor> fonts;
-    protected com.idp.engine.resources.assets.IdpAsset<TextureAtlas> icons;
+    protected IdpAsset<TextureAtlas> userIcons;
+    protected IdpAsset<TextureAtlas> systemIcons;
 
 
 	/**
 	 * Empty resources. Nothing is loaded in constructor.
 	 */
 	public Resources() {
-		this.man = com.idp.engine.resources.assets.IdpAssetManager.getInstance();
+		this.man = IdpAssetManager.getInstance();
         this.fonts = new HashMap<String, FontAndColor>();
 	}
     
@@ -61,14 +64,20 @@ public class Resources {
     }
     
     /**
-     * Queues atlas of icons for loading.
+     * Queues atlas of userIcons for loading.
      * Only single atlas might be loaded.
      * @param iconAtlasPath path to the icon atlas
      */
     public void loadIcons(String iconAtlasPath) {
-        if (this.icons != null)
+        if (this.userIcons != null)
             throw new IllegalStateException("Another atlas is already loaded.");
-		this.icons = man.loadAtlas(iconAtlasPath);
+		this.userIcons = man.loadAtlas(iconAtlasPath);
+    }
+
+    public void loadSystemIcons(String iconAtlasPath) {
+        if (this.systemIcons != null)
+            throw new IllegalStateException("Another atlas is already loaded.");
+        this.systemIcons = man.loadAtlas(iconAtlasPath);
     }
 
 	/**
@@ -110,7 +119,14 @@ public class Resources {
 	 * @return icon for the given name
 	 */
     public TextureRegion getIcon(String name) {
-		return icons.getAsset().findRegion(name);
+        TextureRegion region = userIcons.getAsset().findRegion(name);
+        if (region == null)
+            region = systemIcons.getAsset().findRegion(name);
+
+        if (region == null)
+            System.out.println("Cannot find image \""+ name +"\"");
+
+        return region;
     }
 
 
