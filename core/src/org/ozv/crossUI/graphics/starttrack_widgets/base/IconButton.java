@@ -1,7 +1,7 @@
 package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.graphics.Color;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.base.Rect;
 import org.ozv.crossUI.StartTrackApp;
 
@@ -12,7 +12,7 @@ import org.ozv.crossUI.StartTrackApp;
  */
 public class IconButton extends Rect {
 
-	private ImageActor icon;
+	private Image icon;
 	private float padding = 12;
 
     public IconButton(String iconname) {
@@ -20,7 +20,7 @@ public class IconButton extends Rect {
     }
 	
 	public IconButton(String iconname, float sizeDp) {
-		icon = new ImageActor(StartTrackApp.getResources().getIcon(iconname));
+		icon = new Image(StartTrackApp.getResources().getIcon(iconname));
 		setSize(StartTrackApp.dp2px(sizeDp), StartTrackApp.dp2px(sizeDp));
 		icon.setColor(Color.BLACK);
 		this.padding = StartTrackApp.dp2px(12);
@@ -42,7 +42,7 @@ public class IconButton extends Rect {
 		layout();
 	}
 
-	public ImageActor getIcon() {
+	public Image getIcon() {
 		return icon;
 	}
 

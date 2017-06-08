@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.base.Widget;
 
@@ -21,7 +22,7 @@ import com.idp.engine.ui.graphics.base.Widget;
  *
  *
  */
-public class IdpTextField extends Widget {
+public class FieldText extends Widget {
 
 	private final TextField textField;
 	private final Actor thinUnderline;
@@ -30,10 +31,18 @@ public class IdpTextField extends Widget {
     private final IdpColorPixmap tex;
 
 
+	public FieldText() {
+		this(new TextField("", App.getResources().getTextFieldStyle("text")));
+	}
+
+	public FieldText(TextField.TextFieldStyle style) {
+		this(new TextField("", style));
+	}
+
 	/**
 	 * @param textField original textfield
 	 */
-	public IdpTextField(TextField textField) {
+	public FieldText(TextField textField) {
 		if (textField == null)
 			throw new NullPointerException("textField cannot be null");
 
@@ -52,6 +61,10 @@ public class IdpTextField extends Widget {
 		underline.setY(textField.getY() + textField.getHeight());
 		underline.setHeight(3);
 		addActor(underline);
+
+
+		this.setUnderlineLeft(App.dp2px(0));
+		this.setUnderlineRight(App.dp2px(0));
 	}
 
 	@Override
@@ -170,7 +183,8 @@ public class IdpTextField extends Widget {
 
 	@Override
 	protected void sizeChanged() {
-		textField.setSize(getWidth(), getHeight());
+		textField.setSize(getWidth() - App.dp2px(16), getHeight());
+		textField.setX((getWidth()-textField.getWidth())/2);
 		thinUnderline.setWidth(getWidth());
 
 		thinUnderline.setY(getHeight());
@@ -182,8 +196,11 @@ public class IdpTextField extends Widget {
 	}
 
 	private void onFocus() {
+//		underline.addAction(Actions.sizeTo(
+//				textField.getWidth() + getUnderlineLeft() + getUnderlineRight(),
+//				underline.getHeight(), 0.4f, Interpolation.pow2Out));
 		underline.addAction(Actions.sizeTo(
-				textField.getWidth() + getUnderlineLeft() + getUnderlineRight(),
+				this.getWidth() + getUnderlineLeft() + getUnderlineRight(),
 				underline.getHeight(), 0.4f, Interpolation.pow2Out));
 	}
 
@@ -192,7 +209,30 @@ public class IdpTextField extends Widget {
 	}
 
 	@Override
-	protected void init() {
+	protected void init() {}
 
+	public String getText() {
+		return textField.getText();
+	}
+
+	public void setText(String text) {
+		textField.setText(text);
+	}
+
+	public void setPlaceholder(String text) {
+		textField.setMessageText(text);
+	}
+
+	public void setPasswordMode(boolean isPassword) {
+		textField.setPasswordMode(isPassword);
+	}
+
+	public void setStyle(TextField.TextFieldStyle style) {
+		textField.setStyle(style);
+	}
+
+	@Override
+	public void setColor(Color color) {
+		setUnderlineColor(color);
 	}
 }

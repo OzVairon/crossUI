@@ -7,7 +7,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
 
 import org.ozv.crossUI.StartTrackApp;
@@ -63,7 +63,7 @@ public class RadioGroup extends HorizontalLayout {
 			addActor(rb);
 		}
 		
-		final RadioButton rb = new RadioButton(new ImageActor(
+		final RadioButton rb = new RadioButton(new Image(
 				StartTrackApp.getResources().getIcon("cancel")));
 		rb.addListener(new ActorGestureListener() {
 			@Override

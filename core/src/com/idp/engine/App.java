@@ -127,7 +127,6 @@ public class App extends Game {
 	}
 
 
-
 	@Override
 	public void dispose() {
 		super.dispose();

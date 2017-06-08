@@ -15,10 +15,13 @@ public abstract class Widget extends Rect {
 
 
 	public Widget() {
-		init();
+
 	}
 
 	protected abstract void init();
 
-	
+	@Override
+	public void dispose() {
+		super.dispose();
+	}
 }

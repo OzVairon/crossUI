@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 
 import org.ozv.crossUI.StartTrackApp;
 import org.ozv.crossUI.api.model.Grade;
@@ -41,7 +41,7 @@ public class BinaryRadioGroup extends HorizontalLayout {
 	
 	private void addRadioButton(String icon, final int value, final Grade grade) {
 		
-		final ImageActor a = new ImageActor(StartTrackApp.getResources().getIcon(icon));
+		final Image a = new Image(StartTrackApp.getResources().getIcon(icon));
 		final RadioButton rb = new RadioButton(a) {
 			@Override
 			public void onSelected() {

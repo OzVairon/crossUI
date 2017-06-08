@@ -43,6 +43,14 @@ public abstract class Layout extends Widget{
         layout();
     }
 
+    public void setPadding(int top, int right, int bottom, int left) {
+        paddingBottom = bottom;
+        paddingLeft = left;
+        paddingRight = right;
+        paddingTop = top;
+        layout();
+    }
+
     public abstract void layout();
 
     public void setFixHeight(boolean fix) {
@@ -51,5 +59,7 @@ public abstract class Layout extends Widget{
     public void setFixWidth(boolean fix) {
         this.fixWidth = fix;
     }
+
+
 
 }

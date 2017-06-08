@@ -3,8 +3,10 @@ package com.idp.engine.ui.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.base.Navbar;
@@ -105,7 +107,7 @@ public class AppScreen extends IdpBaseScreen {
 	 * Fades screen with black semitransparent black.
 	 * @param duration animation duration
 	 */
-	public void fadeOut(float duration) {
+	void fadeOut(float duration) {
 		fader.getColor().a = 0;
 		fader.addAction(Actions.alpha(0.4f, duration));
 	}
@@ -128,7 +130,7 @@ public class AppScreen extends IdpBaseScreen {
 	private void initStructure() {
 		this.mainLayer = new MainLayer();
 		mainLayer.navbar.setBackgroundColor(navbarColor);
-		mainLayer.navbar.setText(name);
+		mainLayer.navbar.setTitle(name);
 		stage.addActor(mainLayer);
 		this.fader = new IdpColorPixmap(Color.WHITE).buildActor();
 		//fader.setSize(mainLayer.getWidth(), mainLayer.getHeight());
@@ -139,6 +141,13 @@ public class AppScreen extends IdpBaseScreen {
 
 		this.popupLayer = new PopupLayer();
 		stage.addActor(popupLayer);
+
+		getMainLayer().addCaptureListener(new ClickListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				stage.setKeyboardFocus(null);
+				return false;
+			}
+		});
 	}
 
     protected void clearScene() {
@@ -150,5 +159,7 @@ public class AppScreen extends IdpBaseScreen {
 		getMainLayer().content.setY(0);
 		getMainLayer().content.setHeight(Gdx.graphics.getHeight());
 	}
+
+
 
 }

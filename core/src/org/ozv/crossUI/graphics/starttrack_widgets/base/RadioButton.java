@@ -7,7 +7,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
@@ -25,7 +25,7 @@ public class RadioButton extends Rect {
 	
 	private final Text number;
 	private boolean selected;
-	private final ImageActor icon;
+	private final Image icon;
 	
 	
 	public RadioButton(String text) {
@@ -46,7 +46,7 @@ public class RadioButton extends Rect {
 		icon = null;
 	}
 	
-	public RadioButton(ImageActor icon) {
+	public RadioButton(Image icon) {
 		
 		this.number = new Text("1",
 				StartTrackApp.getResources().getLabelStyle("h1"));
@@ -96,7 +96,7 @@ public class RadioButton extends Rect {
 		
 	}
 
-	public ImageActor getIcon() {
+	public Image getIcon() {
 		return icon;
 	}
 	

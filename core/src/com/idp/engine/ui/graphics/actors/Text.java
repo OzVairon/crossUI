@@ -103,8 +103,8 @@ public class Text extends Widget {
 //		super(new Label(text, s));
 //	}
 //
-//	public void setText(CharSequence newText) {
-//		data.setText(newText);
+//	public void setTitle(CharSequence newText) {
+//		data.setTitle(newText);
 //		data.layout();
 //	}
 //

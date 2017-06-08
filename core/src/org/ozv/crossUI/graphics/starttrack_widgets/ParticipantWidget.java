@@ -51,7 +51,7 @@ public class ParticipantWidget extends StartTrackWidget<Participant> {
         textRect.setBackgroundColor(App.Colors.WIDGET_BORDER);
 
         VerticalLayout nameLayout = new VerticalLayout();
-        nameLayout.gap = 0;
+        nameLayout.setGap(0);
         nameLayout.setPadding(StartTrackApp.dp2px(20));
 		
 		Text title = new Text(data.first_name + " " + data.last_name,

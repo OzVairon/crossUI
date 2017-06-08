@@ -23,8 +23,8 @@ public class VerticalLayout extends Layout {
 		Left, Center, Right
 	}
 
-	public Align align = Align.Left;
-	public int gap = sp;
+	private Align align = Align.Left;
+	private int gap = sp;
 
 
 	public void setAlign(Align align) {

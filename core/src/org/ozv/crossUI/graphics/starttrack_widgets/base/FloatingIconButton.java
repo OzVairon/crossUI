@@ -6,7 +6,7 @@
 package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.graphics.Color;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 import org.ozv.crossUI.StartTrackApp;
 
 /**
@@ -16,7 +16,7 @@ import org.ozv.crossUI.StartTrackApp;
 @SuppressWarnings({"ALL", "WeakerAccess"})
 public class FloatingIconButton extends IconButton {
 
-    private ImageActor back;
+    private Image back;
 	
 	public FloatingIconButton() {
 		this("backScreen");
@@ -29,7 +29,7 @@ public class FloatingIconButton extends IconButton {
 
     public FloatingIconButton(String iconName, int sizeDp) {
         super(iconName, sizeDp);
-        this.back =  new ImageActor(StartTrackApp.getResources().getIcon("fill_round"));
+        this.back =  new Image(StartTrackApp.getResources().getIcon("fill_round"));
         back.setSize(this.getWidth(), this.getHeight());
         addActor(back);
         back.toBack();

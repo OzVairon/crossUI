@@ -3,16 +3,14 @@ package org.ozv.crossUI.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
-import com.idp.engine.ui.graphics.actors.IdpTextField;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.FieldText;
+import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.base.Loader;
 import com.idp.engine.ui.screens.AppScreen;
 
@@ -27,7 +25,7 @@ import org.ozv.crossUI.api.StartTrackApi;
 public class LoginScreen extends AppScreen {
 
 	private VerticalLayout layout;
-	private TextField email;
+	private FieldText email;
     private Text signIn;
     private Loader loader;
     private Text message;
@@ -54,7 +52,6 @@ public class LoginScreen extends AppScreen {
 		addActor(layout);
 
 		float textFieldXpadding = StartTrackApp.dp2px(24);
-		float underlineExtention = StartTrackApp.dp2px(12);
 		float textFieldWidth = Gdx.graphics.getWidth() - textFieldXpadding * 2;
 
 		float signInWidth = StartTrackApp.dp2px(160);
@@ -66,7 +63,7 @@ public class LoginScreen extends AppScreen {
 		LabelStyle signInStyle = StartTrackApp.getResources().getLabelStyle("navbar");
 		signInStyle.fontColor = App.Colors.MAIN;
 
-		ImageActor logo = new ImageActor(App.getResources().getIcon("logo-mobile"));
+		Image logo = new Image(App.getResources().getIcon("logo-mobile"));
 		logo.setHeight(App.dp2px(72));
 		logo.setWidth(
 				logo.getSprite().getRegionWidth() * logo.getHeight() / logo.getSprite().getRegionHeight()
@@ -87,15 +84,11 @@ public class LoginScreen extends AppScreen {
 		message.setSize(getMainLayer().getWidth(), messageHeight);
 		layout.addActor(message);
 
-		this.email = new TextField("", textFieldStyle);
-		email.setMessageText("Код доступа");
-		IdpTextField emailWrapper = new IdpTextField(email);
-		emailWrapper.setSize(textFieldWidth, textFieldStyle.font.getCapHeight() * 2);
-		emailWrapper.setUnderlineLeft(underlineExtention);
-		emailWrapper.setUnderlineRight(underlineExtention);
-        emailWrapper.setUnderlineColor(App.Colors.MAIN);
-		layout.addActor(emailWrapper);
-
+		email = new FieldText(textFieldStyle);
+		email.setSize(textFieldWidth, textFieldStyle.font.getCapHeight() * 2);
+		email.setColor(App.Colors.MAIN);
+		email.debug();
+		layout.addActor(email);
 
 
 		signIn = new Text("ВОЙТИ", signInStyle);
@@ -110,12 +103,12 @@ public class LoginScreen extends AppScreen {
         loader.setVisible(false);
         addActor(loader);
 
-		getMainLayer().addCaptureListener(new ClickListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				stage.setKeyboardFocus(null);
-				return false;
-			}
-		});
+//		getMainLayer().addCaptureListener(new ClickListener() {
+//			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+//				stage.setKeyboardFocus(null);
+//				return false;
+//			}
+//		});
 
 		signIn.addListener(new ActorGestureListener() {
 			public void tap(InputEvent event, float x, float y, int count, int button) {

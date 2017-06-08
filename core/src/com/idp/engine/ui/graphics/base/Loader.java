@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 
 /**
  * UI element with a spinning icon.
@@ -14,12 +14,12 @@ import com.idp.engine.ui.graphics.actors.ImageActor;
  */
 public class Loader extends Group {
 
-	private final ImageActor icon;
+	private final Image icon;
 	private boolean started;
 
 
 	public Loader(TextureRegion iconRegion) {
-		icon = new ImageActor(iconRegion);
+		icon = new Image(iconRegion);
 		icon.setSize(App.dp2px(20), App.dp2px(20));
 		icon.setOrigin(App.dp2px(10), App.dp2px(10));
 		addActor(icon);

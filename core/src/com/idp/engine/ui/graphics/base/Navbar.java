@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Align;
 import com.idp.engine.App;
-import com.idp.engine.ui.graphics.actors.ImageActor;
+import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.Text;
 
 /**
@@ -79,7 +79,7 @@ public class Navbar extends Rect {
 		textGroup.setX((getWidth() - textGroup.getWidth()) / 2);
 	}
 
-	public void setText(String name) {
+	public void setTitle(String name) {
 		text.setText(name);
 	}
 
@@ -116,11 +116,11 @@ public class Navbar extends Rect {
 
 	public static class NavButton extends Rect {
 
-		private final ImageActor icon;
+		private final Image icon;
 		private final float padding;
 
 		public NavButton(String name) {
-			this.icon = new ImageActor(App.getResources().getIcon(name));
+			this.icon = new Image(App.getResources().getIcon(name));
 			this.padding = App.dp2px(12);
 			this.icon.setColor(App.Colors.TEXT_NAVBAR);
 			addActor(icon);
@@ -145,5 +145,6 @@ public class Navbar extends Rect {
 			super.setColor(color);
 			icon.setColor(color);
 		}
+
 	}
 }
