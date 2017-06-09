@@ -3,7 +3,9 @@ package com.idp.engine.resources;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -92,7 +94,7 @@ public class Resources {
      * Called once all queued resources get loaded.
      */
     public void onLoaded() {
-        fixFonts();
+        //fixFonts();
     }
 
 	/**
@@ -129,6 +131,19 @@ public class Resources {
         return region;
     }
 
+    public TextureRegion getPicture(String name) {
+        try {
+            Texture t = new Texture(name);
+            t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            TextureRegion tr = new TextureRegion(t);
+            tr.flip(false, true);
+            return tr;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 
     /**
      * Returns {@link TextFieldStyle} associated with given name.
@@ -141,9 +156,10 @@ public class Resources {
         Resources.FontAndColor fac = fonts.get(styleName);
 
         style.font = fac.font.getAsset();
+        fixFonts(style.font);
         style.fontColor = fac.color;
         style.messageFontColor = Color.valueOf("666666");
-        style.cursor = new IdpColorPixmap(Color.valueOf("1e78e6")).buildDrawable();
+        style.cursor = new IdpColorPixmap(Color.valueOf("666666")).buildDrawable();
         style.selection = new IdpColorPixmap(Color.valueOf("a8d1ff")).buildDrawable();
         return style;
     }
@@ -173,6 +189,7 @@ public class Resources {
         fonts.add(new FontInfo("h1", "SF-UI-Display-Regular.ttf", "16", "000000"));
         fonts.add(new FontInfo("text", "SF-UI-Text-Regular.ttf", "14", "666666"));
         fonts.add(new FontInfo("text_field", "SF-UI-Display-Light.ttf", "16", "000000"));
+        fonts.add(new FontInfo("button", "SF-UI-Display-Bold.ttf", "14", "000000"));
 
         for (FontInfo f : fonts) {
             f.loadSystem();
@@ -210,16 +227,20 @@ public class Resources {
         }
     }
 
-    private void fixFonts() {
+    private void fixFonts(BitmapFont font) {
 
         // font that would be used in TextField needs some fixes...
+//        if (Gdx.app.getType() != Application.ApplicationType.iOS) {
+//            BitmapFont font = fonts.get("text_field").font.getAsset();
+//            font.getData().ascent = font.getCapHeight() / 3;    // coeff got by trial and error
+//        }
+
         if (Gdx.app.getType() != Application.ApplicationType.iOS) {
-            BitmapFont font = fonts.get("text_field").font.getAsset();
             font.getData().ascent = font.getCapHeight() / 3;    // coeff got by trial and error
         }
 
         // fixing line height for font that is used for multiline text
-        fonts.get("text").font.getAsset().getData().setLineHeight(App.dp2px(18));
+        //fonts.get("text").font.getAsset().getData().setLineHeight(App.dp2px(18));
     }
 
 }

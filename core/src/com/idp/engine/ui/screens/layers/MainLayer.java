@@ -62,13 +62,15 @@ public class MainLayer extends Layer {
 		content = layout;
 		content.setFixHeight(true);
 		content.setFixWidth(true);
-		content.setPadding(0);
+		content.setPadding(8);
 		content.setName("content");
 		content.setY(navbar.getHeight());
-		content.setSize(getWidth(), Gdx.graphics.getHeight() - navbar.getHeight());
+		content.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() - navbar.getHeight());
 	}
 
-
+	public Layout getContent() {
+		return content;
+	}
 
 	public enum LayoutType {
 		Vertical, Horizontal, Absolute

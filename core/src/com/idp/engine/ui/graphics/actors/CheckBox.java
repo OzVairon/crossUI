@@ -24,7 +24,7 @@ public class CheckBox extends Widget {
 	private Color colorUnChecked = Color.valueOf("999999");
 
 	public CheckBox() {
-		this("");
+		this("Флажок");
 	}
 
 	public CheckBox(String text) {
@@ -92,7 +92,8 @@ public class CheckBox extends Widget {
 		addActor(this.text);
 		addActor(box);
 		setChecked(data);
-		setHeight(App.dp2px(48));
+		setHeight(App.dp2px(16));
+		setWidth(App.dp2px(150));
 	}
 
 	public void setColorChecked(Color c) {

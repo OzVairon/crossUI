@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 /**
  * Panel with a header.
@@ -19,12 +19,12 @@ public class HeadedPanel extends Rect {
     protected Text title;
     protected Group content;
 
-    private final int sp = StartTrackApp.dp2px(8);  // small gap
-    private final int mp = StartTrackApp.dp2px(12); // medium gap
-    private final int lp = StartTrackApp.dp2px(16); // large gap
+    private final int sp = TestApp.dp2px(8);  // small gap
+    private final int mp = TestApp.dp2px(12); // medium gap
+    private final int lp = TestApp.dp2px(16); // large gap
 
-    private final int wPhoto = StartTrackApp.dp2px(42); // photo width
-    private final int hPhoto = StartTrackApp.dp2px(42); // photo height
+    private final int wPhoto = TestApp.dp2px(42); // photo width
+    private final int hPhoto = TestApp.dp2px(42); // photo height
 
 
     public HeadedPanel() {
@@ -35,10 +35,10 @@ public class HeadedPanel extends Rect {
 
         header = new Group();
         content = new Group();
-        title = new Text(t, StartTrackApp.getResources().getLabelStyle("header"));
+        title = new Text(t, TestApp.getResources().getLabelStyle("header"));
 
         setBackgroundColor(Color.WHITE);
-        setBorder(StartTrackApp.dp2px(1));
+        setBorder(TestApp.dp2px(1));
         setBorderColor(Color.LIGHT_GRAY);
 
 

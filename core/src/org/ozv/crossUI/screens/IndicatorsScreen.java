@@ -2,7 +2,7 @@ package org.ozv.crossUI.screens;
 
 import com.idp.engine.App;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Indicator;
 import org.ozv.crossUI.api.model.Participant;
 import org.ozv.crossUI.graphics.starttrack_widgets.IndicatorWidget;
@@ -23,7 +23,7 @@ public class IndicatorsScreen extends StartTrackBaseScreen<Participant> {
 
 	@Override
 	protected void initWidgets() {
-		for (final Indicator i : StartTrackApp.getState().gameModule.indicators) {
+		for (final Indicator i : TestApp.getState().gameModule.indicators) {
 			IndicatorWidget rect = new IndicatorWidget(i);
 			listView.getContent().addActor(rect);
 		}
@@ -37,12 +37,12 @@ public class IndicatorsScreen extends StartTrackBaseScreen<Participant> {
 
 	@Override
 	public void pause() {
-		StartTrackApp.saveState();
+		TestApp.saveState();
 	}
 
 	@Override
 	public void hide() {
-		StartTrackApp.saveState();
+		TestApp.saveState();
 	}
 	
 }

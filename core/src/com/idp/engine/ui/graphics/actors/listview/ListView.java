@@ -75,6 +75,13 @@ public class ListView extends Widget {
 
 	}
 
+	@Override
+	public void addActor(Actor actor) {
+		if (actor instanceof ScrollBar || actor instanceof ContentWrapper)
+			super.addActor(actor);
+		else
+			getContent().addActor(actor);
+	}
 
 	@Override
 	public void drawChildren(Batch batch, float parentAlpha) {
@@ -103,6 +110,11 @@ public class ListView extends Widget {
 		}
 		wrapper.sizeChanged();
 		bounds.setSize(getWidth(), getHeight());
+	}
+
+	public void setHorizontal(boolean isHorizontal) {
+		getContentWrapper().setHorisontal(isHorizontal);
+		getContentWrapper().updateContent();
 	}
 
 	/**
@@ -255,5 +267,6 @@ public class ListView extends Widget {
 				listView.getScrollBar().fadeOut();
 			}
 		}
+
 	}
 }

@@ -29,6 +29,7 @@ public class VerticalLayout extends Layout {
 
 	public void setAlign(Align align) {
 		this.align = align;
+		layout();
 	}
 
 	public void layout() {

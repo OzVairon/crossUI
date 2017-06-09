@@ -14,7 +14,7 @@ import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.base.Loader;
 import com.idp.engine.ui.screens.AppScreen;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.StartTrackApi;
 
 /**
@@ -51,16 +51,16 @@ public class LoginScreen extends AppScreen {
 		layout.setGap(App.dp2px(18));
 		addActor(layout);
 
-		float textFieldXpadding = StartTrackApp.dp2px(24);
+		float textFieldXpadding = TestApp.dp2px(24);
 		float textFieldWidth = Gdx.graphics.getWidth() - textFieldXpadding * 2;
 
-		float signInWidth = StartTrackApp.dp2px(160);
-		float signInHeight = StartTrackApp.dp2px(36);
-        float messageHeight = StartTrackApp.dp2px(20);
+		float signInWidth = TestApp.dp2px(160);
+		float signInHeight = TestApp.dp2px(36);
+        float messageHeight = TestApp.dp2px(20);
 
-		TextFieldStyle textFieldStyle = StartTrackApp.getResources().getTextFieldStyle("text_field");
-		LabelStyle titleStyle = StartTrackApp.getResources().getLabelStyle("logo");
-		LabelStyle signInStyle = StartTrackApp.getResources().getLabelStyle("navbar");
+		TextFieldStyle textFieldStyle = TestApp.getResources().getTextFieldStyle("text_field");
+		LabelStyle titleStyle = TestApp.getResources().getLabelStyle("logo");
+		LabelStyle signInStyle = TestApp.getResources().getLabelStyle("navbar");
 		signInStyle.fontColor = App.Colors.MAIN;
 
 		Image logo = new Image(App.getResources().getIcon("logo-mobile"));
@@ -79,7 +79,7 @@ public class LoginScreen extends AppScreen {
 		layout.addActor(title);
 
 
-		message = new Text("", StartTrackApp.getResources().getLabelStyle("label"));
+		message = new Text("", TestApp.getResources().getLabelStyle("label"));
 		message.setAlignment(Align.center);
 		message.setSize(getMainLayer().getWidth(), messageHeight);
 		layout.addActor(message);
@@ -87,7 +87,6 @@ public class LoginScreen extends AppScreen {
 		email = new FieldText(textFieldStyle);
 		email.setSize(textFieldWidth, textFieldStyle.font.getCapHeight() * 2);
 		email.setColor(App.Colors.MAIN);
-		email.debug();
 		layout.addActor(email);
 
 
@@ -96,7 +95,7 @@ public class LoginScreen extends AppScreen {
 		signIn.setSize(signInWidth, signInHeight);
 		layout.addActor(signIn);
 
-        loader = new Loader(StartTrackApp.getResources().getIcon("loader"));
+        loader = new Loader(TestApp.getResources().getIcon("loader"));
         loader.setWidth(signInWidth);
         loader.setHeight(signInHeight);
         loader.setPosition(signIn.getX(), signIn.getY());
@@ -121,7 +120,7 @@ public class LoginScreen extends AppScreen {
 				StartTrackApi.auth(email.getText().toUpperCase(), new StartTrackApi.AuthListener() {
                     public void loaded(String privateToken) {
 						try {
-							StartTrackApp.getInstance().logIn(privateToken);
+							TestApp.getInstance().logIn(privateToken);
 						} catch (Exception ex) {
 							failed(ex);
 						}
@@ -169,7 +168,7 @@ public class LoginScreen extends AppScreen {
 	@Override
 	public void show() {
 		super.show();
-		StartTrackApp.getInstance().logIn();
+		TestApp.getInstance().logIn();
 		Gdx.input.setCatchBackKey(false);
 	}
 

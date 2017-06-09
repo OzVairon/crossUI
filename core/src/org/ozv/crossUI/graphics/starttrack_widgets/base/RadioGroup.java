@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Report;
 
 /**
@@ -64,7 +64,7 @@ public class RadioGroup extends HorizontalLayout {
 		}
 		
 		final RadioButton rb = new RadioButton(new Image(
-				StartTrackApp.getResources().getIcon("cancel")));
+				TestApp.getResources().getIcon("cancel")));
 		rb.addListener(new ActorGestureListener() {
 			@Override
 			public void tap(InputEvent event, float x, float y, int count, int button) {

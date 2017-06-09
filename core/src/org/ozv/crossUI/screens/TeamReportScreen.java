@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.idp.engine.App;
 import com.idp.engine.net.JsonListener;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.StartTrackApi;
 import org.ozv.crossUI.api.model.Grade;
 import org.ozv.crossUI.api.model.Participant;
@@ -44,8 +44,8 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 	@Override
 	protected void initWidgets() {
 		widgets.clear();
-		final Report r = StartTrackApp.getInstance().getReport();
-		//if (StartTrackApp.getState().game.team_grade_required) {
+		final Report r = TestApp.getInstance().getReport();
+		//if (TestApp.getState().game.team_grade_required) {
 			listView.getContent().addActor(new TeamGradeWidget(r));
 		//}
 
@@ -54,9 +54,9 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 			widget.addListener(new ActorGestureListener() {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
-					StartTrackApp app = StartTrackApp.getInstance();
-					StartTrackApp.getState().participant = p;
-					StartTrackApp.getState().report = r;
+					TestApp app = TestApp.getInstance();
+					TestApp.getState().participant = p;
+					TestApp.getState().report = r;
 					App.pushScreen(new IndicatorsScreen(p));
 				}
 			});
@@ -70,29 +70,29 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
     private void initFloatingButtons() {
         final FloatingIconButton sendButton = new FloatingIconButton("forward", 60);
 
-        sendButton.setPadding(StartTrackApp.dp2px(20));
+        sendButton.setPadding(TestApp.dp2px(20));
         sendButton.setBackColor(App.Colors.MAIN);
         sendButton.setIconColor(App.Colors.TEXT_NAVBAR);
         getMainLayer().content.addActor(sendButton);
         sendButton.setPosition(
-                getMainLayer().content.getWidth() - sendButton.getWidth() - StartTrackApp.dp2px(16),
-                getMainLayer().content.getHeight() - sendButton.getHeight() - StartTrackApp.dp2px(16)
+                getMainLayer().content.getWidth() - sendButton.getWidth() - TestApp.dp2px(16),
+                getMainLayer().content.getHeight() - sendButton.getHeight() - TestApp.dp2px(16)
         );
 
         sendButton.addListener(new ActorGestureListener() {
             @Override
             public void tap(InputEvent event, float x, float y, int count, int button) {
 
-                Report r = StartTrackApp.getInstance().getReport();
+                Report r = TestApp.getInstance().getReport();
 
-                StartTrackApp.State state = StartTrackApp.getState();
+                TestApp.State state = TestApp.getState();
 
                 boolean tgr = state.game.team_grade_required;
 
 
 
                 if (tgr && r.team_grade == null) {
-                    getPopupLayer().getAlertDialog("Отчет отклонен", "Вы не поставили командную оценку");
+                    getPopupLayer().showAlertDialog("Отчет отклонен", "Вы не поставили командную оценку");
                 } else {
                     int ungradedCounter = state.game.getTeamByID(r.team).participants.size() - findEstimatedParticipants().size();
                     String message = "";
@@ -105,10 +105,10 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                         message += "\nОтчет будет сохранен";
                     }
 
-                    getPopupLayer().getConfirmationDialog("Вы точно хотите отправить отчет?", message, new ClickListener() {
+                    getPopupLayer().showConfirmationDialog("Вы точно хотите отправить отчет?", message, new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            final Report r = StartTrackApp.getInstance().getReport();
+                            final Report r = TestApp.getInstance().getReport();
                             System.out.println(r.team_grade);
                             Iterator<Grade> it = r.grades.iterator();
                             while (it.hasNext()) {
@@ -117,22 +117,22 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                     it.remove();
                             }
 
-                            getPopupLayer().getProgressDialog("Подождите", "Идет отправка отчета на сервер");
+                            getPopupLayer().showProgressDialog("Подождите", "Идет отправка отчета на сервер");
 
                             StartTrackApi.postReport(r, new JsonListener() {
 
                                 @Override
                                 public void loaded(String json, Map<String, List<String>> headers) {
                                     r.sent = true;
-                                    StartTrackApp.saveState();
-                                    getPopupLayer().dismissProgressDialog();
+                                    TestApp.saveState();
+                                    getPopupLayer().hideProgressDialog();
                                     App.backScreen();
                                 }
 
                                 @Override
                                 public void failed(Throwable t) {
                                     System.out.println("Sending report is failed");
-                                    getPopupLayer().dismissProgressDialog();
+                                    getPopupLayer().hideProgressDialog();
 
                                     String errorMessage = "Нет соединения с сервером";
 
@@ -144,7 +144,7 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
                                     Gdx.app.postRunnable(new Runnable() {
                                         @Override
                                         public void run() {
-                                            App.getCurrentScreen().getPopupLayer().getAlertDialog("Ошибка отправки отчета", finalErrorMessage);
+                                            App.getCurrentScreen().getPopupLayer().showAlertDialog("Ошибка отправки отчета", finalErrorMessage);
                                         }
                                     });
                                 }
@@ -168,9 +168,9 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
     private HashSet<Integer> findEstimatedParticipants() {
         HashSet<Integer> estimated = new HashSet<Integer>();
 
-        Report report = StartTrackApp.getInstance().getReport();
+        Report report = TestApp.getInstance().getReport();
 
-        Team t = StartTrackApp.getState().game.getTeamByID(report.team);
+        Team t = TestApp.getState().game.getTeamByID(report.team);
 
 
         for (Grade g : report.grades) {
@@ -201,12 +201,12 @@ public class TeamReportScreen extends StartTrackBaseScreen<Team> {
 
 	@Override
 	public void pause() {
-		StartTrackApp.saveState();
+		TestApp.saveState();
 	}
 
 	@Override
 	public void hide() {
-		StartTrackApp.saveState();
+		TestApp.saveState();
 	}
 	
 }

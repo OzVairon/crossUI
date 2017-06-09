@@ -8,7 +8,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 import com.badlogic.gdx.Gdx;
 import com.idp.engine.ui.graphics.actors.Text;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Indicator;
 import org.ozv.crossUI.graphics.starttrack_widgets.base.BinaryRadioGroup;
 
@@ -29,12 +29,12 @@ public class IndicatorWidget extends StartTrackWidget<Indicator> {
 		
 		layout.paddingTop = lp;
 		layout.paddingBottom = lp;
-		Text title = new Text(data.title, StartTrackApp.getResources().getLabelStyle("h1"));
+		Text title = new Text(data.title, TestApp.getResources().getLabelStyle("h1"));
 		layout.addActor(title);
-		title.setWidth(getWidth() - StartTrackApp.dp2px(40));
+		title.setWidth(getWidth() - TestApp.dp2px(40));
 		title.setWrap(true);
 		
-		BinaryRadioGroup rg = new BinaryRadioGroup(StartTrackApp.getInstance().getGrade(data));
+		BinaryRadioGroup rg = new BinaryRadioGroup(TestApp.getInstance().getGrade(data));
 		rg.paddingTop = sp;
 		rg.setWidth(getWidth() - layout.paddingLeft - layout.paddingRight);
 		rg.layout();

@@ -25,11 +25,11 @@ public class PopupLayer extends Layer {
         setTouchable(Touchable.disabled);
     }
 
-    public void getConfirmationDialog(String titleString, String message, ClickListener confirm) {
-        getConfirmationDialog(titleString, message, confirm, null);
+    public void showConfirmationDialog(String titleString, String message, ClickListener confirm) {
+        showConfirmationDialog(titleString, message, confirm, null);
     }
 
-    public void getConfirmationDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
+    public void showConfirmationDialog(String titleString, String message, final ClickListener confirm, final ClickListener cancel) {
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(titleString);
         bDialog.setMessage(message);
@@ -71,7 +71,7 @@ public class PopupLayer extends Layer {
         bDialog.build().show();
     }
 
-    public void getProgressDialog(String title, String message) {
+    public void showProgressDialog(String title, String message) {
         GDXProgressDialog pDialog = App.getInstance().getDialogs().newDialog(GDXProgressDialog.class);
         pDialog.setTitle(title);
         pDialog.setMessage(message);
@@ -80,7 +80,7 @@ public class PopupLayer extends Layer {
 
     }
 
-    public void getAlertDialog(String title, String message) {
+    public void showAlertDialog(String title, String message) {
         final GDXButtonDialog bDialog = App.getInstance().getDialogs().newDialog(GDXButtonDialog.class);
         bDialog.setTitle(title);
         bDialog.setMessage(message);
@@ -101,7 +101,7 @@ public class PopupLayer extends Layer {
         bDialog.build().show();
     }
 
-    public void dismissProgressDialog() {
+    public void hideProgressDialog() {
         if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;

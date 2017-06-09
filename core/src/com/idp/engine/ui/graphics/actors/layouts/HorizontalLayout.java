@@ -14,22 +14,37 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  */
 public class HorizontalLayout extends Layout{
 
+	public enum Align {
+		Top, Center, Bottom
+	}
 
+	private Align align = Align.Top;
 	public int gap = sp;
 
 	
 	private boolean justified;
 
+	public void setAlign(Align align) {
+		this.align = align;
+		layout();
+	}
 
 	public void layout() {
 		float w = paddingLeft - gap;
 		float h = maxH();
 		for (Actor a : this.getChildren()) {
 			a.setX(w + gap);
-			a.setY(paddingTop + (h - a.getHeight()) / 2);
+			if (align == Align.Top)
+				a.setY(paddingTop);
+			if (align == Align.Center)
+				a.setY((h - a.getHeight()) / 2);
+			if (align == Align.Bottom)
+				a.setY(h - a.getHeight() - paddingRight);
+
+
 			w += a.getWidth() + gap;
 		}
-		
+		if (!fixWidth) setWidth(w + paddingRight);
 		setHeight(h + paddingTop + paddingBottom);
 		
 		if (justified)

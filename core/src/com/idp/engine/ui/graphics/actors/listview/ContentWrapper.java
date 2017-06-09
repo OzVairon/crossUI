@@ -79,6 +79,7 @@ public class ContentWrapper extends Group {
             public void addActor(Actor actor) {
                 super.addActor(actor);
                 actors.add(actor);
+				updateContent();
             }
 
 			@Override
@@ -350,17 +351,33 @@ public class ContentWrapper extends Group {
 	 * Layout listview's content and loaders.
 	 */
 	public void updateContent() {
-		float y = 0;
-		for (Actor a : actors) {
-			a.setY(y);
-			y += a.getHeight() + space;
-		}
-		y = Math.max(y - space, 0);
-		content.setHeight(y);
-		setHeight(y);
 
-		if (bottomLoader != null)
-			bottomLoader.setY(Math.max(y, getParent().getHeight()));
+		if (!horizontal) {
+			float y = 0;
+			for (Actor a : actors) {
+				a.setY(y);
+				a.setX(0);
+				y += a.getHeight() + space;
+			}
+			y = Math.max(y - space, 0);
+			content.setHeight(y);
+			setHeight(y);
+			if (bottomLoader != null)
+				bottomLoader.setY(Math.max(y, getParent().getHeight()));
+
+		} else {
+			float x = 0;
+			for (Actor a : actors) {
+				a.setX(x);
+				a.setY(0);
+				x += a.getWidth() + space;
+			}
+			x = Math.max(x - space, 0);
+			content.setWidth(x);
+			setWidth(x);
+
+		}
+
 	}
 
 	protected float getSize() {

@@ -8,7 +8,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.Text;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Team;
 
 /**
@@ -26,8 +26,8 @@ public class TeamWidget extends StartTrackWidget<Team> {
 	protected void init() {
 		layout.paddingTop = lp;
 		layout.paddingBottom = lp;
-        setPadding(StartTrackApp.dp2px(20));
-		Text title = new Text("Команда " + data.number, StartTrackApp.getResources().getLabelStyle("h1"));
+        setPadding(TestApp.dp2px(20));
+		Text title = new Text("Команда " + data.number, TestApp.getResources().getLabelStyle("h1"));
 		title.setWrap(true);
 		layout.addActor(title);
 		setBorder(App.dp2px(1));

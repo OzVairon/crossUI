@@ -235,7 +235,7 @@ public class App extends Game {
 
 
 	public static class Colors {
-		public static Color MAIN = Color.valueOf("000000");
+		public static Color MAIN = Color.valueOf("333333");
 		public static Color BACK = Color.valueOf("F3F3F3");
 		public static Color TEXT_NAVBAR = Color.valueOf("FFFFFF");
 		public static Color TRANSPARENT = Color.valueOf("00000000");

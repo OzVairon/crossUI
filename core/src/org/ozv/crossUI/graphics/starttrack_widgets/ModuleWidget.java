@@ -7,7 +7,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets;
 
 import com.idp.engine.ui.graphics.actors.Text;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.GameModule;
 
 /**
@@ -23,11 +23,11 @@ public class ModuleWidget extends StartTrackWidget<GameModule> {
 	}
 	
 	protected void init() {
-		Text title = new Text(data.title, StartTrackApp.getResources().getLabelStyle("h1-bold"));
+		Text title = new Text(data.title, TestApp.getResources().getLabelStyle("h1-bold"));
 
 		layout.addActor(title);
-        setPadding(StartTrackApp.dp2px(20));
-		title.setWidth(getWidth() - StartTrackApp.dp2px(40));
+        setPadding(TestApp.dp2px(20));
+		title.setWidth(getWidth() - TestApp.dp2px(40));
 		title.setWrap(true);
 		String s;
 		switch (data.indicators.size() % 10) {
@@ -43,7 +43,7 @@ public class ModuleWidget extends StartTrackWidget<GameModule> {
 				s = "индикаторов";
 		}
 		
-		Text numIndicators = new Text(data.indicators.size() + " " + s, StartTrackApp.getResources().getLabelStyle("label"));
+		Text numIndicators = new Text(data.indicators.size() + " " + s, TestApp.getResources().getLabelStyle("label"));
 		layout.addActor(numIndicators);
 	}
 }

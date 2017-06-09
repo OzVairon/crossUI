@@ -7,6 +7,7 @@ package com.idp.engine.ui.graphics.actors;/*
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.idp.engine.App;
 import com.idp.engine.ui.graphics.base.Widget;
 
 /**
@@ -23,10 +24,12 @@ public class Image extends Widget {
 
 	public Image(TextureRegion sprite) {
 		setSprite(sprite);
+		init();
 	}
 
 	@Override
 	protected void init() {
+		setSize(App.dp2px(96), App.dp2px(96));
 	}
 
 	public void setSprite(TextureRegion sprite) {

@@ -7,7 +7,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets.base;
 
 import com.badlogic.gdx.graphics.Color;
 import com.idp.engine.ui.graphics.actors.Image;
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 /**
  *
@@ -29,7 +29,7 @@ public class FloatingIconButton extends IconButton {
 
     public FloatingIconButton(String iconName, int sizeDp) {
         super(iconName, sizeDp);
-        this.back =  new Image(StartTrackApp.getResources().getIcon("fill_round"));
+        this.back =  new Image(TestApp.getResources().getIcon("fill_round"));
         back.setSize(this.getWidth(), this.getHeight());
         addActor(back);
         back.toBack();

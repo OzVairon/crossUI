@@ -19,7 +19,7 @@ import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 import java.util.ArrayList;
 
@@ -62,10 +62,10 @@ public class TabView extends Rect {
 	 */
 	public TabView(String[] names) {
 
-		this.headerHeight = StartTrackApp.dp2px(32);
-		this.separatorHeight = StartTrackApp.dp2px(1);
-		this.separatorPadding = StartTrackApp.dp2px(12);
-		this.underlineHeight = StartTrackApp.dp2px(2);
+		this.headerHeight = TestApp.dp2px(32);
+		this.separatorHeight = TestApp.dp2px(1);
+		this.separatorPadding = TestApp.dp2px(12);
+		this.underlineHeight = TestApp.dp2px(2);
 
 		this.selectedTextColor = Color.valueOf("202020");
 		this.unselectedTextColor = Color.valueOf("666666");
@@ -79,7 +79,7 @@ public class TabView extends Rect {
 		int i = 0;
 		for (String name : names) {
 			final int ii = i;
-			LabelStyle s = StartTrackApp.getResources().getLabelStyle("tabs_header");
+			LabelStyle s = TestApp.getResources().getLabelStyle("tabs_header");
 			s.fontColor = unselectedTextColor;
 			Text t = new Text(name.toUpperCase(), s);
 			t.setAlignment(Align.center);
@@ -113,7 +113,7 @@ public class TabView extends Rect {
 		addActor(underline);
 
 		setBackgroundColor(Color.valueOf("fafafa"));
-		setBorder(StartTrackApp.dp2px(1), 0, StartTrackApp.dp2px(1), 0);
+		setBorder(TestApp.dp2px(1), 0, TestApp.dp2px(1), 0);
 		setBorderColor(Color.LIGHT_GRAY);
         layout();
 	}

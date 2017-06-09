@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Align;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 import java.util.ArrayList;
 
@@ -18,9 +18,9 @@ import java.util.ArrayList;
  */
 public class StatsLabels extends Group {
 
-	private final int sp = StartTrackApp.dp2px(8);  // small gap
-	private final int mp = StartTrackApp.dp2px(12); // medium gap
-	private final int lp = StartTrackApp.dp2px(16); // large gap
+	private final int sp = TestApp.dp2px(8);  // small gap
+	private final int mp = TestApp.dp2px(12); // medium gap
+	private final int lp = TestApp.dp2px(16); // large gap
 
 	private final ArrayList<StatsLabel> labels;
 	private final Rect separator;
@@ -33,10 +33,10 @@ public class StatsLabels extends Group {
 		separator = new Rect();
 
 		separator.setWidth(this.getWidth());
-		separator.setHeight(StartTrackApp.dp2px(1));
+		separator.setHeight(TestApp.dp2px(1));
 		separator.setBackgroundColor(Color.valueOf("dadada"));
 
-		setHeight(StartTrackApp.dp2px(48));
+		setHeight(TestApp.dp2px(48));
 		addActor(separator);
 	}
 
@@ -64,8 +64,8 @@ public class StatsLabels extends Group {
 		private final Text text;
 
 		private StatsLabel(String n, String s) {
-			number = new Text(n, StartTrackApp.getResources().getLabelStyle("stats_counter"));
-			text = new Text(s, StartTrackApp.getResources().getLabelStyle("tab"));
+			number = new Text(n, TestApp.getResources().getLabelStyle("stats_counter"));
+			text = new Text(s, TestApp.getResources().getLabelStyle("tab"));
             text.getStyle().fontColor = Color.valueOf("666666");
             text.setStyle(text.getStyle());
 

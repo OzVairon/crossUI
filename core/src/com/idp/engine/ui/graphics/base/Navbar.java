@@ -114,6 +114,11 @@ public class Navbar extends Rect {
 		return rightIcons;
 	}
 
+	public void addButton(NavButton button) {
+		rightIcons.clear();
+		rightIcons.addActor(button);
+	}
+
 	public static class NavButton extends Rect {
 
 		private final Image icon;

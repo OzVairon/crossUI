@@ -3,7 +3,7 @@ package org.ozv.crossUI.graphics.starttrack_widgets.base;
 import com.badlogic.gdx.graphics.Color;
 import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.base.Rect;
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 /**
  * Button with icon.
@@ -20,10 +20,10 @@ public class IconButton extends Rect {
     }
 	
 	public IconButton(String iconname, float sizeDp) {
-		icon = new Image(StartTrackApp.getResources().getIcon(iconname));
-		setSize(StartTrackApp.dp2px(sizeDp), StartTrackApp.dp2px(sizeDp));
+		icon = new Image(TestApp.getResources().getIcon(iconname));
+		setSize(TestApp.dp2px(sizeDp), TestApp.dp2px(sizeDp));
 		icon.setColor(Color.BLACK);
-		this.padding = StartTrackApp.dp2px(12);
+		this.padding = TestApp.dp2px(12);
 		addActor(icon);
 
 		layout();

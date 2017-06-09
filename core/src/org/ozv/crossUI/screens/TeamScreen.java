@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Game;
 import org.ozv.crossUI.api.model.Report;
 import org.ozv.crossUI.api.model.Team;
@@ -33,12 +33,12 @@ public class TeamScreen extends StartTrackBaseScreen<Game> {
 	@Override
 	protected void initWidgets() {
 		teamWidgets.clear();
-		for (final Team t : StartTrackApp.getState().game.teams) {
+		for (final Team t : TestApp.getState().game.teams) {
 			TeamWidget rect = new TeamWidget(t);
 			rect.addListener(new ActorGestureListener() {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
-					StartTrackApp.getState().team = t;
+					TestApp.getState().team = t;
 					App.pushScreen(new TeamReportScreen(t));
 				}
 			});
@@ -55,8 +55,8 @@ public class TeamScreen extends StartTrackBaseScreen<Game> {
 	@Override
 	public void show() {
 		super.show();
-		for (Report r : StartTrackApp.getState().reports) {
-			if (r.game_module == StartTrackApp.getState().gameModule.id && r.sent) {
+		for (Report r : TestApp.getState().reports) {
+			if (r.game_module == TestApp.getState().gameModule.id && r.sent) {
 				TeamWidget w = teamWidgets.get(r.team);
 				if (w != null) {
 					w.setBackgroundColor(App.Colors.getColorByName("ELEMENT_BACK_SELECTED"));

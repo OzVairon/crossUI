@@ -12,7 +12,7 @@ import com.idp.engine.ui.graphics.base.Navbar;
 import com.idp.engine.ui.graphics.base.Rect;
 import com.idp.engine.ui.screens.NetScreen;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 /**
  * Start screen of Startrack app.
@@ -54,10 +54,10 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
 
 	@Override
 	protected void initErrorWidget() {
-		Text emptyList = new Text(errorMessage, StartTrackApp.getResources().getLabelStyle("text"));
+		Text emptyList = new Text(errorMessage, TestApp.getResources().getLabelStyle("text"));
 		emptyList.getStyle().fontColor = Color.valueOf("666666");
 		emptyList.setAlignment(Align.center);
-		emptyList.setSize(Gdx.graphics.getWidth(), StartTrackApp.dp2px(20));
+		emptyList.setSize(Gdx.graphics.getWidth(), TestApp.dp2px(20));
 		listView.getContent().addActor(new Actor());  // adds gap
 		listView.getContent().addActor(emptyList);
 		listView.getContentWrapper().setBottomOverScroll(0);
@@ -66,10 +66,10 @@ public abstract class StartTrackBaseScreen<T> extends NetScreen<T> {
 	
 	protected void logOut() {
 
-        getPopupLayer().getConfirmationDialog("Вы точно хотите выйти?", "", new ClickListener() {
+        getPopupLayer().showConfirmationDialog("Вы точно хотите выйти?", "", new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                StartTrackApp.getInstance().logOut();
+                TestApp.getInstance().logOut();
             }
         });
 	}

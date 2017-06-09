@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -15,7 +15,7 @@ public class AndroidLauncher extends AndroidApplication {
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 
 		RelativeLayout layout = new RelativeLayout(this);
-		layout.addView(initializeForView(new StartTrackApp(), cfg));
+		layout.addView(initializeForView(new TestApp(), cfg));
 		setContentView(layout);
 	}
 }

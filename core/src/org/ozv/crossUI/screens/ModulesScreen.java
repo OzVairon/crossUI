@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.idp.engine.App;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.StartTrackApi;
 import org.ozv.crossUI.api.model.Game;
 import org.ozv.crossUI.api.model.GameModule;
@@ -32,8 +32,8 @@ public class ModulesScreen extends StartTrackBaseScreen<Game> {
 			rect.addListener(new ActorGestureListener() {
 				@Override
 				public void tap(InputEvent event, float x, float y, int count, int button) {
-					StartTrackApp app = StartTrackApp.getInstance();
-					StartTrackApp.getState().gameModule = gm;
+					TestApp app = TestApp.getInstance();
+					TestApp.getState().gameModule = gm;
 					App.pushScreen(new TeamScreen());
 				}
 			});
@@ -48,7 +48,7 @@ public class ModulesScreen extends StartTrackBaseScreen<Game> {
 		StartTrackApi.GameListener listener = new StartTrackApi.GameListener() {
 			@Override
 			public void loaded(Game game) {
-				StartTrackApp.State s = StartTrackApp.getState();
+				TestApp.State s = TestApp.getState();
 				s.game = game;
 				dataLoaded(game);
 			}

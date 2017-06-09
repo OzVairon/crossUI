@@ -79,6 +79,8 @@ public class AppScreen extends IdpBaseScreen {
         return mainLayer;
     }
 
+
+
 	/**
 	 * @return popup layer
 	 */

@@ -12,7 +12,7 @@ import com.idp.engine.ui.graphics.actors.layouts.VerticalLayout;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Participant;
 
 /**
@@ -40,7 +40,7 @@ public class ParticipantWidget extends StartTrackWidget<Participant> {
         hl.setGap(0);
 		
 		Text number = new Text(data.number + "",
-				StartTrackApp.getResources().getLabelStyle("participant-number"));
+				TestApp.getResources().getLabelStyle("participant-number"));
 		number.setWidth(App.dp2px(32));
 		number.getStyle().fontColor = App.Colors.getColorByName("TEXT_NUMBER");
 		number.setAlignment(Align.center);
@@ -52,10 +52,10 @@ public class ParticipantWidget extends StartTrackWidget<Participant> {
 
         VerticalLayout nameLayout = new VerticalLayout();
         nameLayout.setGap(0);
-        nameLayout.setPadding(StartTrackApp.dp2px(20));
+        nameLayout.setPadding(TestApp.dp2px(20));
 		
 		Text title = new Text(data.first_name + " " + data.last_name,
-				StartTrackApp.getResources().getLabelStyle("h1"));
+				TestApp.getResources().getLabelStyle("h1"));
 //		title.setWidth(Gdx.graphics.getWidth() - 2 * mp);
 		title.setWrap(true);
         nameLayout.addActor(title);

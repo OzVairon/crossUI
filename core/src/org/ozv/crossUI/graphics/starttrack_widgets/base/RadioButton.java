@@ -11,7 +11,7 @@ import com.idp.engine.ui.graphics.actors.Image;
 import com.idp.engine.ui.graphics.actors.Text;
 import com.idp.engine.ui.graphics.base.Rect;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 
 /**
  *
@@ -19,9 +19,9 @@ import org.ozv.crossUI.StartTrackApp;
  */
 public class RadioButton extends Rect {
 	
-	private final int sp = StartTrackApp.dp2px(8);   // small gap
-	private final int mp = StartTrackApp.dp2px(12);  // medium gap
-	private final int lp = StartTrackApp.dp2px(16);  // large gap
+	private final int sp = TestApp.dp2px(8);   // small gap
+	private final int mp = TestApp.dp2px(12);  // medium gap
+	private final int lp = TestApp.dp2px(16);  // large gap
 	
 	private final Text number;
 	private boolean selected;
@@ -31,7 +31,7 @@ public class RadioButton extends Rect {
 	public RadioButton(String text) {
 		
 		this.number = new Text(text,
-				StartTrackApp.getResources().getLabelStyle("participant-number")); //h1
+				TestApp.getResources().getLabelStyle("participant-number")); //h1
 		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;
@@ -49,7 +49,7 @@ public class RadioButton extends Rect {
 	public RadioButton(Image icon) {
 		
 		this.number = new Text("1",
-				StartTrackApp.getResources().getLabelStyle("h1"));
+				TestApp.getResources().getLabelStyle("h1"));
 		number.getStyle().fontColor = App.Colors.MAIN;
 		number.setAlignment(Align.center);
 		float s = number.getHeight() + mp * 2;

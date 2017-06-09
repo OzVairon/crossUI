@@ -15,6 +15,10 @@ public class Text extends Widget {
 	private boolean busy = false;
 	private Label label;
 
+	public Text() {
+		this("Простой текст");
+	}
+
 	public Text(String text) {
 		this(text, App.getResources().getLabelStyle("text"));
 	}

@@ -14,7 +14,7 @@ import com.idp.engine.App;
 import com.idp.engine.resources.assets.IdpColorPixmap;
 import com.idp.engine.ui.graphics.actors.Text;
 
-import org.ozv.crossUI.StartTrackApp;
+import org.ozv.crossUI.TestApp;
 import org.ozv.crossUI.api.model.Report;
 import org.ozv.crossUI.graphics.starttrack_widgets.base.RadioGroup;
 
@@ -40,9 +40,9 @@ public class TeamGradeWidget extends StartTrackWidget<Report> {
 		layout.paddingBottom = sp;
 		
 		layout.addActor(new Text("КОМАНДНАЯ ОЦЕНКА",
-				StartTrackApp.getResources().getLabelStyle("header")));
+				TestApp.getResources().getLabelStyle("header")));
 		
-		if (StartTrackApp.getState().game.team_grade_required) {
+		if (TestApp.getState().game.team_grade_required) {
 
 			RadioGroup rg = new RadioGroup(0, 3, data);
 			rg.paddingLeft = sp / 2;
@@ -63,7 +63,7 @@ public class TeamGradeWidget extends StartTrackWidget<Report> {
 			layout.addActor(g);
 
 		} else {
-			Text note = new Text("Не требуется".toUpperCase(), StartTrackApp.getResources().getLabelStyle("number"));
+			Text note = new Text("Не требуется".toUpperCase(), TestApp.getResources().getLabelStyle("number"));
 			note.getStyle().fontColor = Color.valueOf("999999");
 			layout.setGap(App.dp2px(18));
 			note.setWidth(Gdx.graphics.getWidth() - layout.paddingRight - layout.paddingLeft);
@@ -72,7 +72,7 @@ public class TeamGradeWidget extends StartTrackWidget<Report> {
 		}
 		
         Text participantsListTitle = new Text("СОСТАВ КОМАНДЫ",
-				StartTrackApp.getResources().getLabelStyle("header"));
+				TestApp.getResources().getLabelStyle("header"));
         participantsListTitle.setPosition(lp, layout.getY() + layout.getHeight() + mp);
         layout.addActor(participantsListTitle);
 	}

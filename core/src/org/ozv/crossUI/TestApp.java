@@ -21,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author idp
  */
-public class StartTrackApp extends App {
+public class TestApp extends App {
 
 
 	public static class State {
@@ -128,8 +128,8 @@ public class StartTrackApp extends App {
 	/**
 	 * @return current app instance
 	 */
-	public static StartTrackApp getInstance() {
-		return (StartTrackApp) instance;
+	public static TestApp getInstance() {
+		return (TestApp) instance;
 	}
 
 

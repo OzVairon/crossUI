@@ -51,6 +51,8 @@ public class FieldText extends Widget {
 
 		this.tex = new IdpColorPixmap(Color.DARK_GRAY);
 
+
+
 		this.thinUnderline = tex.buildActor();
 		thinUnderline.setY(textField.getY() + textField.getHeight());
 		thinUnderline.setHeight(1);
@@ -65,6 +67,21 @@ public class FieldText extends Widget {
 
 		this.setUnderlineLeft(App.dp2px(0));
 		this.setUnderlineRight(App.dp2px(0));
+
+		setWidth(App.dp2px(150));
+		setHeight(textField.getStyle().font.getCapHeight() * 2);
+		Color b = App.Colors.MAIN;
+		float coef = 0.299f * b.r + 0.587f * b.g + 0.114f * b.b;
+		if (coef > 0.5) {
+			setColor(Color.BLACK);
+		} else {
+			setColor(App.Colors.MAIN);
+		}
+	}
+
+	@Override
+	public void setHeight(float height) {
+		super.setHeight(textField.getStyle().font.getCapHeight() * 2);
 	}
 
 	@Override
