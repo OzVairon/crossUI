@@ -1,8 +1,13 @@
 package org.ozv.crossUI.screens;
 
+import com.idp.engine.App;
 import com.idp.engine.ui.graphics.actors.Button;
 import com.idp.engine.ui.graphics.actors.CheckBox;
 import com.idp.engine.ui.graphics.actors.FieldText;
+import com.idp.engine.ui.graphics.actors.Image;
+import com.idp.engine.ui.graphics.actors.Text;
+import com.idp.engine.ui.graphics.actors.layouts.HorizontalLayout;
+import com.idp.engine.ui.graphics.actors.listview.ListView;
 import com.idp.engine.ui.screens.AppScreen;
 import com.idp.engine.ui.screens.layers.MainLayer;
 
@@ -19,14 +24,32 @@ public class TestScreen extends AppScreen {
 
 		getMainLayer().setContentLayout(MainLayer.LayoutType.Vertical);
 
-		Button b = new Button();
-		addActor(b);
+		Text t = new Text();
+		addActor(t);
 
-		CheckBox c = new CheckBox();
-		addActor(c);
+		HorizontalLayout hl = new HorizontalLayout();
 
-		FieldText f = new FieldText();
-		addActor(f);
+		Button b1 = new Button();
+		Button b2 = new Button();
+		hl.addActor(b1);
+		hl.addActor(b2);
+
+		addActor(hl);
+
+		CheckBox cb = new CheckBox();
+		addActor(cb);
+		FieldText ft = new FieldText();
+		addActor(ft);
+		Image i = new Image(App.getResources().getPicture("image.png"));
+		addActor(i);
+
+		ListView lv = new ListView();
+		lv.setWidth(getMainLayer().getWidth());
+		lv.setHeight(App.dp2px(100));
+		for (int j = 0; j < 10; j++) {
+			lv.addActor(new Text("String " + j));
+		}
+		addActor(lv);
 
 
 //		getMainLayer().setContentLayout(MainLayer.LayoutType.Vertical);

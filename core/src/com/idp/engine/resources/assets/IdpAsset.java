@@ -20,7 +20,7 @@ public final class IdpAsset<T> {
 	 * Used by {@link IdpAssetManager} when asset starts loading.
 	 * Do not use it manually.
 	 */
-	IdpAsset() {
+	public IdpAsset() {
 
 	}
 

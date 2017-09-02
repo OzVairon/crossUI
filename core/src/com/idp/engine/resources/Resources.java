@@ -73,7 +73,12 @@ public class Resources {
     public void loadIcons(String iconAtlasPath) {
         if (this.userIcons != null)
             throw new IllegalStateException("Another atlas is already loaded.");
-		this.userIcons = man.loadAtlas(iconAtlasPath);
+        try {
+
+            this.userIcons = man.loadAtlas(iconAtlasPath);
+        } catch (Exception ex) {
+            this.userIcons = new IdpAsset<TextureAtlas>();
+        }
     }
 
     public void loadSystemIcons(String iconAtlasPath) {
@@ -188,7 +193,7 @@ public class Resources {
         fonts.add(new FontInfo("label", "SF-UI-Display-Regular.ttf", "14", "666666"));
         fonts.add(new FontInfo("h1", "SF-UI-Display-Regular.ttf", "16", "000000"));
         fonts.add(new FontInfo("text", "SF-UI-Text-Regular.ttf", "14", "666666"));
-        fonts.add(new FontInfo("text_field", "SF-UI-Display-Light.ttf", "16", "000000"));
+        fonts.add(new FontInfo("text_field", "SF-UI-Display-Light.ttf", "16", "666666"));
         fonts.add(new FontInfo("button", "SF-UI-Display-Bold.ttf", "14", "000000"));
 
         for (FontInfo f : fonts) {

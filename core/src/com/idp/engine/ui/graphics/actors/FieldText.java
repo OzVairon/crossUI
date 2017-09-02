@@ -32,7 +32,7 @@ public class FieldText extends Widget {
 
 
 	public FieldText() {
-		this(new TextField("", App.getResources().getTextFieldStyle("text")));
+		this(new TextField("", App.getResources().getTextFieldStyle("text_field")));
 	}
 
 	public FieldText(TextField.TextFieldStyle style) {

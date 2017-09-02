@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app package="org.ozv.crossUI">
-    <mainscreen name = "TestScreen" />
+    <mainscreen name = "LoginScreen" />
     <colors>
-        <color name="MAIN"                  value="FF0000"/>
+        <color name="MAIN"                  value="006fc0"/>
         <color name="TEXT_NAVBAR"           value="ffffff"/>
         <color name="ELEMENT_BACK_SELECTED" value="d6fbb1"/>
         <color name="ICON_TICK"             value="396809"/>
